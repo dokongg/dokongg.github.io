@@ -1,0 +1,8 @@
+
+<div class="navbar">
+	<ul>
+		{% for link in site.navigation %}
+		<a href="{{ link.url }}"><li {% if link.url == page.url %}class="active"{% endif %} >{{ link.title }}</li></a>
+		{% endfor %}
+	</ul>
+</div>

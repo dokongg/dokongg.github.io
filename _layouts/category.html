@@ -1,0 +1,85 @@
+---
+layout: default
+---
+
+<article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+  <header class="post-header">
+    <h1 class="post-title p-name" itemprop="name headline">{{ page.pagination.category | escape }}</h1>
+    <p class="post-meta">
+      {%- assign date_format = site.minima.date_format | default: "%b %-d, %Y" -%}
+      <time class="dt-published" datetime="{{ page.date | date_to_xmlschema }}" itemprop="datePublished">
+        {{ page.date | date: date_format }}
+      </time>
+      {%- if page.modified_date -%}
+        ~
+        {%- assign mdate = page.modified_date | date_to_xmlschema -%}
+        <time class="dt-modified" datetime="{{ mdate }}" itemprop="dateModified">
+          {{ mdate | date: date_format }}
+        </time>
+      {%- endif -%}
+      {%- if page.author -%}
+        • {% for author in page.author %}
+          <span itemprop="author" itemscope itemtype="http://schema.org/Person">
+            <span class="p-author h-card" itemprop="name">{{ author }}</span></span>
+            {%- if forloop.last == false %}, {% endif -%}
+        {% endfor %}
+      {%- endif -%}</p>
+  </header>
+
+  <div class="post-content e-content" itemprop="articleBody">
+
+    {%- include pagination.html -%}
+
+    {% if paginator.total_pages > 1 %}
+        {% assign last_group = paginator.total_pages | append: '.0' | divided_by: paginator.per_page | ceil %}
+        {% assign current_group = paginator.page | minus: 1 | divided_by: paginator.per_page | plus: 1 %}
+        {% assign group_end_page = current_group | times: paginator.per_page %}
+        {% assign group_first_page = current_group | minus: 1 | times: paginator.per_page | plus: 1 %}
+        {% assign group_last_page = group_first_page | plus: paginator.per_page | minus: 1%}
+
+        <div class="pagination">
+            {% if paginator.previous_page %}
+              {% if current_group > 1 %}
+                {% assign previous_group_first_page = current_group | minus: 2 | times: paginator.per_page | plus: 1 %}
+                  {% if previous_group_first_page == 1 %}
+                    <a href="{{ paginator.first_page_path | append: 'index' | prepend: site.baseurl | replace: '//', '/' }}">&laquo;</a>
+                  {% else %}
+                    <a href="{{ paginator.first_page_path | append: 'page' | append: previous_group_first_page | prepend: site.baseurl | replace: '//', '/' }}">&laquo;</a>
+                  {% endif %}
+                {% endif %}
+            {% endif %}
+
+            {% if current_group == last_group %}
+              {% for page in (group_first_page..paginator.last_page) %}
+                  {% if page == paginator.page %}
+                      <a class="selected-page">{{ page }}</a>
+                  {% elsif page == 1 %}
+                      <a href="{{paginator.first_page_path}}index.html">{{ page }}</a>
+                  {% else %}
+                      <a href="{{ site.paginate_path | prepend: paginator.first_page_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+                  {% endif %}
+              {% endfor %}
+            {% else %}
+              {% for page in (group_first_page..group_end_page) %}
+                  {% if page == paginator.page %}
+                      <a class="selected-page">{{ page }}</a>
+                  {% elsif page == 1 %}
+                      <a href="{{paginator.first_page_path}}index.html">{{ page }}</a>
+                  {% else %}
+                      <a href="{{ site.paginate_path | prepend: paginator.first_page_path | prepend: site.baseurl | replace: '//', '/' | replace: ':num', page }}">{{ page }}</a>
+                  {% endif %}
+              {% endfor %}
+                {% if paginator.next_page %}
+                  {% assign next_group_last_page = group_last_page | plus: 1 %}
+                    <a href="{{ paginator.first_page_path | append: 'page' | append: next_group_last_page | prepend: site.baseurl | replace: '//', '/' }}">&raquo;</a>
+                  {% endif %}
+            {% endif %}
+        </div>
+    {% endif %}
+  </div>
+
+  {%- if site.disqus.shortname -%}
+    {%- include disqus_comments.html -%}
+  {%- endif -%}
+
+</article>
