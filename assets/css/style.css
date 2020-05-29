@@ -637,5 +637,9 @@ body {
 .post-content h1, .post-content h2, .post-content h3 {
   margin: 30px 0; }
 
-.trigger .page-link {
-  color: #2d2d2d; }
+@media screen and (min-width: 600px) {
+  .trigger .page-link {
+    color: #fff; } }
+@media screen and (max-width: 599px) {
+  .trigger .page-link {
+    color: #2d2d2d; } }
