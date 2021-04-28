@@ -580,10 +580,8 @@ table {
 @media screen and (min-width: 800px) {
   .one-half {
     width: calc(50% - (30px / 2)); } }
-.footer-icon-attribute {
-  font-size: 12px;
-  text-align: center;
-  letter-spacing: 1px; }
+ul.posts {
+  list-style: none; }
 
 .pagination .selected-page {
   color: #000;
@@ -622,8 +620,8 @@ a:hover {
 
 .home {
   background-color: #fff;
-  border: 1px solid #efefef;
-  padding: 20px;
+  border: 1px solid #cecece;
+  padding: 10px 10px 80px 10px;
   color: #6f6f6f;
   text-align: center;
   width: 200px;
@@ -631,7 +629,8 @@ a:hover {
   margin-top: 50px; }
 
 body {
-  letter-spacing: -1px; }
+  letter-spacing: -1px;
+  background-color: #f7f7f7; }
 
 .post-title.p-name {
   text-align: center;
