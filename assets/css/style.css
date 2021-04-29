@@ -666,4 +666,6 @@ body {
     line-height: 24px;
     outline: none;
     padding: 0 5px;
-    margin: 0 10px; } }
+    margin: 0 10px;
+    font-size: 12px;
+} }
