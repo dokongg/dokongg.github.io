@@ -63,25 +63,66 @@
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
-  <header class="post-header">
-    <h1 class="post-title p-name" itemprop="name headline">Algorithms</h1>
-    <p class="post-meta"><time class="dt-published" datetime="" itemprop="datePublished">
-        
-      </time></p>
-  </header>
+        <article class="post">
+  <div class="post-content">
+    <form action="/search" method="get" hidden="hidden">
+    <label for="search-box"></label>
+    <input type="text" id="search-box" name="query">
+</form>
 
-  <div class="post-content e-content" itemprop="articleBody"><ul class="posts">
+<div id="search-result-info"></div>
+<ul class="posts" id="search-results"></ul>
 
-	<li><div class="post-meta">
-			<a class="post-link" href="/Algorithm-01">
-				<h4 class="post-title">[Programmers] 기능개발1</h4>
-			</a>
-			<div class="post-date"><i class="icon-calendar"></i>Apr 28, 2021</div>
-		</div>
-		<div class="post"></div>
-	</li></ul>
-  </div></article>
+
+
+
+
+
+
+<div class="pagination">
+</div>
+<input type="hidden" id="searchTerm" value="" />
+<input type="hidden" id="totalCount" value="1" />
+<input type="hidden" id="currentPage" value="1" />
+<input type="hidden" id="startPage" value="1" />
+<input type="hidden" id="endPage" value="1" />
+<input type="hidden" id="totalPageGroup" value="1" />
+<input type="hidden" id="currentPageGroup" value="1" />
+
+<script>
+    $(document).ready(function() {
+      init();
+
+      $('.pagination a').on('click', function(e) {
+        var $target = $(e.target);
+        var page = $target.data('page');
+        $('.pagination a').removeClass('selected-page');
+        $target.addClass('selected-page');
+
+        $('#currentPage').val(page);
+        getPage();
+      });
+
+    })
+
+    window.store = {
+    
+    "algorithm-01": {
+        "title": "[Programmers] 기능개발1",
+        "category": "",
+        "content": "[Programmers] 기능개발",
+        "url": "/Algorithm-01"
+    }
+    
+    
+    };
+</script>
+<script src="/assets/js/lunr.js"></script>
+<script src="/assets/js/search.js"></script>
+
+  </div>
+
+</article>
 
       </div>
     </main>

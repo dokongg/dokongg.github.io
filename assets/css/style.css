@@ -648,9 +648,23 @@ body {
 .post-content h1, .post-content h2, .post-content h3 {
   margin: 30px 0; }
 
+.search-input {
+  border: 1px solid #ccc;
+  line-height: 24px;
+  outline: none;
+  padding: 0 5px; }
+
 @media screen and (min-width: 600px) {
   .trigger .page-link {
     color: #fff; } }
 @media screen and (max-width: 599px) {
   .trigger .page-link {
-    color: #2d2d2d; } }
+    color: #2d2d2d; }
+
+  .search-input {
+    border: none;
+    border-bottom: 1px solid #ccc;
+    line-height: 24px;
+    outline: none;
+    padding: 0 5px;
+    margin: 0 10px; } }

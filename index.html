@@ -3,10 +3,10 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  
+
   <title>Dokongg Blog</title>
 
-  <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Dokongg Blog" />
+  <link rel="stylesheet" href="/assets/css/style.css">
 </head>
 <body><header class="site-header">
 
@@ -20,6 +20,31 @@
           </span>
         </label>
         <div class="trigger">
+          <div>
+            <div id="search" >
+                <span id="searchform" method="post" action="/search/" class="">
+    <div class="form-group">
+        <input class="search-input" onkeyup="myFunc()" id="keyword" type="text" name="keyword" placeholder="Search..." />
+    </div>
+    <script src="/assets/js/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript">
+        function myFunc() {
+            var keyword = $("#keyword").val();
+
+            if( keyword.trim() == '' ) {
+              return;
+            }
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent(keyword);
+                location.href = "/search?query=" + url;
+            }
+        }
+    </script>
+</span>
+
+            </div>
+          </div>
           
             <a class="page-link" href="/Algorithms/index">Algorithms</a>
           
@@ -45,19 +70,8 @@
 </div>
 
       </div>
-    </main><footer class="site-footer h-card">
-  <data class="u-url" href="/"></data>
-
-  <div class="wrapper">
-
-    <div class="footer-col-wrapper">
-      <div class="footer-col">
-      </div>
-    </div>
-
-  </div>
-
-</footer>
-</body>
+    </main>
+    <script src="/assets/js/jquery-3.6.0.min.js" />
+  </body>
 
 </html>
