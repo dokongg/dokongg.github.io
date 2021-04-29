@@ -662,8 +662,7 @@ body {
     color: #2d2d2d; }
 
   .search-input {
-    border: none;
-    border-bottom: 1px solid #ccc;
+    border: 1px solid #ccc;
     line-height: 24px;
     outline: none;
     padding: 0 5px;
