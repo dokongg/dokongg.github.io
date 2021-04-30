@@ -679,5 +679,8 @@ body {
   .post-content h4 {
     margin: none; }
 
+  .e-content {
+    padding-top: 30px; }
+
   .search-posts {
     margin-top: 50px; } }
