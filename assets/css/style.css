@@ -677,4 +677,7 @@ body {
     margin-bottom: none; }
 
   .post-content h4 {
-    margin: none; } }
+    margin: none; }
+
+  .search-posts {
+    margin-top: 50px; } }
