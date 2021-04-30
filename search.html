@@ -96,6 +96,12 @@
       $('.pagination a').on('click', function(e) {
         var $target = $(e.target);
         var page = $target.data('page');
+        var currentPage = $('.pagination a.selected-page').data('page);
+                                                                
+        if ( currentPage == page ) {
+            return;
+        }
+          
         $('.pagination a').removeClass('selected-page');
         $target.addClass('selected-page');
 
