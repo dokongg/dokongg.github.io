@@ -22,7 +22,7 @@ var getPagination = function() {
 }
 
 var displaySearchResults = function(results, store, initalize) {
-    var searchResults = document.getElementById('search-results');
+    var searchResults = $('#search-results');
 
     var totalCount = results.length;
     var endPage = Math.ceil(totalCount / 5.0);
@@ -42,7 +42,7 @@ var displaySearchResults = function(results, store, initalize) {
     var currentPageGroup = Number($('#currentPageGroup').val());
 
     if (results.length) { // Are there any results?
-        var appendString = '<div class="search-results">총 <span> class="search-count">' + $('#totalCount').val() + '</span>개의 결과가 있습니다.</div>';
+        var appendString = '<div class="search-results">총 <span class="search-count">' + $('#totalCount').val() + '</span>개의 결과가 있습니다.</div>';
 
         for (var i = startIndex; i < results.length; i++) {  // Iterate over the results
             var item = store[results[i].ref];
