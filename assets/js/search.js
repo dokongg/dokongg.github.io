@@ -1,28 +1,30 @@
 var getPagination = function() {
-  $('.pagination').empty();
+    $('.pagination').empty();
+    
+    var appendHtml = '<a href="#" class="selected-page" data-page="1">1</a>';
 
-  var appendHtml = '<a href="#" class="selected-page" data-page="1">1</a>';
+    if ( $('#totalCount').val() == 0 ) {
+      return;
+    }
 
-  if ( $('#totalCount').val() == 0 ) {
-    return;
-  }
+    var totalPageGroup = Number($('#totalPageGroup').val());
+    var endPage = Number($('#endPage').val());
+    var endIndex = endPage;
 
-  var totalPageGroup = Number($('#totalPageGroup').val());
-  var endPage = Number($('#endPage').val());
-  var endIndex = endPage;
+    if ( totalPageGroup > 1 ) {
+      endIndex = 5;
+    }
+    for(var i = 1; i < endIndex; i ++ ) {
+      appendHtml += '<a href="#" data-page="' + (i + 1) + '">' + ( i + 1 ) + '</a>';
+    }
 
-  if ( totalPageGroup > 1 ) {
-    endIndex = 5;
-  }
-  for(var i = 1; i < endIndex; i ++ ) {
-    appendHtml += '<a href="#" data-page="' + (i + 1) + '">' + ( i + 1 ) + '</a>';
-  }
-
-  $('.pagination').append(appendHtml);
+    $('.pagination').append(appendHtml);
 }
 
 var displaySearchResults = function(results, store, initalize) {
     var searchResults = $('#search-results');
+
+    searchResults.empty();
 
     var totalCount = results.length;
     var endPage = Math.ceil(totalCount / 5.0);
@@ -41,9 +43,9 @@ var displaySearchResults = function(results, store, initalize) {
     var endIndex = Number($('#endPage').val());
     var currentPageGroup = Number($('#currentPageGroup').val());
 
+
     if (results.length) { // Are there any results?
         var appendString = '<div class="search-results">총 <span class="search-count">' + $('#totalCount').val() + '</span>개의 결과가 있습니다.</div>';
-
         for (var i = startIndex; i < results.length; i++) {  // Iterate over the results
             var item = store[results[i].ref];
             appendString += '<li><a class="post-link" href="' + item.url + '">'
@@ -54,10 +56,12 @@ var displaySearchResults = function(results, store, initalize) {
               break;
             }
         }
+
         searchResults.append(appendString);
     } else {
         searchResults.append('<li>검색 결과가 없습니다.</li>');
     }
+
 }
 
 var getQueryVariable = function(variable) {
@@ -108,10 +112,10 @@ var init = function() {
               'category': window.store[key].category,
               'content': window.store[key].content
           });
-
-          var results = idx.search(searchTerm); // Get lunr to perform a search
-          displaySearchResults(results, window.store, true); // We'll write this in the next section
       }
+
+      var results = idx.search(searchTerm); // Get lunr to perform a search
+      displaySearchResults(results, window.store, true); // We'll write this in the next section
   }
 }
 
@@ -139,8 +143,8 @@ var getPage = function() {
               'category': window.store[key].category,
               'content': window.store[key].content
           });
-
-          var results = idx.search(searchTerm); // Get lunr to perform a search
-          displaySearchResults(results, window.store); // We'll write this in the next section
       }
+
+      var results = idx.search(searchTerm); // Get lunr to perform a search
+      displaySearchResults(results, window.store); // We'll write this in the next section
     }
