@@ -580,6 +580,13 @@ table {
 @media screen and (min-width: 800px) {
   .one-half {
     width: calc(50% - (30px / 2)); } }
+* {
+  font-family: D2Coding, 'D2 coding', monospace; }
+
+body {
+  letter-spacing: -1px;
+  background-color: #f7f7f7; }
+
 ul.posts {
   list-style: none; }
 
@@ -628,10 +635,6 @@ a:hover {
   width: 200px;
   display: inline-block;
   margin-top: 50px; }
-
-body {
-  letter-spacing: -1px;
-  background-color: #f7f7f7; }
 
 .post-title.p-name {
   text-align: center;
