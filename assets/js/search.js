@@ -97,9 +97,9 @@ var displaySearchResults = function(results, store, initalize) {
         var appendString = '<div class="search-results">총 <span class="search-count">' + $('#totalCount').val() + '</span>개의 결과가 있습니다.</div>';
         for (var i = startIndex; i < results.length; i++) {  // Iterate over the results
             var item = store[results[i].ref];
-            appendString += '<li class="post-delimiter"><a class="post-link" href="' + item.url + '">'
-                            + '<h4 class="post-title">' + item.title + '</h4></a>';
-            appendString += '<div class="search-post-contents">' + item.content + '</div></li>';
+            appendString += '<li class="post-delimiter"><a class="post-link search-post-link" href="' + item.url + '">'
+                            + '<h4 class="post-title">' + item.title + '</h4>';
+            appendString += '<div class="search-post-contents">' + item.content.substring(0, 100) + '</div></a></li>';
 
             if ( i == startIndex + 4 ) {
               break;

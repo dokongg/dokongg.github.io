@@ -594,8 +594,8 @@ body {
 ul.posts {
   list-style: none; }
 
-.post-link {
-  display: inline-block !important; }
+.search-post-link {
+  width: 100%; }
 
 .pagination .selected-page {
   color: #000;
@@ -622,9 +622,6 @@ a:hover {
   text-align: right; }
 
 div.post-date {
-  display: inline;
-  float: right;
-  margin-top: 30px !important;
   font-size: 14px;
   color: #828282; }
 
@@ -655,7 +652,10 @@ div.post-date {
   font-size: 1.225rem; }
 
 .post-title {
-  font-size: 1.225rem; }
+  font-size: 1.225rem;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap; }
 
 .post-content {
   background-color: #fff;
@@ -676,7 +676,11 @@ div.post-date {
   color: #0095ff; }
 
 .search-post-contents {
-  color: #a9a9a9; }
+  color: #a9a9a9;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 16px; }
 
 .post-delimiter {
   border-top: 1px solid #e4e4e4;
@@ -723,9 +727,6 @@ ul {
 
   .search-posts {
     margin-top: 50px; }
-
-  .post-link {
-    display: block !important; }
 
   div.post-date {
     font-size: 14px;
