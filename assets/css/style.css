@@ -595,8 +595,20 @@ body {
   letter-spacing: -1px;
   background-color: #f7f7f7; }
 
-.red {
-  color: #a00; }
+hr {
+  height: .25em;
+  padding: 0;
+  color: #fff;
+  margin: 24px 0;
+  background-color: #e1e4e8;
+  border: 0; }
+
+blockquote {
+  font-style: initial; }
+
+.hightlighter {
+  background-color: #ffde0080;
+  padding: 0 1px; }
 
 ul.posts {
   list-style: none; }
@@ -636,6 +648,7 @@ div.post-date {
   color: #fff; }
 
 .site-header {
+  border-top: none;
   background-color: #000; }
 
 .trigger .page-link {
@@ -652,7 +665,8 @@ div.post-date {
   text-align: center;
   width: 200px;
   display: inline-block;
-  margin-top: 50px; }
+  margin: 50px 0px 10px 10px;
+  box-shadow: 4px 4px #ececec; }
 
 .post-title.p-name {
   text-align: center;
@@ -699,18 +713,18 @@ ul {
 .post-delimiter:first-of-type {
   border: none; }
 
-@media screen and (max-width: 740px) {
-  .home {
-    display: none; }
-
-  .home:first-of-type {
-    display: inline-block; } }
 @media screen and (min-width: 600px) {
   .trigger .page-link {
     color: #fff; }
 
   div.post-date {
     display: block; } }
+@media screen and (max-width: 750px) {
+  .home {
+    display: inline-block; }
+
+  .home:last-of-type {
+    display: none; } }
 @media screen and (max-width: 599px) {
   .trigger .page-link {
     color: #2d2d2d; }
@@ -744,4 +758,10 @@ ul {
   div.post-date {
     font-size: 14px;
     display: block;
-    margin: 0 !important; } }
+    margin: 0 !important; }
+
+  .home {
+    display: none; }
+
+  .home:first-of-type {
+    display: inline-block; } }
