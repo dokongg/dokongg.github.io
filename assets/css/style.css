@@ -595,6 +595,27 @@ body {
   letter-spacing: -1px;
   background-color: #f7f7f7; }
 
+pre {
+  padding: initial; }
+
+.rouge-table, .rouge-table tbody, .rouge-table tr, .rouge-table td, .rouge-table .lineno, .rouge-table .rouge-code pre {
+  border: none;
+  margin-bottom: initial; }
+
+.rouge-table .lineno {
+  color: #b2ccd6;
+  max-width: 20px;
+  border-radius: initial;
+  padding-right: 1em; }
+
+div.highlighter-rouge .highlight {
+  border-radius: 4px; }
+
+.rouge-gutter {
+  padding: initial;
+  padding-left: 1em;
+  width: 2.5em; }
+
 hr {
   height: .25em;
   padding: 0;
@@ -653,6 +674,9 @@ div.post-date {
 
 .trigger .page-link {
   color: #fff; }
+
+.wrapper {
+  max-width: calc(1000px - (30px)) !important; }
 
 .wrapper-center {
   text-align: center; }
