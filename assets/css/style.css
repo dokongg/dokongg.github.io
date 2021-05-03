@@ -692,6 +692,12 @@ ul {
 .post-delimiter:first-of-type {
   border: none; }
 
+@media screen and (max-width: 740px) {
+  .home {
+    display: none; }
+
+  .home:first-of-type {
+    display: inline-block; } }
 @media screen and (min-width: 600px) {
   .trigger .page-link {
     color: #fff; }
