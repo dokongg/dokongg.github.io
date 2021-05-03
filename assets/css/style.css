@@ -583,6 +583,10 @@ table {
 * {
   font-family: D2Coding, 'D2 coding', monospace; }
 
+.post-content-body a, .post-content-body a:hover {
+  color: #636363 !important;
+  text-decoration: underline; }
+
 *:visited {
   color: #636363;
   text-decoration: none; }
@@ -590,6 +594,9 @@ table {
 body {
   letter-spacing: -1px;
   background-color: #f7f7f7; }
+
+.red {
+  color: #a00; }
 
 ul.posts {
   list-style: none; }
@@ -684,7 +691,7 @@ div.post-date {
 
 .post-delimiter {
   border-top: 1px solid #e4e4e4;
-  padding-bottom: 30px; }
+  padding: 10px 0; }
 
 ul {
   margin: 30px; }
