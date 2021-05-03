@@ -64,58 +64,30 @@
 </header>
 <main class="page-content" aria-label="Content">
       <div class="wrapper">
-        <article class="post">
-    <div class="post-content search-content">
-  <form action="/search" method="get" hidden="hidden">
-      <label for="search-box"></label>
-      <input type="text" id="search-box" name="query">
-  </form>
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
 
-  <div id="search-result-info"></div>
-  <ul class="posts search-posts" id="search-results"></ul>
-</div>
+  <header class="post-header">
+    <h3 class="post-title p-name" itemprop="name headline">[Programmers] 기능개발</h3>
+    <p class="post-meta post-right"><time class="dt-published" datetime="2021-05-04T00:00:00+00:00" itemprop="datePublished">
+        May 4, 2021
+      </time></p>
+  </header>
 
+  <div class="post-content e-content post-content-body" itemprop="articleBody">
+    <p>■ <strong>문제</strong><br />
+<a href="https://programmers.co.kr/learn/courses/30/lessons/42586">https://programmers.co.kr/learn/courses/30/lessons/42586</a></p>
+<hr />
+<p>■ <strong>생각하기</strong></p>
 
+<hr />
+<p>■ <strong>내 풀이</strong></p>
 
+<hr />
+<p>■ <strong><span class="hightlighter">NOTE</span></strong></p>
 
+  </div>
 
-
-
-<div class="pagination">
-</div>
-<input type="hidden" id="searchTerm" value="" />
-<input type="hidden" id="totalCount" value="1" />
-<input type="hidden" id="currentPage" value="1" />
-<input type="hidden" id="startPage" value="1" />
-<input type="hidden" id="endPage" value="2" />
-<input type="hidden" id="totalPageGroup" value="2" />
-<input type="hidden" id="currentPageGroup" value="1" />
-
-<script>
-    $(document).ready(function() {
-      init();
-
-      $('.pagination a').off('click').on('click', function(e) {
-        pageEvent($(e.target));
-      });
-
-    })
-
-    window.store = {
-    
-    "algorithms-01": {
-        "title": "[Programmers] 기능개발",
-        "category": "",
-        "content": "■ 문제https://programmers.co.kr/learn/courses/30/lessons/42586■ 생각하기■ 내 풀이■ NOTE",
-        "url": "/Algorithms-01"
-    }
-    
-    
-    };
-</script>
-<script src="/assets/js/lunr.js"></script>
-<script src="/assets/js/search.js"></script>
-
+  <a class="u-url" href="/Algorithms-01" hidden></a>
 </article>
 
       </div>
