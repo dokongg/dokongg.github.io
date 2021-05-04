@@ -5191,6 +5191,10 @@ readers do not read off random characters that represent icons */
   color: #636363 !important;
   text-decoration: underline; }
 
+.code-block {
+  float: right;
+  padding-top: 0.4rem; }
+
 *:visited {
   color: #636363;
   text-decoration: none; }
