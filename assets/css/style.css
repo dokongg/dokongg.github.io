@@ -5224,7 +5224,7 @@ pre {
   overflow-wrap: initial !important; }
 
 .rouge-code pre {
-  min-width: 600x; }
+  display: inline-block; }
 
 div.highlighter-rouge .highlight {
   border-radius: 4px; }
