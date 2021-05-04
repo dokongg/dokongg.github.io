@@ -5225,6 +5225,13 @@ pre.highlight
   text-align: right;
   white-space: nowrap !important; }
 
+table.rouge-table {
+  overflow-x: initial; }
+
+pre.highlight {
+  overflow-x: auto;
+  padding-bottom: 1.0rem; }
+
 .rouge-code pre span {
   white-space: nowrap !important;
   overflow-wrap: initial !important; }
