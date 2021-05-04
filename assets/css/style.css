@@ -5356,6 +5356,13 @@ ul {
   .home:last-of-type {
     display: none; } }
 @media screen and (max-width: 599px) {
+  .wrapper {
+    padding: initial !important; }
+
+  .wrapper .site-title, .wrapper .post-header {
+    padding-left: 15px;
+    padding-right: 15px; }
+
   .site-nav input:checked ~ .trigger {
     display: block;
     padding-bottom: 5px;
