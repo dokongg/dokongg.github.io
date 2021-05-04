@@ -5203,7 +5203,8 @@ body {
   background-color: #f7f7f7; }
 
 pre {
-  padding: initial; }
+  padding: initial;
+  overflow-x: initial; }
 
 .rouge-table, .rouge-table tbody, .rouge-table tr, .rouge-table td, .rouge-table .lineno, .rouge-table .rouge-code pre {
   border: none;
