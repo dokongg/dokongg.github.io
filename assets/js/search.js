@@ -94,7 +94,7 @@ var displaySearchResults = function(results, store, initalize) {
     var endIndex = Number($('#endPage').val());
 
     if (results.length) { // Are there any results?
-        var appendString = '<div class="search-results">총 <span class="search-count">' + $('#totalCount').val() + '</span>개의 결과가 있습니다.</div>';
+        var appendString = '<div class="search-results"><i class="fas fa-search"></i>총 <span class="search-count">' + $('#totalCount').val() + '</span>개의 결과가 있습니다.</div>';
         for (var i = startIndex; i < results.length; i++) {  // Iterate over the results
             var item = store[results[i].ref];
             appendString += '<li class="post-delimiter"><a class="post-link search-post-link" href="' + item.url + '">'
@@ -108,7 +108,7 @@ var displaySearchResults = function(results, store, initalize) {
 
         searchResults.append(appendString);
     } else {
-        searchResults.append('<li>검색 결과가 없습니다.</li>');
+        searchResults.append('<li><i class="fas fa-search"></i>검색 결과가 없습니다.</li>');
     }
 
 }
