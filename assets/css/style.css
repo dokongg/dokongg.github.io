@@ -5358,6 +5358,9 @@ ul {
   .home:last-of-type {
     display: none; } }
 @media screen and (max-width: 599px) {
+  .rouge-code pre {
+    min-width: 500px; }
+
   .wrapper {
     padding: initial !important; }
 
