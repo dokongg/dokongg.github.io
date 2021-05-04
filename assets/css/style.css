@@ -5203,10 +5203,12 @@ body {
   background-color: #f7f7f7; }
 
 pre {
-  padding: initial; }
+  padding: initial;
+  overflow-x: initial; }
 
 pre.highlight {
-  border: initial; }
+  border: initial;
+  overflow-x: initial; }
 
 pre.highlight
 .rouge-table, .rouge-table tbody, .rouge-table tr, .rouge-table td, .rouge-table .lineno, .rouge-table .rouge-code pre {
@@ -5226,9 +5228,6 @@ pre.highlight
 .rouge-code pre span {
   white-space: nowrap !important;
   overflow-wrap: initial !important; }
-
-.rouge-code pre {
-  display: inline-block; }
 
 div.highlighter-rouge .highlight {
   border-radius: 4px; }
