@@ -5203,6 +5203,9 @@ body {
   letter-spacing: -1px;
   background-color: #f7f7f7; }
 
+table {
+  width: initial; }
+
 pre {
   padding: initial; }
 
