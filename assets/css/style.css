@@ -5215,12 +5215,9 @@ pre {
   border-radius: initial;
   padding-right: 1em; }
 
-td.rouge-code {
-  padding: initial;
-  padding-right: 1.0rem; }
-
 .highlight {
-  text-align: right; }
+  text-align: right;
+  white-space: nowrap !important; }
 
 div.highlighter-rouge .highlight {
   border-radius: 4px; }
