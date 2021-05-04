@@ -5219,6 +5219,13 @@ pre {
   text-align: right;
   white-space: nowrap !important; }
 
+.rouge-code pre span {
+  white-space: nowrap !important;
+  overflow-wrap: initial !important; }
+
+.rouge-code pre {
+  min-width: 600x; }
+
 div.highlighter-rouge .highlight {
   border-radius: 4px; }
 
