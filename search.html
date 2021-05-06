@@ -84,7 +84,7 @@
 <div class="pagination">
 </div>
 <input type="hidden" id="searchTerm" value="" />
-<input type="hidden" id="totalCount" value="4" />
+<input type="hidden" id="totalCount" value="5" />
 <input type="hidden" id="currentPage" value="1" />
 <input type="hidden" id="startPage" value="1" />
 <input type="hidden" id="endPage" value="2" />
@@ -102,6 +102,22 @@
     })
 
     window.store = {
+    
+    "cs-os": {
+        "title": "Part 1-4. 운영체제",
+        "category": "",
+        "content": "[목차]  프로세스와 스레드의 차이 1.1. 프로세스(Process) 1.2. 프로세스 제어 블록(PCB, Process Control Block) 1.3. 스레드(Thread)1. 프로세스와 스레드의 차이1.1. 프로세스(Process)(1) 프로세스란?  실행 중인 프로그램  디스크로부터 메모리에 적재되어 CPU의 할당을 받을수 있는 것  운영체제로부터 주소 공간, 파일, 메모리 등을 할당받는다.(2) 프로세스의 구성  함수의 매개변수, 복귀주소와 로컬변수와 같은 임시자료를 갖는 프로세스 스택과 전역변수들을 수록하는 데이터 섹션을 포함1.2. 프로세스 제어블록(PCB, Process Control Block)(1) PCB란?  특정 프로세스에 대한 중요한 정보를 저장하고 있는 운영체제의 자료구조(2) PCB의 역할  운영체제는 프로세스를 관리하기 위해 프로세스를 생성하는 것과 동시에 고유한 PCB를 생성한다.  프로세스는 CPU의 할당을 받아 작업을 처리하다가 프로세스를 전환하는 일이 발생하면, 진행하던 작업을 저장한 다음 CPU를 반환해야 한다. 이 때, 작업하던 진행사항을 모두 PCB에 저장하게 된다. 그리고 다시 CPU를 할당받으면, PCB에 저장되어 있던 내용을 불러와 이전에 종료됐던 시점부터 다시 작업을 시작한다.(3) PCB에 저장되는 정보  프로세스 식별자(Process ID, PID): 프로세스 식별번호  프로세스 상태: new/ready/running/waiting/ternimated 등의 상태를 저장  프로그램 카운터: 프로세스가 다음에 실행할 명령어의 주소  CPU 레지스터  CPU 스케줄링 정보: 프로세스 우선순위, 스케줄 큐에 대한 포인터 등  메모리 관리정보: 페이지 테이블 또는 세그먼트 테이블과 같은 정보를 포함  입출력 상태정보: 프로세스에 할당된 입출력 장치들과 열린 파일 목록      어카운팅 정보    참고: https://github.com/JaeYeopHan/Interview_Question_for_Beginner",
+        "url": "/CS-OS"
+    }
+    ,
+    
+    "algorithms-01": {
+        "title": "[Programmers] 기능개발",
+        "category": "",
+        "content": "■ 문제https://programmers.co.kr/learn/courses/30/lessons/42586■ 내 풀이123456789101112131415161718192021222324252627282930313233343536373839404142public Integer[] solution(int[] progresses, int[] speeds) {  int i = 0;  int length = progresses.length;  boolean[] out = new boolean[length];  for (int j = 0; j &lt; length; j++) {    progresses[j] = 100 - progresses[j];  }  List&lt;Integer&gt; result = new ArrayList&lt;&gt;();  while (i &lt; length - 1) {    int day = (int) Math.ceil(progresses[i] / (speeds[i] * 1.0));    progresses[i] -= speeds[i] * day;    out[i] = true;    for (int j = i + 1; j &lt; length; j++) {      progresses[j] -= speeds[j] * day;      if (progresses[j] &lt;= 0) {        out[j] = true;      }    }    int count = 1;    for (int j = i + 1; j &lt; length; j++) {      i = j;      if (!out[j]) {        break;      } else {        count++;      }    }    result.add(count);  }  if (!out[length - 1]) {    result.add(1);  }  return result.toArray(new Integer[result.size()]);}■ NOTE ① 첫 번째 정답 코드 풀이 참조1int[] dayOfend = new int[100];으로 선언하고, for문 내에1dayOfend[day]++;한 다음 리턴은1return Arrays.stream(dayOfend).filter(i -&gt; i!=0).toArray();② 처음에는 brute-force로 생각하고, 두 번째로 계산하면서 할 수 있는 지 고려해보기.",
+        "url": "/Algorithms-01"
+    }
+    ,
     
     "spring-02": {
         "title": "[Spring boot] Datasource 여러개 사용하기",
@@ -124,14 +140,6 @@
         "category": "",
         "content": "코드 중간에 뜬금포로 중괄호를 둔 코드를 누가 물어봤다.코드의 가독성을 좋게 하는 것도 있지만, 변수 범위를 정하기 위해 사용한다고 한다.1234{  int a = 0;}System.out.println(a); // ERROR!Java는 GC가 있는데 필요한 경우가 있을까? 생각해봐야겠다.  참고(https://stackoverflow.com/questions/5466974/multiple-open-and-close-curly-brackets-inside-method-java)",
         "url": "/Java-01"
-    }
-    ,
-    
-    "algorithms-01": {
-        "title": "[Programmers] 기능개발",
-        "category": "",
-        "content": "■ 문제https://programmers.co.kr/learn/courses/30/lessons/42586■ 생각하기■ 내 풀이123// code block TEST■ NOTE",
-        "url": "/Algorithms-01"
     }
     
     

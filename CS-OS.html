@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Dokongg Blog</title>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax-one-dark.css">
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Dokongg Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+        <div class="trigger">
+          <div>
+            <div id="search" >
+                <span id="searchform" method="post" action="/search/" class="">
+    <div class="form-group">
+        <input class="search-input" onkeyup="myFunc()" id="keyword" type="text" name="keyword" placeholder="Search..." />
+    </div>
+    <script src="/assets/js/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript">
+        function myFunc() {
+            var keyword = $("#keyword").val();
+
+            if( keyword.trim() == '' ) {
+              return;
+            }
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent(keyword);
+                location.href = "/search?query=" + url;
+            }
+        }
+    </script>
+</span>
+
+            </div>
+          </div>
+          
+            <a class="page-link" href="/Algorithms/index">Algorithms</a>
+          
+            <a class="page-link" href="/CS/index">CS</a>
+          
+            <a class="page-link" href="/Java/index">Java</a>
+          
+            <a class="page-link" href="/Spring/index">Spring</a>
+          
+            <a class="page-link" href="/JPA/index">JPA</a>
+          
+            <a class="page-link" href="/ES/index">ES</a>
+          
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h3 class="post-title p-name" itemprop="name headline">Part 1-4. 운영체제</h3>
+    <p class="post-meta post-right"><time class="dt-published" datetime="2021-05-06T00:00:00+00:00" itemprop="datePublished">
+        2021-05-06
+      </time></p>
+  </header>
+
+  <div class="post-content e-content post-content-body" itemprop="articleBody">
+    <p>[목차]</p>
+<ol>
+  <li>프로세스와 스레드의 차이 <br />
+1.1. 프로세스(Process) <br />
+1.2. 프로세스 제어 블록(PCB, Process Control Block) <br />
+1.3. 스레드(Thread)</li>
+</ol>
+
+<hr />
+<h4 id="1-프로세스와-스레드의-차이"><strong>1. 프로세스와 스레드의 차이</strong></h4>
+<h5 id="11-프로세스process"><strong>1.1. 프로세스(Process)</strong></h5>
+<p>(1) 프로세스란?</p>
+<ul>
+  <li>실행 중인 프로그램</li>
+  <li>디스크로부터 메모리에 적재되어 CPU의 할당을 받을수 있는 것</li>
+  <li>운영체제로부터 주소 공간, 파일, 메모리 등을 할당받는다.</li>
+</ul>
+
+<p>(2) 프로세스의 구성</p>
+<ul>
+  <li>함수의 매개변수, 복귀주소와 로컬변수와 같은 임시자료를 갖는 프로세스 스택과 전역변수들을 수록하는 데이터 섹션을 포함</li>
+</ul>
+
+<h5 id="12-프로세스-제어블록pcb-process-control-block"><strong>1.2. 프로세스 제어블록(PCB, Process Control Block)</strong></h5>
+<p>(1) PCB란?</p>
+<ul>
+  <li>특정 프로세스에 대한 중요한 정보를 저장하고 있는 운영체제의 자료구조</li>
+</ul>
+
+<p>(2) PCB의 역할</p>
+<ul>
+  <li>운영체제는 프로세스를 관리하기 위해 프로세스를 생성하는 것과 동시에 고유한 PCB를 생성한다.</li>
+  <li>프로세스는 CPU의 할당을 받아 작업을 처리하다가 프로세스를 전환하는 일이 발생하면, 진행하던 작업을 저장한 다음 CPU를 반환해야 한다. 이 때, 작업하던 진행사항을 모두 PCB에 저장하게 된다. 그리고 다시 CPU를 할당받으면, PCB에 저장되어 있던 내용을 불러와 이전에 종료됐던 시점부터 다시 작업을 시작한다.</li>
+</ul>
+
+<p>(3) PCB에 저장되는 정보</p>
+<ul>
+  <li>프로세스 식별자(Process ID, PID): 프로세스 식별번호</li>
+  <li>프로세스 상태: new/ready/running/waiting/ternimated 등의 상태를 저장</li>
+  <li>프로그램 카운터: 프로세스가 다음에 실행할 명령어의 주소</li>
+  <li>CPU 레지스터</li>
+  <li>CPU 스케줄링 정보: 프로세스 우선순위, 스케줄 큐에 대한 포인터 등</li>
+  <li>메모리 관리정보: 페이지 테이블 또는 세그먼트 테이블과 같은 정보를 포함</li>
+  <li>입출력 상태정보: 프로세스에 할당된 입출력 장치들과 열린 파일 목록</li>
+  <li>
+    <p>어카운팅 정보</p>
+  </li>
+  <li>참고: https://github.com/JaeYeopHan/Interview_Question_for_Beginner</li>
+</ul>
+
+  </div>
+
+  <a class="u-url" href="/CS-OS" hidden></a>
+</article>
+
+<script>
+  $(document).ready(function() {
+    $('.highlighter-rouge div.highlight').prepend('<i class="fas fa-code code-block"></i>');
+  })
+</script>
+
+      </div>
+    </main>
+    <script src="/assets/js/jquery-3.6.0.min.js" />
+  </body>
+
+</html>
