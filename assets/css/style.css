@@ -5191,6 +5191,10 @@ readers do not read off random characters that represent icons */
   color: #636363 !important;
   text-decoration: underline; }
 
+.post-content-body {
+  font-size: 15px;
+  color: #060606; }
+
 .code-block {
   padding-top: 0.4rem; }
 
@@ -5202,7 +5206,10 @@ body {
   background-color: #f7f7f7; }
 
 ul {
-  margin: 30px 0px 30px 30px !important; }
+  margin: 0px 0px 40px 30px !important; }
+
+li {
+  padding-bottom: 0.25rem; }
 
 pre {
   padding: initial;
