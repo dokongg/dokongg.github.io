@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-06T14:47:18+00:00</updated><id>/feed.xml</id><title type="html">Dokongg Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">[Programmers] 기능개발</title><link href="/Algorithms-01" rel="alternate" type="text/html" title="[Programmers] 기능개발" /><published>2021-05-06T00:00:00+00:00</published><updated>2021-05-06T00:00:00+00:00</updated><id>/Algorithms-01</id><content type="html" xml:base="/Algorithms-01">&lt;p&gt;■ &lt;strong&gt;문제&lt;/strong&gt;&lt;br /&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-07T11:28:50+00:00</updated><id>/feed.xml</id><title type="html">Dokongg Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">[Programmers] 기능개발</title><link href="/Algorithms-01" rel="alternate" type="text/html" title="[Programmers] 기능개발" /><published>2021-05-06T00:00:00+00:00</published><updated>2021-05-06T00:00:00+00:00</updated><id>/Algorithms-01</id><content type="html" xml:base="/Algorithms-01">&lt;p&gt;■ &lt;strong&gt;문제&lt;/strong&gt;&lt;br /&gt;
 &lt;a href=&quot;https://programmers.co.kr/learn/courses/30/lessons/42586&quot;&gt;https://programmers.co.kr/learn/courses/30/lessons/42586&lt;/a&gt;&lt;/p&gt;
 
 &lt;hr /&gt;
@@ -129,6 +129,7 @@
 &lt;p&gt;(2) 프로세스의 구성&lt;/p&gt;
 &lt;ul&gt;
   &lt;li&gt;함수의 매개변수, 복귀주소와 로컬변수와 같은 임시자료를 갖는 프로세스 스택과 전역변수들을 수록하는 데이터 섹션을 포함&lt;/li&gt;
+  &lt;li&gt;프로세스 실행 중에 동적으로 할당되는 메모리인 힙을 포함&lt;/li&gt;
 &lt;/ul&gt;
 
 &lt;h5 id=&quot;12-프로세스-제어블록pcb-process-control-block&quot;&gt;&lt;strong&gt;1.2. 프로세스 제어블록(PCB, Process Control Block)&lt;/strong&gt;&lt;/h5&gt;
@@ -152,11 +153,10 @@
   &lt;li&gt;CPU 스케줄링 정보: 프로세스 우선순위, 스케줄 큐에 대한 포인터 등&lt;/li&gt;
   &lt;li&gt;메모리 관리정보: 페이지 테이블 또는 세그먼트 테이블과 같은 정보를 포함&lt;/li&gt;
   &lt;li&gt;입출력 상태정보: 프로세스에 할당된 입출력 장치들과 열린 파일 목록&lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;어카운팅 정보&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;참고: https://github.com/JaeYeopHan/Interview_Question_for_Beginner&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="CS" /><summary type="html">[목차] 프로세스와 스레드의 차이 1.1. 프로세스(Process) 1.2. 프로세스 제어 블록(PCB, Process Control Block) 1.3. 스레드(Thread)</summary></entry><entry><title type="html">[Java] 중괄호로 변수범위 정하기</title><link href="/Java-01" rel="alternate" type="text/html" title="[Java] 중괄호로 변수범위 정하기" /><published>2021-05-04T00:00:00+00:00</published><updated>2021-05-04T00:00:00+00:00</updated><id>/Java-01</id><content type="html" xml:base="/Java-01">&lt;p&gt;코드 중간에 뜬금포로 중괄호를 둔 코드를 누가 물어봤다.&lt;/p&gt;
+  &lt;li&gt;어카운팅 정보&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;참고: &lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&quot;&gt;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="CS" /><summary type="html">[목차] 프로세스와 스레드의 차이 1.1. 프로세스(Process) 1.2. 프로세스 제어 블록(PCB, Process Control Block) 1.3. 스레드(Thread)</summary></entry><entry><title type="html">[Java] 중괄호로 변수범위 정하기</title><link href="/Java-01" rel="alternate" type="text/html" title="[Java] 중괄호로 변수범위 정하기" /><published>2021-05-04T00:00:00+00:00</published><updated>2021-05-04T00:00:00+00:00</updated><id>/Java-01</id><content type="html" xml:base="/Java-01">&lt;p&gt;코드 중간에 뜬금포로 중괄호를 둔 코드를 누가 물어봤다.&lt;/p&gt;
 
 &lt;p&gt;코드의 가독성을 좋게 하는 것도 있지만, 변수 범위를 정하기 위해 사용한다고 한다.&lt;/p&gt;
 
