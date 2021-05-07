@@ -5199,8 +5199,10 @@ readers do not read off random characters that represent icons */
   text-decoration: none; }
 
 body {
-  letter-spacing: -1px;
   background-color: #f7f7f7; }
+
+ul {
+  margin: 30px 0px 30px 30px !important; }
 
 pre {
   padding: initial;
