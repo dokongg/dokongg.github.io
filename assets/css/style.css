@@ -5205,10 +5205,10 @@ readers do not read off random characters that represent icons */
 body {
   background-color: #f7f7f7; }
 
-ul {
+.post-content-body ul {
   margin: 0px 0px 40px 30px !important; }
 
-li {
+.post-content-body li {
   padding-bottom: 0.25rem; }
 
 pre {
