@@ -5205,11 +5205,31 @@ readers do not read off random characters that represent icons */
 body {
   background-color: #f7f7f7; }
 
-.post-content-body ul {
-  margin: 0px 0px 40px 30px !important; }
+.post-content-body ul:first-of-type {
+  margin: 0px 0px 40px 30px; }
 
-.post-content-body li {
+.post-content-body ul {
+  margin: 0 0px 30px 30px !important; }
+
+.post-content-body li:not(:last-of-type) {
   padding-bottom: 0.25rem; }
+
+.post-content-body blockquote {
+  font-size: 15px;
+  margin-top: 1.7rem; }
+
+.post-content-body blockquote p {
+  padding-left: 0.7rem;
+  background-color: #f1f1f1; }
+
+.post-content-body blockquote li {
+  color: #060606; }
+
+.post-content-body ul li ul li:first-of-type {
+  padding-top: 0.4rem; }
+
+.post-content-body ul li ul {
+  margin-bottom: 5px !important; }
 
 pre {
   padding: initial;
