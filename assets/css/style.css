@@ -5270,7 +5270,9 @@ div.highlighter-rouge .highlight {
   width: 2.5em; }
 
 code.language-plaintext {
-  background-color: #f1f1f1; }
+  background-color: #f1f1f1;
+  border: initial;
+  border-radius: initial; }
 
 hr {
   height: .25em;
@@ -5284,7 +5286,7 @@ blockquote {
   border-left: 4px solid #5dce9a;
   padding-top: 2rem;
   padding-bottom: 0.2rem;
-  background-color: #f7f7f7;
+  background-color: #f9f9f9;
   font-style: initial;
   color: #000; }
 
