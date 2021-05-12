@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Dokongg Blog</title>
+
+  <link rel="stylesheet" href="/assets/css/style.css">
+  <link rel="stylesheet" href="/assets/css/syntax-one-dark.css">
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Dokongg Blog</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+        <div class="trigger">
+          <div>
+            <div id="search" >
+                <span id="searchform" method="post" action="/search/" class="">
+    <div class="form-group">
+        <input class="search-input" onkeyup="myFunc()" id="keyword" type="text" name="keyword" placeholder="Search..." />
+    </div>
+    <script src="/assets/js/jquery-3.6.0.min.js"></script>
+
+    <script type="text/javascript">
+        function myFunc() {
+            var keyword = $("#keyword").val();
+
+            if( keyword.trim() == '' ) {
+              return;
+            }
+            if(event.keyCode == 13) {
+                var url = encodeURIComponent(keyword);
+                location.href = "/search?query=" + url;
+            }
+        }
+    </script>
+</span>
+
+            </div>
+          </div>
+          
+            <a class="page-link" href="/Algorithms/index">Algorithms</a>
+          
+            <a class="page-link" href="/CS/index">CS</a>
+          
+            <a class="page-link" href="/Java/index">Java</a>
+          
+            <a class="page-link" href="/Spring/index">Spring</a>
+          
+            <a class="page-link" href="/JPA/index">JPA</a>
+          
+            <a class="page-link" href="/ES/index">ES</a>
+          
+            <a class="page-link" href="/MSA/index">MSA</a>
+          
+        </div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post h-entry" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h3 class="post-title p-name" itemprop="name headline">[MSA] 헷갈리는 개념 정리</h3>
+    <p class="post-meta post-right"><time class="dt-published" datetime="2021-05-12T00:00:00+00:00" itemprop="datePublished">
+        2021-05-12
+      </time></p>
+  </header>
+
+  <div class="post-content e-content post-content-body" itemprop="articleBody">
+    <h4 id="domain-driven-design"><strong>[Domain-Driven Design]</strong></h4>
+
+<p>(1) Domain</p>
+<ul>
+  <li>해결하고 싶은 비즈니스 내 복잡한 문제들의 상위 영역</li>
+</ul>
+
+<p>(2) Domain-Driven Design</p>
+<ul>
+  <li>비즈니스 내 상위 수준의 복잡한 문제(domain)를 해결하는 소프트웨어 설계 기법의 하나</li>
+  <li>시스템을 구현하기 위한 특정 기술이 아니라 Domain과 그 로직이 중심이 되는 설계 방식</li>
+</ul>
+
+<p>(3) Domain-Driven Design의 목적</p>
+<ul>
+  <li>소프트웨어의 복잡한 부분을 연결하여 새로운 모델에서 복잡한 Application을 만드는 것을 쉽게 해줌</li>
+  <li>업무전문가, 현업, 도메인 전문가, 개발자 간의 언어 및 사고방식의 간극을 해결</li>
+</ul>
+
+<h4 id="ubiquitous-language"><strong>[Ubiquitous language]</strong></h4>
+<ul>
+  <li>도메인 전문가와 개발자가 도메인을 이해하는데 공동으로 사용하는 언어</li>
+  <li>프로젝트를 수행하는 조직 내에서 유효한 언어</li>
+</ul>
+
+<h4 id="devops"><strong>[DevOps]</strong></h4>
+<ul>
+  <li>현업, IT 개발 및 운영 간 밀접한 협업을 촉진하는 민첩한 소프트웨어 방식</li>
+  <li>Dev(생산성 향상)와 Ops(안전성 보장) 간의 목적을 일치시키고 프로세스와 도구에 대한 접근 공유</li>
+</ul>
+
+<h4 id="microservice-개요"><strong>[Microservice 개요]</strong></h4>
+<h5 id="1-microservice의-장단점"><strong>1. Microservice의 장단점</strong></h5>
+<p>(1) 장점</p>
+<ul>
+  <li>특성에 맞게 자원을 할당하여 scale-out 하므로, 효율적인 자원 사용 가능</li>
+  <li>개발 조직과 회사 조직에 유연한 개발문화 영향</li>
+  <li>서비스 간 의존도가 낮아 다른 서비스에 영향을 미칠 가능성이 적음</li>
+  <li>서비스 단위로 독립적인 배포가 가능</li>
+  <li>각 서비스는 독립적으로 요구사항에 맞는 다양한 언어로 개발 가능</li>
+  <li>다른 서비스와는 관계없이 신속한 의사결정 및 독립적인 테스트 가능</li>
+  <li>개발자는 특정 서비스에만 집중할 수 있기 때문에 코드에 대한 높은 이해도 습득 가능</li>
+</ul>
+
+<p>(2) 단점</p>
+<ul>
+  <li>각 서비스 담당팀이 물리적으로 같은 곳에 있지 않는 경우 의사소통이 어려움</li>
+  <li>분산된 데이터로 인해 데이터 정합성을 위한 노력 필요</li>
+  <li>서비스들을 통합적으로 모니터링하기 어려움</li>
+  <li>서비스 간 통신에 대한 처리가 추가적으로 필요</li>
+</ul>
+
+<h5 id="2-microservice-특징"><strong>2. Microservice 특징</strong></h5>
+<p>(1) 프로젝트가 아닌 제품</p>
+<ul>
+  <li>빠른 개발 후 반응을 통해 개선하는 방식</li>
+  <li>Microservice 팀은 제품의 전체 라이프사이클을 책임져야 함</li>
+</ul>
+
+<p>(2) 비즈니스 역량 기반의 팀</p>
+<ul>
+  <li>기술이 아닌 업무 중심으로 팀 구성</li>
+  <li>서비스를 처음부터 끝까지 만들기 위해 필요한 모든 기술을 갖추어야 함</li>
+</ul>
+
+<p>(3) 서비스를 통한 컴포넌트화</p>
+<ul>
+  <li>하나의 전체 서비스를 여러 개의 관리 가능한 컴포넌트로 분할하는 것</li>
+</ul>
+
+<p>(4) 정책 적용의 분권화</p>
+<ul>
+  <li>필요한 것은 모두 팀이 결정(개발언어 및 방법론)</li>
+  <li>중앙 거버넌스(governance) 팀이 존재
+    <ul>
+      <li>전체 서비스의 변경사항과 결정이 필요한 사항에 대해 보고</li>
+    </ul>
+  </li>
+</ul>
+
+<p>(5) 단순하고 쉬운 연계</p>
+<ul>
+  <li>끝지점에서 서비스의 연결과 메세지 처리</li>
+  <li>메세지 전달만을 위한 단순한 파이프 선호</li>
+  <li>느슨한 서비스 연결을 위해 가벼운 메세지 버스를 주로 사용</li>
+</ul>
+
+<p>(6) 실패(장애)를 극복하기 위한 설계</p>
+<ul>
+  <li>장애가 서비스에 영향을 줄 수 없도록 설계</li>
+</ul>
+
+<p>(7) 데이터 관리의 분권화</p>
+<ul>
+  <li>각 서비스에서 자체 데이터를 관리하도록 설계</li>
+  <li>다른 서비스의 저장소 호출 불가</li>
+  <li>API를 통해서만 접근 가능</li>
+  <li>데이터 정합성 문제 해결 필요(결과적 일관성)</li>
+</ul>
+
+<p>(8) 인프라 자동화</p>
+
+<p>(9) 진화하는 설계</p>
+<ul>
+  <li>변화에 쉽게 대응할 수 있도록 작은 규모의 조직 구성</li>
+</ul>
+
+  </div>
+
+  <a class="u-url" href="/MSA-01" hidden></a>
+</article>
+
+<script>
+  $(document).ready(function() {
+    $('.highlighter-rouge div.highlight').prepend('<i class="fas fa-code code-block"></i>');
+  })
+</script>
+
+      </div>
+    </main>
+    <script src="/assets/js/jquery-3.6.0.min.js" />
+  </body>
+
+</html>

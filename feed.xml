@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-12T14:35:54+00:00</updated><id>/feed.xml</id><title type="html">Dokongg Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Part 1-5. 데이터베이스</title><link href="/CS-Database" rel="alternate" type="text/html" title="Part 1-5. 데이터베이스" /><published>2021-05-12T00:00:00+00:00</published><updated>2021-05-12T00:00:00+00:00</updated><id>/CS-Database</id><content type="html" xml:base="/CS-Database">&lt;ol&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-12T16:00:44+00:00</updated><id>/feed.xml</id><title type="html">Dokongg Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Part 1-5. 데이터베이스</title><link href="/CS-Database" rel="alternate" type="text/html" title="Part 1-5. 데이터베이스" /><published>2021-05-12T00:00:00+00:00</published><updated>2021-05-12T00:00:00+00:00</updated><id>/CS-Database</id><content type="html" xml:base="/CS-Database">&lt;ol&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;데이터베이스&lt;/strong&gt; &lt;br /&gt;
 1.1. 데이터베이스를 사용하는 이유 &lt;br /&gt;
@@ -299,7 +299,388 @@
 &lt;h5 id=&quot;72-cap-이론&quot;&gt;&lt;strong&gt;7.2. CAP 이론&lt;/strong&gt;&lt;/h5&gt;
 &lt;h5 id=&quot;72-저장-방식에-따른-분류&quot;&gt;&lt;strong&gt;7.2. 저장 방식에 따른 분류&lt;/strong&gt;&lt;/h5&gt;
 
-&lt;p&gt;참고: &lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&quot;&gt;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="CS" /><summary type="html">데이터베이스 1.1. 데이터베이스를 사용하는 이유 1.2. 데이터베이스의 특징 1.3. 데이터베이스의 성능</summary></entry><entry><title type="html">[Spring] @Transactional</title><link href="/Spring-03" rel="alternate" type="text/html" title="[Spring] @Transactional" /><published>2021-05-12T00:00:00+00:00</published><updated>2021-05-12T00:00:00+00:00</updated><id>/Spring-03</id><content type="html" xml:base="/Spring-03">&lt;h4 id=&quot;1-spring에서-트랜잭션을-처리하는-방법&quot;&gt;&lt;strong&gt;1. Spring에서 트랜잭션을 처리하는 방법&lt;/strong&gt;&lt;/h4&gt;
+&lt;p&gt;참고: &lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&quot;&gt;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="CS" /><summary type="html">데이터베이스 1.1. 데이터베이스를 사용하는 이유 1.2. 데이터베이스의 특징 1.3. 데이터베이스의 성능</summary></entry><entry><title type="html">[MSA] 헷갈리는 개념 정리</title><link href="/MSA-01" rel="alternate" type="text/html" title="[MSA] 헷갈리는 개념 정리" /><published>2021-05-12T00:00:00+00:00</published><updated>2021-05-12T00:00:00+00:00</updated><id>/MSA-01</id><content type="html" xml:base="/MSA-01">&lt;h4 id=&quot;domain-driven-design&quot;&gt;&lt;strong&gt;[Domain-Driven Design]&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;(1) Domain&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;해결하고 싶은 비즈니스 내 복잡한 문제들의 상위 영역&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) Domain-Driven Design&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;비즈니스 내 상위 수준의 복잡한 문제(domain)를 해결하는 소프트웨어 설계 기법의 하나&lt;/li&gt;
+  &lt;li&gt;시스템을 구현하기 위한 특정 기술이 아니라 Domain과 그 로직이 중심이 되는 설계 방식&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) Domain-Driven Design의 목적&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;소프트웨어의 복잡한 부분을 연결하여 새로운 모델에서 복잡한 Application을 만드는 것을 쉽게 해줌&lt;/li&gt;
+  &lt;li&gt;업무전문가, 현업, 도메인 전문가, 개발자 간의 언어 및 사고방식의 간극을 해결&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;ubiquitous-language&quot;&gt;&lt;strong&gt;[Ubiquitous language]&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;도메인 전문가와 개발자가 도메인을 이해하는데 공동으로 사용하는 언어&lt;/li&gt;
+  &lt;li&gt;프로젝트를 수행하는 조직 내에서 유효한 언어&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;devops&quot;&gt;&lt;strong&gt;[DevOps]&lt;/strong&gt;&lt;/h4&gt;
+&lt;ul&gt;
+  &lt;li&gt;현업, IT 개발 및 운영 간 밀접한 협업을 촉진하는 민첩한 소프트웨어 방식&lt;/li&gt;
+  &lt;li&gt;Dev(생산성 향상)와 Ops(안전성 보장) 간의 목적을 일치시키고 프로세스와 도구에 대한 접근 공유&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;microservice-개요&quot;&gt;&lt;strong&gt;[Microservice 개요]&lt;/strong&gt;&lt;/h4&gt;
+&lt;h5 id=&quot;1-microservice의-장단점&quot;&gt;&lt;strong&gt;1. Microservice의 장단점&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;(1) 장점&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;특성에 맞게 자원을 할당하여 scale-out 하므로, 효율적인 자원 사용 가능&lt;/li&gt;
+  &lt;li&gt;개발 조직과 회사 조직에 유연한 개발문화 영향&lt;/li&gt;
+  &lt;li&gt;서비스 간 의존도가 낮아 다른 서비스에 영향을 미칠 가능성이 적음&lt;/li&gt;
+  &lt;li&gt;서비스 단위로 독립적인 배포가 가능&lt;/li&gt;
+  &lt;li&gt;각 서비스는 독립적으로 요구사항에 맞는 다양한 언어로 개발 가능&lt;/li&gt;
+  &lt;li&gt;다른 서비스와는 관계없이 신속한 의사결정 및 독립적인 테스트 가능&lt;/li&gt;
+  &lt;li&gt;개발자는 특정 서비스에만 집중할 수 있기 때문에 코드에 대한 높은 이해도 습득 가능&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 단점&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;각 서비스 담당팀이 물리적으로 같은 곳에 있지 않는 경우 의사소통이 어려움&lt;/li&gt;
+  &lt;li&gt;분산된 데이터로 인해 데이터 정합성을 위한 노력 필요&lt;/li&gt;
+  &lt;li&gt;서비스들을 통합적으로 모니터링하기 어려움&lt;/li&gt;
+  &lt;li&gt;서비스 간 통신에 대한 처리가 추가적으로 필요&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;2-microservice-특징&quot;&gt;&lt;strong&gt;2. Microservice 특징&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;(1) 프로젝트가 아닌 제품&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;빠른 개발 후 반응을 통해 개선하는 방식&lt;/li&gt;
+  &lt;li&gt;Microservice 팀은 제품의 전체 라이프사이클을 책임져야 함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 비즈니스 역량 기반의 팀&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;기술이 아닌 업무 중심으로 팀 구성&lt;/li&gt;
+  &lt;li&gt;서비스를 처음부터 끝까지 만들기 위해 필요한 모든 기술을 갖추어야 함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) 서비스를 통한 컴포넌트화&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;하나의 전체 서비스를 여러 개의 관리 가능한 컴포넌트로 분할하는 것&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(4) 정책 적용의 분권화&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;필요한 것은 모두 팀이 결정(개발언어 및 방법론)&lt;/li&gt;
+  &lt;li&gt;중앙 거버넌스(governance) 팀이 존재
+    &lt;ul&gt;
+      &lt;li&gt;전체 서비스의 변경사항과 결정이 필요한 사항에 대해 보고&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(5) 단순하고 쉬운 연계&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;끝지점에서 서비스의 연결과 메세지 처리&lt;/li&gt;
+  &lt;li&gt;메세지 전달만을 위한 단순한 파이프 선호&lt;/li&gt;
+  &lt;li&gt;느슨한 서비스 연결을 위해 가벼운 메세지 버스를 주로 사용&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(6) 실패(장애)를 극복하기 위한 설계&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장애가 서비스에 영향을 줄 수 없도록 설계&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(7) 데이터 관리의 분권화&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;각 서비스에서 자체 데이터를 관리하도록 설계&lt;/li&gt;
+  &lt;li&gt;다른 서비스의 저장소 호출 불가&lt;/li&gt;
+  &lt;li&gt;API를 통해서만 접근 가능&lt;/li&gt;
+  &lt;li&gt;데이터 정합성 문제 해결 필요(결과적 일관성)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(8) 인프라 자동화&lt;/p&gt;
+
+&lt;p&gt;(9) 진화하는 설계&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;변화에 쉽게 대응할 수 있도록 작은 규모의 조직 구성&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="MSA" /><summary type="html">[Domain-Driven Design]</summary></entry><entry><title type="html">[MSA] Kafka</title><link href="/MSA-Kafka" rel="alternate" type="text/html" title="[MSA] Kafka" /><published>2021-05-12T00:00:00+00:00</published><updated>2021-05-12T00:00:00+00:00</updated><id>/MSA-Kafka</id><content type="html" xml:base="/MSA-Kafka">&lt;h4 id=&quot;1-message-queue&quot;&gt;&lt;strong&gt;1. Message Queue&lt;/strong&gt;&lt;/h4&gt;
+&lt;h5 id=&quot;11-message-queue란&quot;&gt;&lt;strong&gt;1.1. Message Queue란&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;(1) 정의&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;메시지 지향 미들웨어(MOM, Message Oriented Middleware)는 비동기 메시지를 사용하는 다른 응용 프로그램 사이에서 데이터 송수신을 의미한다.&lt;/li&gt;
+  &lt;li&gt;MOM을 구현한 시스템&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;12-message-queue의-유형&quot;&gt;&lt;strong&gt;1.2. Message Queue의 유형&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;(1) 구독/발행(pub-sub, publish-and-subscribe)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;메시지 목적에 topic을 사용
+    &lt;ul&gt;
+      &lt;li&gt;topic: 네이밍 서비스로 초기화되고 저장되며, 클라이언트는 토픽의 네이밍 서비스의 룩업을 사용해서 토픽 참조를 얻어낸다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;메시지 흐름(Message Flow): 메시지 생산자(Producer)가 토픽에 메세지를 출판(publish)하면, 해당 토픽에 구독(subscribe)하고 있는 모든 메시지 소비자는 메시지를 수신할 수 있다.
+    &lt;ul&gt;
+      &lt;li&gt;하나의 메시지를 여러 개의 메시지 소비자가 동시에 수신하게 된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 지점간 연결(point-to-point)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;메시지 목적지에 Queue를 사용한다.&lt;/li&gt;
+  &lt;li&gt;토픽과 마찬가지로 네이밍 서비스로 초기화되고 클라이언트는 네이밍 서비스 룩업을 통해 큐의 참조를 얻는다.&lt;/li&gt;
+  &lt;li&gt;메시지 흐름 관점에서 메시지 생산자가 큐에 메시지를 전송하면, 그 메시지는 메시지 소비자가 메시지를 큐에서 가져갈 때까지 큐에 남아 있는다.
+    &lt;ul&gt;
+      &lt;li&gt;메시지 소비자가 메시지를 수신하면 해당 큐의 다른 소비자들은 그 메시지를 수신할 수 없다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;서버 간의 연동에서 사용
+    &lt;ul&gt;
+      &lt;li&gt;모든 메시지는 요청한 메시지에 대한 한 번의 처리가 이루어져야 하기 때문&lt;/li&gt;
+      &lt;li&gt;서비스 서버 즉, 메시지 큐 서버에 접속하는 클라이언트들은 메시지를 송신하는 쪽과 수신하는 쪽이 동일한 플랫폼일 경우가 없기 때문에, 다양한 언어로 구현될 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;13-message-queue의-장점&quot;&gt;&lt;strong&gt;1.3. Message Queue의 장점&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;(1) 비동기(Asynchronous)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Queue에 넣기 때문에 나중에 처리할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 비동조(Decoupling)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;애플리케이션과 분리할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) 탄력성(Resilience)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;일부가 실패하여도 전체에 영향을 주지 않는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(4) 과잉(Redundancy)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;실패할 경우 재실행 가능하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(5) 보증(Guarantees)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;작업이 처리된 걸 확인할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(6) 확장성(Scalable)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;다수의 프로세스들이 큐에 메시지를 보낼 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;2-kafka&quot;&gt;&lt;strong&gt;2. Kafka&lt;/strong&gt;&lt;/h4&gt;
+&lt;h5 id=&quot;21-kafka-아키텍쳐&quot;&gt;&lt;strong&gt;2.1. Kafka 아키텍쳐&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;amp;fname=http%3A%2F%2Fcfile26.uf.tistory.com%2Fimage%2F99745A4B5E633AF32148ED&quot; alt=&quot;Alt Text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;(1) Broker&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Kafka Server&lt;/li&gt;
+  &lt;li&gt;한 클러스터 내에서 Kafka Server는 여러 대 띄울 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) Zookeeper(Apache Zookeeper)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;클러스터 최신 설정정보 관리, 동기화 리더 채택 등 클러스터의 서버들이 공유하는 데이터를 관리하기 위해 사용된다.
+    &lt;ul&gt;
+      &lt;li&gt;Broker에 분산 처리된 메시지 큐의 정보들을 관리&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;클러스터를 관리하는 Zookeeper가 없으면 Kafka의 구동이 불가능하다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) Topic&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;메시지가 생산되고 소비되는 주제&lt;/li&gt;
+  &lt;li&gt;주제에 따라 여러 topic을 생성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(4) Partition&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Topic 내에서 메시지가 분산되어 저장되는 단위
+    &lt;ul&gt;
+      &lt;li&gt;한 Topic에 Partition이 3개가 있다면, 3개의 Partition에 대해서 메시지가 분산되어 저장된다.&lt;/li&gt;
+      &lt;li&gt;이 때, Queue 방식으로 저장되므로 Partition의 끄트머리에 저장되어 Partition 내에서는 순서를 보장해주지만, Partition 끼리는 메시지 순서를 보장해주지 않는다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(5) Log&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Partition의 한 칸&lt;/li&gt;
+  &lt;li&gt;key, value, timestamp로 구성&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(6) offset&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Partition의 각 메시지를 식별할 수 있는 유니크한 값
+    &lt;ul&gt;
+      &lt;li&gt;메시지를 소비하는 Consumer가 읽을 차례를 의미하므로 Partition마다 별도로 관리된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;0부터 시작하여 1씩 증가&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;22-producer와-consumer-group&quot;&gt;&lt;strong&gt;2.2. Producer와 Consumer Group&lt;/strong&gt;&lt;/h5&gt;
+&lt;h5 id=&quot;221-메시지-생산소비&quot;&gt;&lt;strong&gt;2.2.1. 메시지 생산/소비&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;&lt;img src=&quot;https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;amp;fname=http%3A%2F%2Fcfile9.uf.tistory.com%2Fimage%2F998728405E6370AA1FC4A9&quot; alt=&quot;Alt Text&quot; /&gt;&lt;/p&gt;
+
+&lt;p&gt;(1) Producer&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;정해진 Topic으로 메시지를 기록&lt;/li&gt;
+  &lt;li&gt;Partition이 여러 개 있는 경우, 기록될 Partition의 선택은 기본적으로 RR(Round-Robin) 방식을 따른다.
+    &lt;ul&gt;
+      &lt;li&gt;Partition이 여러 개 있으면 병렬 처리라는 이점이 있지만, 개수는 주의하여 설정해야 한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;각 Partition 내에서는 가장 마지막 offset 뒤에 신규 메시지가 저장되므로, Partition 내에서는 순서가 보장되며 기록된다.&lt;/li&gt;
+  &lt;li&gt;실제 메시지가 사용되는 순서는 보장되지 않는다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) Consumer Group&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;하나의 Topic을 담당
+    &lt;ul&gt;
+      &lt;li&gt;Topic은 여러 개의 Consumer Group이 접근할 수 있지만, 하나의 Consumer Group은 하나의 Topic에만 접근할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;존재하는 이유
+    &lt;ul&gt;
+      &lt;li&gt;partition에 접근하는 Consumer 관리
+        &lt;ul&gt;
+          &lt;li&gt;Consumer Group 내에서 Consumer 인스턴스들은 Topic 내에 Partition에서 다음에 소비할 offset이 어디인지 공유하면서 메시지를 소비한다. 따라서, 다음에 소비할 offset을 잘 관리할 수 있다.&lt;/li&gt;
+          &lt;li&gt;Consumer Group이 없을 경우, 하나의 Partition에 2개의 Consumer가 동시에 접근한다면, 어떤 Consumer가 몇 번의 offset을 소비해야 하는 지 알 수 없게 된다.&lt;/li&gt;
+          &lt;li&gt;즉, Consumer Group을 통해 하나의 Partition에는 하나의 Consumer 인스턴스만 접근할 수 있도록 관리한다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;offset을 공유하여 고가용성을 확보
+        &lt;ul&gt;
+          &lt;li&gt;Partition에는 하나의 Consumer 인스턴스만 접근할 수 있기 때문에, 특정 Consumer 인스턴스에 에러가 발생했을 시, 다른 Consumer 인스턴스는 에러가 발생한 Consumer 인스턴스가 소비하던 Partition을 소비하게 된다.&lt;/li&gt;
+          &lt;li&gt;즉, Consumer가 다운될 때를 대비해 Consumer Group의 Consumer 인스턴스들은 offset을 공유하고 있으며, 이를 통해 고가용성이 확보된다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;222-partitionr과-consumer의-개수&quot;&gt;&lt;strong&gt;2.2.2. Partitionr과 Consumer의 개수&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;Partition은 하나의 Consumer만 접근 가능하다.&lt;/li&gt;
+  &lt;li&gt;Consumer는 여러 개의 Partition을 소비할 수 있다.&lt;/li&gt;
+  &lt;li&gt;Partition의 개수 &amp;gt;= Consumer의 개수로 유지&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Partition의 개수 &amp;gt;= Consumer의 개수로 유지해야 하는 이유&lt;/strong&gt;&lt;/p&gt;
+
+  &lt;p&gt;(대량의 메시지가 Kakfa에 쓰여진다고 가정)&lt;/p&gt;
+
+  &lt;p&gt;(1) Partition: 1개 / Consumer 인스턴스: 1개&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;메시지가 대량으로 생산되고 있지만, 처리할 수 있는 Consumer가 1개 뿐이다.&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;(2) Partition: 1개 / Consumer 인스턴스: 4개&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Consumer 3개 증가&lt;/li&gt;
+    &lt;li&gt;Consumer Group에서 Partition은 하나의 Consumer 밖에 접근할 수 없기 때문에, 개수를 증가해도 소용이 없다.&lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;(3) Partition: 4개 / Consumer 인스턴스: 4개&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Partition 3개 증가&lt;/li&gt;
+    &lt;li&gt;1:1 구성
+      &lt;ul&gt;
+        &lt;li&gt;이상적: Consumer는 하나의 Partition에 접근할 수 있으므로&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;(4) Partition: 4개 / Consumer 인스턴스: 3개&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Consumer 1개 죽어버림&lt;/li&gt;
+    &lt;li&gt;문제없음
+      &lt;ul&gt;
+        &lt;li&gt;Consumer Group에서 offset이 공유되고 있으므로, Consumer가 하나 죽더라도 다른 Consumer가 해당 Partition에 접근하면 되기 때문&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+
+  &lt;p&gt;(5) Partition: 3개 / Consumer 인스턴스: 3개&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;Partition을 3개로 줄이려고 했으나, 한 번 늘린 Partition은 줄일 수 없다.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;23-consumer-design&quot;&gt;&lt;strong&gt;2.3. Consumer Design&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;h5 id=&quot;24-replication&quot;&gt;&lt;strong&gt;2.4. Replication&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;h4 id=&quot;3-kafka를-사용할-때의-주의점&quot;&gt;&lt;strong&gt;3. Kafka를 사용할 때의 주의점&lt;/strong&gt;&lt;/h4&gt;
+&lt;h5 id=&quot;31-메시지-중복-consume-at-least-once&quot;&gt;&lt;strong&gt;3.1. 메시지 중복 consume, At-least-once&lt;/strong&gt;&lt;/h5&gt;
+&lt;ul&gt;
+  &lt;li&gt;기본적으로 한 Partition에는 Consumer Group의 하나의 Consumer만 메시지를 가져올 수 있다.&lt;/li&gt;
+  &lt;li&gt;Kafka의 at-least-once 정책
+    &lt;ul&gt;
+      &lt;li&gt;Kafka 토픽에 메시지 A가 담겨있다고 가정했을 때, 특정 그룹의 Consumer는 토픽에 대해 메시지를 Consume한 뒤 이에 대한 특정 일을 처리하고 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt;을 할 것이다.&lt;/li&gt;
+      &lt;li&gt;이러한 일련의 작업을 하다보면 이미 처리했다고 생각한 메시지 A가 다시 한 번 consume되는 현상이 발생한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;메시지 중복 consume이 발생할 수 있는 상황&lt;/strong&gt;&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;클라이언트가 메시지를 보내려고 시도할 때 네트워크 에러가 발생한다면, 메시지 발행 재시도로 인해서 잠재적으로 중복 메시지를 쌓을 수 있다.
+      &lt;ul&gt;
+        &lt;li&gt;메시지가 전송되기 전에 장애가 일어났다면, 중복은 발생하지 않는다.&lt;/li&gt;
+        &lt;li&gt;메시지가 카프카의 log에 쌓인 이후이지만, log에 쌓였다는 응답이 publisher에게 돌아오기 전에 네트워크 장애가 발생하였다면, 중복이 발생할 수 있다.&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Consumer가 토픽으로부터 메시지를 읽었는데 크래시가 발생한다면, Consumer가 재시작하거나 다른 인스턴스가 consume 하려고 할 때 이미 읽은 메시지부터 읽게 된다.
+      &lt;ul&gt;
+        &lt;li&gt;카프카에서 메시지를 consume해서 이에 대한 task A를 처리하였다.&lt;/li&gt;
+        &lt;li&gt;일을 완료한 후, 해당 메시지의 offset까지 처리하였음을 의미하는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt;을 하길 원했다.&lt;/li&gt;
+        &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;commit&lt;/code&gt; 도중에 어떠한 이유로 장애가 발생했다.
+          &lt;ul&gt;
+            &lt;li&gt;이미 해당 메시지에 대해 task A를 처리하였는데, 동일 메시지가 다시금 consume 되었다.&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;또는 리밸런싱(rebalancing) 시에 발생할 수도 있다.
+          &lt;ul&gt;
+            &lt;li&gt;리밸런싱(rebalancing): Consumer Group 내에 변동이 생기면 Partition과 짝을 맞출 Consumer를 다시 재분배 하는 것&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;h5 id=&quot;32-consume-메시지의-순서&quot;&gt;&lt;strong&gt;3.2. Consume 메시지의 순서&lt;/strong&gt;&lt;/h5&gt;
+&lt;p&gt;(1) 원인&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Kafka는 하나의 Partition에 쌓인 메시지의 순서는 보장해주는 반면, 서로 다른 Partition에 대해서는 순서를 보장해주지 않기 때문.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 해결책&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Partition을 하나로 구성한다.&lt;/li&gt;
+  &lt;li&gt;publish 할 때마다 Partition을 지정하여 메시지를 전송하면 일부 순서를 보장할 수 있다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;출처&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;메시지 큐 기반 모바일 서비스 환경에서의 통신 프로세스간 성능 향상에 대한 연구(&lt;a href=&quot;http://163.239.1.207:8088/dl_image/IMG/03//000000012227/SERVICE/000000012227_01.PDF&quot;&gt;http://163.239.1.207:8088/dl_image/IMG/03//000000012227/SERVICE/000000012227_01.PDF&lt;/a&gt;)&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://limdh3325.blogspot.com/2019/11/message-queue.html&quot;&gt;https://limdh3325.blogspot.com/2019/11/message-queue.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://victorydntmd.tistory.com/344&quot;&gt;https://victorydntmd.tistory.com/344&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://jays1204.github.io/kafka/2017/07/12/kafka-caution.html&quot;&gt;http://jays1204.github.io/kafka/2017/07/12/kafka-caution.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="MSA" /><summary type="html">1. Message Queue 1.1. Message Queue란 (1) 정의 메시지 지향 미들웨어(MOM, Message Oriented Middleware)는 비동기 메시지를 사용하는 다른 응용 프로그램 사이에서 데이터 송수신을 의미한다. MOM을 구현한 시스템</summary></entry><entry><title type="html">[Spring] @Transactional</title><link href="/Spring-03" rel="alternate" type="text/html" title="[Spring] @Transactional" /><published>2021-05-12T00:00:00+00:00</published><updated>2021-05-12T00:00:00+00:00</updated><id>/Spring-03</id><content type="html" xml:base="/Spring-03">&lt;h4 id=&quot;1-spring에서-트랜잭션을-처리하는-방법&quot;&gt;&lt;strong&gt;1. Spring에서 트랜잭션을 처리하는 방법&lt;/strong&gt;&lt;/h4&gt;
 &lt;ul&gt;
   &lt;li&gt;스프링에서는 트랜잭션 처리를 지원하며, 그 중 annotation 방법으로 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Transactional&lt;/code&gt;을 선언하는 방법이 일반적이다(선언적 트랜잭션).&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;@Transactional&lt;/code&gt;
@@ -2314,92 +2695,4 @@ Parameter의 type과 name만 있으면 Bean Factory에서 찾아주는 것 같�
     &lt;p&gt;다른 얘기로 스프링 4.3 이후부터는 생성자에 @Autowired를 쓰지 않아도 생성자의 파라미터 타입의 빈이 있으면 자동으로 주입해줍니다.
 (출처: https://jeong-pro.tistory.com/167 [기본기를 쌓는 정아마추어 코딩블로그] )&lt;/p&gt;
   &lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="Spring" /><summary type="html">요새 Spring boot에서 Spring batch로 Batch를 개발 중이다. Job을 생성하고 있는데, 이 때 신기한 현상을 발견했다. 내가 만든 Job 생성 method에서는 수행할 Step을 parameter로 넘겨주고 있었는데, 해당 parameter명으로 Bean이 자동으로 주입되고 있었다!</summary></entry><entry><title type="html">[Spring boot] Datasource 여러개 사용하기</title><link href="/Spring-02" rel="alternate" type="text/html" title="[Spring boot] Datasource 여러개 사용하기" /><published>2021-05-04T00:00:00+00:00</published><updated>2021-05-04T00:00:00+00:00</updated><id>/Spring-02</id><content type="html" xml:base="/Spring-02">&lt;p&gt;Spring batch에서 두 개의 Datasource를 사용해야 하는 일이 생겼다. &lt;br /&gt;
-내가 써야하는 Datasource는 Mysql, H2 memory DB 이다.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;h4 id=&quot;1-datasource-설정&quot;&gt;&lt;strong&gt;1. dataSource 설정&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;application.yml 에 DataSource 설정을 추가한다.&lt;/p&gt;
-&lt;figure&gt;
-  &lt;figcaption&gt;application.yml&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;div class=&quot;language-yml highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;na&quot;&gt;datasource&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;mysql&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;hikari&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;driver-class-name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;com.mysql.cj.jdbc.Driver&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;jdbc-url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jdbc:mysql://localhost:3306/testdb&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-      &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;span class=&quot;na&quot;&gt;h2&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-  &lt;span class=&quot;na&quot;&gt;hikari&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;driver-class-name&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;org.h2.Driver&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;jdbc-url&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;jdbc:h2:mem:h2db&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;username&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;sa&lt;/span&gt;
-    &lt;span class=&quot;na&quot;&gt;password&lt;/span&gt;&lt;span class=&quot;pi&quot;&gt;:&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;h4 id=&quot;2-datasource-선언&quot;&gt;&lt;strong&gt;2. DataSource 선언&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;사용하려는 DataSource를 선언해 준다. &lt;br /&gt;
-application.yml에 있는 spring.datasource.{??}.hikari 아래의 설정으로 dataSource를 가져온다.&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;기본 dataSource는 mysql DB이다.&lt;/li&gt;
-  &lt;li&gt;다른 dataSource는 h2 memory DB이다.&lt;/li&gt;
-&lt;/ul&gt;
-&lt;figure&gt;
-  &lt;figcaption&gt;DatasourceConfiguration.java&lt;/figcaption&gt;
-&lt;/figure&gt;
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-5
-6
-7
-8
-9
-10
-11
-12
-13
-14
-15
-16
-17
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;nd&quot;&gt;@Configuration&lt;/span&gt;
-&lt;span class=&quot;nd&quot;&gt;@EnableConfigurationProperties&lt;/span&gt;
-&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;class&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DatasourceConfiguration&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-
-	&lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;dataSource&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;nd&quot;&gt;@Primary&lt;/span&gt;
-	&lt;span class=&quot;nd&quot;&gt;@ConfigurationProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;spring.datasource.mysql.hikari&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DataSource&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createMysqlDataSource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DataSourceBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HikariDataSource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-
-	&lt;span class=&quot;nd&quot;&gt;@Bean&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;s&quot;&gt;&quot;h2DataSource&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;nd&quot;&gt;@ConfigurationProperties&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;prefix&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;s&quot;&gt;&quot;spring.datasource.h2.hikari&quot;&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;)&lt;/span&gt;
-	&lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DataSource&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;createH2DataSource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-		&lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;DataSourceBuilder&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;create&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;().&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;type&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nc&quot;&gt;HikariDataSource&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;class&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;).&lt;/span&gt;&lt;span class=&quot;na&quot;&gt;build&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-	&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;h4 id=&quot;3-datasource-사용&quot;&gt;&lt;strong&gt;3. DataSource 사용&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;Primary Bean이 아닌 DataSource를 사용하려면 @Qualifier(name=”“)으로 가져온다.&lt;/p&gt;
-
-&lt;p&gt;@Qualifier 설정을 안 하면 변수명이 Bean 이름과 같아도 자동으로 Primary Bean을 가져오게 된다.&lt;/p&gt;
-
-&lt;hr /&gt;
-&lt;p&gt;나중에 TransactionManager나 SqlSessionFactory 등 더 필요한 DB 설정이 있다면 Vendor 별로 나누어서 Configuration 설정을 주는 것도 좋을 것 같다.&lt;/p&gt;</content><author><name></name></author><category term="Spring" /><summary type="html">Spring batch에서 두 개의 Datasource를 사용해야 하는 일이 생겼다. 내가 써야하는 Datasource는 Mysql, H2 memory DB 이다.</summary></entry></feed>
+&lt;/ul&gt;</content><author><name></name></author><category term="Spring" /><summary type="html">요새 Spring boot에서 Spring batch로 Batch를 개발 중이다. Job을 생성하고 있는데, 이 때 신기한 현상을 발견했다. 내가 만든 Job 생성 method에서는 수행할 Step을 parameter로 넘겨주고 있었는데, 해당 parameter명으로 Bean이 자동으로 주입되고 있었다!</summary></entry></feed>
