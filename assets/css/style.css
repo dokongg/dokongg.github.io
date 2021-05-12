@@ -5286,6 +5286,7 @@ blockquote {
   border-left: 4px solid #5dce9a;
   padding-top: 2rem;
   padding-bottom: 0.2rem;
+  padding-right: 1.2rem;
   background-color: #f9f9f9;
   font-style: initial;
   color: #000; }
@@ -5416,6 +5417,10 @@ ul {
   .wrapper .site-title, .wrapper .post-header {
     padding-left: 15px;
     padding-right: 15px; }
+
+  blockquote {
+    padding-left: initial;
+    padding-right: 0.2rem; }
 
   .site-nav input:checked ~ .trigger {
     display: block;
