@@ -77,18 +77,38 @@
     <p>[목차]</p>
 
 <ol>
-  <li><strong>Array vs. Linked List</strong> <br />
-1.1. Array
-1.2. Linked List</li>
-  <li><strong>Stack and Queue</strong> <br />
+  <li>
+    <p><strong>Array vs. Linked List</strong> <br />
+1.1. Array <br />
+1.2. Linked List</p>
+  </li>
+  <li>
+    <p><strong>Stack and Queue</strong> <br />
 2.1. Stack <br />
-2.2. Queue</li>
-  <li><strong>Tree</strong> <br />
+2.2. Queue</p>
+  </li>
+  <li>
+    <p><strong>Tree</strong> <br />
 3.1. Binary Tree(이진 트리)<br />
-3.2. 장기 스테줄러 <br />
-3.3. 단기 스케줄러 <br />
-3.4. 중기 스케줄러   <br />
-4.</li>
+3.2. Binary Tree(이진 트리)의 종류 <br />
+3.3. BST(Binary Search Tree)</p>
+  </li>
+  <li>
+    <p><strong>Binary Heap</strong></p>
+  </li>
+  <li>
+    <p><strong>Red Black Tree(RBT)</strong></p>
+
+    <p>5.1. Red Black Tree의 정의 <br />
+5.2. Red Black Tree의 특징 <br />
+5.3. Red Black Tree의 삽입 <br />
+5.4. Red Black Tree의 삭제</p>
+  </li>
+  <li>
+    <p><strong>Hash Table</strong> <br />
+6.1. Hash Function <br />
+6.2. Resolve Conflict</p>
+  </li>
 </ol>
 
 <hr />
@@ -112,9 +132,7 @@
 <p>(2) 단점</p>
 
 <ul>
-  <li>
-    <p>삭제 또는 삽입의 과정에서는 해당 원소에 접근하여 작업을 완료한 뒤(<code class="language-plaintext highlighter-rouge">o(n)</code>), 또 한 가지의 작업을 추가적으로 해 줘야 하기 때문에, 시간이 더 걸린다.</p>
-
+  <li>삭제 또는 삽입의 과정에서는 해당 원소에 접근하여 작업을 완료한 뒤(<code class="language-plaintext highlighter-rouge">o(n)</code>), 또 한 가지의 작업을 추가적으로 해 줘야 하기 때문에, 시간이 더 걸린다.
     <ul>
       <li>삭제하는 경우
         <ul>
@@ -166,7 +184,7 @@
 
 <ul>
   <li>선형 자료구조의 일종</li>
-  <li>LIFO(Last In First Out</li>
+  <li>LIFO(Last In First Out)</li>
 </ul>
 
 <h5 id="22-queue"><strong>2.2. Queue</strong></h5>
@@ -212,9 +230,7 @@
       </li>
     </ul>
   </li>
-  <li>
-    <p>배열로 구성된 Binary Tree는 노드의 개수가 n이고 root가 0이 아닌 1에서 시작할 때, i번째 노드에 대해서 아래의 index를 갖는다.</p>
-
+  <li>배열로 구성된 Binary Tree는 노드의 개수가 n이고 root가 0이 아닌 1에서 시작할 때, i번째 노드에 대해서 아래의 index를 갖는다.
     <ul>
       <li>parent(i) = i/2</li>
       <li>left_child(i) = 2i</li>
@@ -223,26 +239,27 @@
   </li>
 </ul>
 
-<h5 id="32-binary-tree이진-트리의-종류"><strong>3.2. Binary Tree(이진 트리)의 종류</strong></h5>
+<p><strong>3.2. Binary Tree(이진 트리)의 종류</strong></p>
 
 <p>(1) Perfect Binary Tree(포화 이진 트리)</p>
 <ul>
-  <li>모든 레벨이 꽉 찬 이진 트리
-(2) Complete Binary Tree(완전 이진 트리)</li>
-  <li>위에서 아래로, 왼쪽에서 오른쪽으로 순서대로 차곡차곡 채워진 이진 트리
-(3)Full Binary Tree(정 이진 트리)</li>
-  <li>모든 노드가 0개 혹은 2개의 자식 노드만을 갖는 이진 트리
-(4) BST(Binary Search Tree)</li>
+  <li>모든 레벨이 꽉 찬 이진 트리</li>
 </ul>
 
-<h5 id="33-bstbinary-search-tree"><strong>3.3. BST(Binary Search Tree)</strong></h5>
+<p>(2) Complete Binary Tree(완전 이진 트리)</p>
+<ul>
+  <li>위에서 아래로, 왼쪽에서 오른쪽으로 순서대로 차곡차곡 채워진 이진 트리</li>
+</ul>
+
+<p>(3) Full Binary Tree(정 이진 트리)</p>
+<ul>
+  <li>모든 노드가 0개 혹은 2개의 자식 노드만을 갖는 이진 트리</li>
+</ul>
+
+<p><strong>3.3. BST(Binary Search Tree)</strong></p>
 
 <ul>
-  <li>
-    <dl>
-      <dt>이진 탐색 트리에는 데이터를 저장하는 규칙이 존재</dt>
-      <dd>이 규칙은 특정 데이터의 위치를 찾는 데 사용할 수 있다.</dd>
-    </dl>
+  <li>이진 탐색 트리에는 데이터를 저장하는 규칙이 존재: 이 규칙은 특정 데이터의 위치를 찾는 데 사용할 수 있다.
     <ul>
       <li>규칙 1. 이진 탐색 트리의 노드에 저장된 키는 유일하다.</li>
       <li>규칙 2. 부모의 키가 왼쪽 자식 노드의 키보다 크다.</li>
@@ -316,28 +333,20 @@
 <p>(3) 시간 복잡도</p>
 
 <ul>
-  <li>
-    <p>heap의 구조를 계속 유지하기 위해서는 제거된 루트 노드를 대체할 다른 노드가 필요하다.</p>
-  </li>
-  <li>
+  <li>heap의 구조를 계속 유지하기 위해서는 제거된 루트 노드를 대체할 다른 노드가 필요하다.</li>
+  <li>여기서 heap은 맨 마지막 노드를 루트 노드로 대체시킨 후, 다시 heapify 과정을 거쳐 heap 구조를 유지한다.
     <ul>
-      <li>여기서 heap은 맨 마지막 노드를 루트 노드로 대체시킨 후, 다시 heapify 과정을 거쳐 heap 구조를 유지한다.</li>
       <li>결국, <code class="language-plaintext highlighter-rouge">O(logn)</code> 의 시간 복잡도로 최댓값 또는 최솟값이 접근할 수 있게 된다.</li>
     </ul>
   </li>
 </ul>
 
-<h4 id="5-red-black-treerbt"><strong>5. Red Black Tree(RBT)</strong></h4>
+<h4 id="5-red-black-treerbt">5. <strong>Red Black Tree(RBT)</strong></h4>
 
 <ul>
-  <li>
-    <p>BST를 기반으로 하는 트리 형식의 자료 구조</p>
-  </li>
-  <li>
-    <p>BST의 삽입, 삭제 연산 과정에서 발생할 수 있는 문제점을 해결하기 위해 만들어진 자료구조</p>
-  </li>
-  <li>
-    <p>검색/삽입/삭제에 대한 시간 복잡도: <code class="language-plaintext highlighter-rouge">O(logn)</code></p>
+  <li>BST를 기반으로 하는 트리 형식의 자료 구조</li>
+  <li>BST의 삽입, 삭제 연산 과정에서 발생할 수 있는 문제점을 해결하기 위해 만들어진 자료구조</li>
+  <li>검색/삽입/삭제에 대한 시간 복잡도: <code class="language-plaintext highlighter-rouge">O(logn)</code>
     <ul>
       <li>동일한 노드 개수일 때, depth를 최소화하여 시간 복잡도를 줄이는 것이 핵심 아이디어
         <ul>
@@ -351,20 +360,11 @@
 <h5 id="51-red-black-tree의-정의"><strong>5.1. Red Black Tree의 정의</strong></h5>
 
 <ul>
-  <li>
-    <p>각 노드는 Red or Black 이라는 색깔을 갖는다.</p>
-  </li>
-  <li>
-    <p>Root node의 색깔은 Black 이다.</p>
-  </li>
-  <li>
-    <p>각 leaf node는 Black 이다.</p>
-  </li>
-  <li>
-    <p>어떤 노드의 색깔이 Red 라면, 두 개의 children의 색깔은 모두 black 이다.</p>
-  </li>
-  <li>
-    <p>각 노드에 대해서 노드로부터 descendant leaves 까지의 단순 경로는 모두 같은 수의 black nodes 들을 포함하고 있다.</p>
+  <li>각 노드는 Red or Black 이라는 색깔을 갖는다.</li>
+  <li>Root node의 색깔은 Black 이다.</li>
+  <li>각 leaf node는 Black 이다.</li>
+  <li>어떤 노드의 색깔이 Red 라면, 두 개의 children의 색깔은 모두 black 이다.</li>
+  <li>각 노드에 대해서 노드로부터 descendant leaves 까지의 단순 경로는 모두 같은 수의 black nodes 들을 포함하고 있다.
     <ul>
       <li>Black-Height: 노드 x로 부터 노드 x를 포함하지 않은 leaf node 까지의 simple path 상에 있는 black nodes 들의 개수</li>
     </ul>
@@ -384,12 +384,10 @@
   <li>Java Collection에서 ArrayList도 내부적으로 RBT로 이루어져 있고, HashMap에서의 Seperation Chaining에서도 사용된다.</li>
 </ul>
 
-<h5 id="53-red-black-tree의-삽입"><strong>5.3. Red Black Tree의 삽입</strong></h5>
+<h5 id="53-red-black-tree의-삽입">5.3. Red Black Tree의 삽입</h5>
 
 <ul>
-  <li>
-    <p>BST의 특성을 유지하면서 노드를 삽입</p>
-  </li>
+  <li>BST의 특성을 유지하면서 노드를 삽입</li>
   <li>삽입된 노드의 색깔을 Red로 지정
     <ul>
       <li>Red로 지정하는 이유: Black-Height 변경을 최소화하기 위함</li>
@@ -402,7 +400,7 @@
   </li>
 </ul>
 
-<h5 id="54-red-black-tree의-삭제"><strong>5.4. Red Black Tree의 삭제</strong></h5>
+<h5 id="54-red-black-tree의-삭제">5.4. Red Black Tree의 삭제</h5>
 
 <ul>
   <li>BST의 특성을 유지하면서 노드를 삭제</li>
@@ -414,7 +412,7 @@
   </li>
 </ul>
 
-<h4 id="6-hash-table"><strong>6. Hash Table</strong></h4>
+<h4 id="6-hash-table">6. Hash Table</h4>
 
 <ul>
   <li>내부적으로 배열을 사용하여 데이터를 저장하기 때문에 빠른 검색 속도를 갖는다.</li>
@@ -437,7 +435,7 @@
   </li>
 </ul>
 
-<h5 id="61-hash-function"><strong>6.1. Hash Function</strong></h5>
+<h5 id="61-hash-function">6.1. Hash Function</h5>
 
 <p>(1) 특징</p>
 
@@ -486,7 +484,7 @@
 
 <p>(3) hashing 된 인덱스에 이미 다른 값이 들어 있다면, 새 데이터를 저장할 다른 위치를 찾은 뒤에야 저장할 수 있다.</p>
 
-<h5 id="61-resolve-conflict"><strong>6.1. Resolve Conflict</strong></h5>
+<h5 id="62-resolve-conflict">6.2. Resolve Conflict</h5>
 
 <p>(1) Open Conflict</p>
 
@@ -501,7 +499,7 @@
       <li>최악의 경우: 비어있는 버킷을 찾지 못하고 탐색을 시작한 위치까지 되돌아 오는 경우
         <ul>
           <li>Linear Probing: 순차적으로 탐색하며, 비어있는 버킷을 찾을 때까지 계속 진행된다.</li>
-          <li>Quandratic probing: 2차 함수를 이용해 탐색할 위치를 찾는다.</li>
+          <li>Quadratic probing: 2차 함수를 이용해 탐색할 위치를 찾는다.</li>
           <li>Double hashing probing: 하나의 해시 함수에서 충돌이 발생하면, 2차 해시 함수를 이용해 새로운 주소를 할당한다. 위 두 가지 방법에 비해 많은 연산량을 요구하게 된다.</li>
         </ul>
       </li>
