@@ -5181,9 +5181,6 @@ readers do not read off random characters that represent icons */
   position: static;
   width: auto; }
 
-* {
-  font-family: D2Coding, 'D2 coding', monospace; }
-
 .fas {
   padding-right: 0.5rem; }
 
@@ -5193,7 +5190,11 @@ readers do not read off random characters that represent icons */
 
 .post-content-body {
   font-size: 15px;
-  color: #060606; }
+  color: #060606;
+  font-weight: 300; }
+
+.post-content-body a {
+  font-weight: initial; }
 
 .code-block {
   padding-top: 0.4rem; }
@@ -5219,11 +5220,7 @@ body {
   margin-top: 1.7rem; }
 
 .post-content-body blockquote p {
-  padding-left: 0.7rem;
-  background-color: #f1f1f1; }
-
-.post-content-body blockquote li {
-  color: #060606; }
+  padding-left: 0.7rem; }
 
 .post-content-body ul li ul li:first-of-type {
   padding-top: 0.4rem; }
@@ -5251,6 +5248,7 @@ pre.highlight
   padding-right: 1em; }
 
 .highlight {
+  font-family: D2Coding, 'D2 coding', monospace;
   text-align: right;
   white-space: nowrap !important; }
 
@@ -5273,6 +5271,9 @@ div.highlighter-rouge .highlight {
   padding-left: 1em;
   width: 2.5em; }
 
+code.language-plaintext {
+  background-color: #f1f1f1; }
+
 hr {
   height: .25em;
   padding: 0;
@@ -5282,7 +5283,12 @@ hr {
   border: 0; }
 
 blockquote {
-  font-style: initial; }
+  border-left: 4px solid #5dce9a;
+  padding-top: 2rem;
+  padding-bottom: 0.2rem;
+  background-color: #f7f7f7;
+  font-style: initial;
+  color: #000; }
 
 .hightlighter {
   background-color: #ffde0080;
@@ -5305,7 +5311,6 @@ ul.posts {
   margin-top: 30px; }
 
 a, a h2, a h4 {
-  font-weight: 100;
   color: #636363; }
 
 a:hover {

@@ -152,6 +152,7 @@ var init = function() {
           this.field('title', { boost: 10 });
           this.field('category');
           this.field('content');
+          this.field('date');
       });
 
       for (var key in window.store) { // Add the data to lunr
@@ -159,7 +160,8 @@ var init = function() {
               'id': key,
               'title': window.store[key].title,
               'category': window.store[key].category,
-              'content': window.store[key].content
+              'content': window.store[key].content,
+              'date': window.store[key].date
           });
       }
 
