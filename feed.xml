@@ -1,4 +1,439 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-11T14:42:05+00:00</updated><id>/feed.xml</id><title type="html">Dokongg Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">[책 - 이것이 자바다] 복습</title><link href="/Java-01" rel="alternate" type="text/html" title="[책 - 이것이 자바다] 복습" /><published>2021-05-08T00:00:00+00:00</published><updated>2021-05-08T00:00:00+00:00</updated><id>/Java-01</id><content type="html" xml:base="/Java-01">&lt;h4 id=&quot;chapter-07-객체지향-프로그래밍-ii&quot;&gt;&lt;strong&gt;Chapter 07. 객체지향 프로그래밍 II&lt;/strong&gt;&lt;/h4&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-12T11:53:37+00:00</updated><id>/feed.xml</id><title type="html">Dokongg Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Part 1-2. 자료구조</title><link href="/CS-Data-Structure" rel="alternate" type="text/html" title="Part 1-2. 자료구조" /><published>2021-05-11T00:00:00+00:00</published><updated>2021-05-11T00:00:00+00:00</updated><id>/CS-Data-Structure</id><content type="html" xml:base="/CS-Data-Structure">&lt;p&gt;[목차]&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Array vs. Linked List&lt;/strong&gt; &lt;br /&gt;
+1.1. Array
+1.2. Linked List&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Stack and Queue&lt;/strong&gt; &lt;br /&gt;
+2.1. Stack &lt;br /&gt;
+2.2. Queue&lt;/li&gt;
+  &lt;li&gt;&lt;strong&gt;Tree&lt;/strong&gt; &lt;br /&gt;
+3.1. Binary Tree(이진 트리)&lt;br /&gt;
+3.2. 장기 스테줄러 &lt;br /&gt;
+3.3. 단기 스케줄러 &lt;br /&gt;
+3.4. 중기 스케줄러   &lt;br /&gt;
+4.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;1--array-vs-linked-list&quot;&gt;&lt;strong&gt;1.  Array vs. Linked List&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;h5 id=&quot;11-array&quot;&gt;&lt;strong&gt;1.1. Array&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 특징&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;가장 기본적인 자료구조&lt;/li&gt;
+  &lt;li&gt;논리적 저장 순서와 물리적 저장 순서가 일치
+    &lt;ul&gt;
+      &lt;li&gt;인덱스(index)로 해당 원소(element)에 접근할 수 있다.&lt;/li&gt;
+      &lt;li&gt;random access 가능: 찾고자 하는 원소의 인덱스 값을 알고 있으면, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Big-O(1)&lt;/code&gt;에 해당 원소로 접근할 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 단점&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;삭제 또는 삽입의 과정에서는 해당 원소에 접근하여 작업을 완료한 뒤(&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;o(n)&lt;/code&gt;), 또 한 가지의 작업을 추가적으로 해 줘야 하기 때문에, 시간이 더 걸린다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;삭제하는 경우
+        &lt;ul&gt;
+          &lt;li&gt;만약 배열의 원소 중 어느 원소를 삭제했다고 했을 때, 배열의 연속적인 특징이 깨지게 된다(빈 공간이 발생).&lt;/li&gt;
+          &lt;li&gt;삭제한 원소보다 큰 인덱스를 갖는 원소들을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;shift&lt;/code&gt; 해 줘야 하는 비용(cost)이 발생하고, 이 경우의 시간 복잡도는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(n)&lt;/code&gt;이 된다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;삽입하는 경우
+        &lt;ul&gt;
+          &lt;li&gt;첫 번째 자리에 새로운 원소를 추가하고자 한다면, 모든 원소들의 인덱스를 1씩 shift 해 줘야 하므로, 이 경우에도 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(n)&lt;/code&gt; 의 시간을 요구하게 된다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;12-linked-list&quot;&gt;&lt;strong&gt;1.2. Linked List&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 특징&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Array를 삭제 또는 삽입하는 과정에서 발생하는 문제를 해결하기 위한 자료구조&lt;/li&gt;
+  &lt;li&gt;각각의 원소들은 자기 자신 다음에 어떤 원소가 있는지 만을 기억하고 있다.
+    &lt;ul&gt;
+      &lt;li&gt;이 부분만 다른 값으로 바꿔주면 삭제와 삽입을 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(n)&lt;/code&gt; 만에 해결할 수 있는 것이다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 문제&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;원하는 위치에 삽입을 하고자 하면 원하는 위치를 Search 해야 하고, 이 과정에서 첫 번째 원소부터 모두 다 확인해봐야 한다.
+    &lt;ul&gt;
+      &lt;li&gt;Array 와는 달리 논리적 저장 순서와 물리적 저장 순서가 일치하지 않기 때문&lt;/li&gt;
+      &lt;li&gt;삽입하고 정렬하는 것과 마찬가지이다.&lt;/li&gt;
+      &lt;li&gt;어떠한 원소를 삭제 또는 추가하고자 했을 때, 그 원소를 찾기 위해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(n)&lt;/code&gt; 의 시간이 추가적으로 발생하게 된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;검색/삽입/삭제 에 대해서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(n)&lt;/code&gt; 의 시간 복잡도를 갖는다.&lt;/li&gt;
+  &lt;li&gt;Tree의 근간이 되는 자료구조&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;2-stack-and-queue&quot;&gt;&lt;strong&gt;2. Stack and Queue&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;h5 id=&quot;21-stack&quot;&gt;&lt;strong&gt;2.1. Stack&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 특징&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;선형 자료구조의 일종&lt;/li&gt;
+  &lt;li&gt;LIFO(Last In First Out&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;22-queue&quot;&gt;&lt;strong&gt;2.2. Queue&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;선형 자료구조의 일종&lt;/li&gt;
+  &lt;li&gt;FIFO(First In First Out)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;3-tree&quot;&gt;&lt;strong&gt;3. Tree&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;(1) 정의&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;스택이나 큐와 같은 선형 구조가 아닌 비선형 자료구조&lt;/li&gt;
+  &lt;li&gt;계층적 관계(Relationship)을 표현하는 자료구조&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 트리를 구성하고 있는 요소들(용어)&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Node(노드): 트리를 구성하고 있는 각각의 요소&lt;/li&gt;
+  &lt;li&gt;Edge(간선): 트리를 구성하기 위해 노드와 노드를 연결하는 선&lt;/li&gt;
+  &lt;li&gt;Root Node(루트 노드): 트리 구조에서 최상위에 있는 노드&lt;/li&gt;
+  &lt;li&gt;Terminal Node(단말 노드, leaf Node): 하위에 다른 노드가 연결되어 있지 않는 노드&lt;/li&gt;
+  &lt;li&gt;Internal Node(내부 노드, 비단말 노드): 단말 노드를 제외한 모든 노드, 루트 노드를 포함&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;31-binary-tree이진-트리&quot;&gt;&lt;strong&gt;3.1. Binary Tree(이진 트리)&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 특징&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;루트 노드를 중심으로 두 개의 서브 트리(큰 트리에 속하는 작은 트리)로 나뉘어 진다.
+    &lt;ul&gt;
+      &lt;li&gt;나뉘어진 두 서브 트리도 모두 이진 트리여야 한다.&lt;/li&gt;
+      &lt;li&gt;공집합도 이진트리로 포함시켜야 한다.&lt;/li&gt;
+      &lt;li&gt;각 층별로 숫자를 매겨서 이를 트리의 Level 이라 한다.
+        &lt;ul&gt;
+          &lt;li&gt;레벨의 값은 0부터 시작하며, 따라서 루트 노드의 레벨은 0이다.&lt;/li&gt;
+          &lt;li&gt;height: 트리의 최고 레벨&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;배열로 구성된 Binary Tree는 노드의 개수가 n이고 root가 0이 아닌 1에서 시작할 때, i번째 노드에 대해서 아래의 index를 갖는다.&lt;/p&gt;
+
+    &lt;ul&gt;
+      &lt;li&gt;parent(i) = i/2&lt;/li&gt;
+      &lt;li&gt;left_child(i) = 2i&lt;/li&gt;
+      &lt;li&gt;right_child(i) = 2i+1&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;32-binary-tree이진-트리의-종류&quot;&gt;&lt;strong&gt;3.2. Binary Tree(이진 트리)의 종류&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) Perfect Binary Tree(포화 이진 트리)&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;모든 레벨이 꽉 찬 이진 트리
+(2) Complete Binary Tree(완전 이진 트리)&lt;/li&gt;
+  &lt;li&gt;위에서 아래로, 왼쪽에서 오른쪽으로 순서대로 차곡차곡 채워진 이진 트리
+(3)Full Binary Tree(정 이진 트리)&lt;/li&gt;
+  &lt;li&gt;모든 노드가 0개 혹은 2개의 자식 노드만을 갖는 이진 트리
+(4) BST(Binary Search Tree)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;33-bstbinary-search-tree&quot;&gt;&lt;strong&gt;3.3. BST(Binary Search Tree)&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;dl&gt;
+      &lt;dt&gt;이진 탐색 트리에는 데이터를 저장하는 규칙이 존재&lt;/dt&gt;
+      &lt;dd&gt;이 규칙은 특정 데이터의 위치를 찾는 데 사용할 수 있다.&lt;/dd&gt;
+    &lt;/dl&gt;
+    &lt;ul&gt;
+      &lt;li&gt;규칙 1. 이진 탐색 트리의 노드에 저장된 키는 유일하다.&lt;/li&gt;
+      &lt;li&gt;규칙 2. 부모의 키가 왼쪽 자식 노드의 키보다 크다.&lt;/li&gt;
+      &lt;li&gt;규칙 3. 부모의 키가 오른쪽 자식 노드의 키보다 작다.&lt;/li&gt;
+      &lt;li&gt;규칙 4. 왼쪽과 오른쪽 서브트리도 이진 탐색 트리이다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;시간 복잡도: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(n)&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;정확하게 말하면 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(h)&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;트리의 높이를 하나씩 더해갈 수록 추가할 수 있는 노드의 수가 두 배씩 증가하기 때문
+하지만 이러한 이진 탐색 트리는 Skewed Tree(편향 트리)가 될 수 있다.&lt;/li&gt;
+          &lt;li&gt;이럴 경우 성능에 영향을 미치게 되며, 탐색의 Worst case가 되며, 시간 복잡도는 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(n)&lt;/code&gt;이 된다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;Rebalancing 기법
+    &lt;ul&gt;
+      &lt;li&gt;배열보다 많은 메모리를 사용하며 데이터를 저장했지만 탐색에 필요한 시간 복잡도가 같게 되는 비효율적인 문제를 해결하기 위한 기법&lt;/li&gt;
+      &lt;li&gt;균형을 잡기 위한 트리 구조의 재조정&lt;/li&gt;
+      &lt;li&gt;구현: Red-Black Tree&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;4-binary-heap&quot;&gt;&lt;strong&gt;4. Binary Heap&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;p&gt;(1) 정의&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;자료 구조의 일종으로, Tree의 형식
+    &lt;ul&gt;
+      &lt;li&gt;Tree 중에서도 배열의 기반한 Complete Binary Tree&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;배열에 트리의 값을 넣어줄 때, 0번째는 건너뛰고 1번 index 부터 루트 노드가 시작된다.
+    &lt;ul&gt;
+      &lt;li&gt;노드의 고유번호 값과 배열의 index를 일치시켜 혼동을 줄이기 위함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 종류&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;최대힙(max heap)
+    &lt;ul&gt;
+      &lt;li&gt;각 노드의 값이 해당 children의 값보다 크거나 같은 complete binary tree&lt;/li&gt;
+      &lt;li&gt;최댓값을 찾는데 필요한 시간복잡도: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(1)&lt;/code&gt;
+        &lt;ul&gt;
+          &lt;li&gt;루트 노드에 있는 값이 가장 크기 때문&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;complete binary tree 이므로 배열을 사용하여 효율적으로 관리할 수 있다.
+        &lt;ul&gt;
+          &lt;li&gt;random access가 가능하다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;최소힙(min heap)
+    &lt;ul&gt;
+      &lt;li&gt;각 노드의 값이 해당 children의 값보다 작거나 같은 complete binary tree&lt;/li&gt;
+      &lt;li&gt;최솟값을 찾는데 필요한 시간복잡도: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(1)&lt;/code&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) 시간 복잡도&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;heap의 구조를 계속 유지하기 위해서는 제거된 루트 노드를 대체할 다른 노드가 필요하다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;ul&gt;
+      &lt;li&gt;여기서 heap은 맨 마지막 노드를 루트 노드로 대체시킨 후, 다시 heapify 과정을 거쳐 heap 구조를 유지한다.&lt;/li&gt;
+      &lt;li&gt;결국, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(logn)&lt;/code&gt; 의 시간 복잡도로 최댓값 또는 최솟값이 접근할 수 있게 된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;5-red-black-treerbt&quot;&gt;&lt;strong&gt;5. Red Black Tree(RBT)&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;BST를 기반으로 하는 트리 형식의 자료 구조&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;BST의 삽입, 삭제 연산 과정에서 발생할 수 있는 문제점을 해결하기 위해 만들어진 자료구조&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;검색/삽입/삭제에 대한 시간 복잡도: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(logn)&lt;/code&gt;&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;동일한 노드 개수일 때, depth를 최소화하여 시간 복잡도를 줄이는 것이 핵심 아이디어
+        &lt;ul&gt;
+          &lt;li&gt;depth가 최소가 되는 경우는 tree가 complete binary tree 인 경우&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;51-red-black-tree의-정의&quot;&gt;&lt;strong&gt;5.1. Red Black Tree의 정의&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;각 노드는 Red or Black 이라는 색깔을 갖는다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;Root node의 색깔은 Black 이다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;각 leaf node는 Black 이다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;어떤 노드의 색깔이 Red 라면, 두 개의 children의 색깔은 모두 black 이다.&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;
+    &lt;p&gt;각 노드에 대해서 노드로부터 descendant leaves 까지의 단순 경로는 모두 같은 수의 black nodes 들을 포함하고 있다.&lt;/p&gt;
+    &lt;ul&gt;
+      &lt;li&gt;Black-Height: 노드 x로 부터 노드 x를 포함하지 않은 leaf node 까지의 simple path 상에 있는 black nodes 들의 개수&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;52-red-black-tree의-특징&quot;&gt;&lt;strong&gt;5.2. Red Black Tree의 특징&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;Binary Search Tree 이므로, BST의 특징을 모두 갖는다.&lt;/li&gt;
+  &lt;li&gt;Root node 부터 leaf node 까지의 모든 경로 중 최소 경로와 최대 경로의 크기 비율은 2보다 크지 않다.
+    &lt;ul&gt;
+      &lt;li&gt;Balanced 상태&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;노드의 child가 없을 경우 child를 가리키는 포인터는 NIL 값을 저장한다. 이러한 NIL 들은 leaf node로 간주한다.&lt;/li&gt;
+  &lt;li&gt;Java Collection에서 ArrayList도 내부적으로 RBT로 이루어져 있고, HashMap에서의 Seperation Chaining에서도 사용된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;53-red-black-tree의-삽입&quot;&gt;&lt;strong&gt;5.3. Red Black Tree의 삽입&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;
+    &lt;p&gt;BST의 특성을 유지하면서 노드를 삽입&lt;/p&gt;
+  &lt;/li&gt;
+  &lt;li&gt;삽입된 노드의 색깔을 Red로 지정
+    &lt;ul&gt;
+      &lt;li&gt;Red로 지정하는 이유: Black-Height 변경을 최소화하기 위함&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;삽입 결과 RBT의 특성을 위배(violation)하는 경우 노드의 색깔을 조정하고, Black-Height가 위배되었다면 rotation을 통해 height를 조정한다.
+    &lt;ul&gt;
+      &lt;li&gt;RBT의 동일한 height에 존재하는 internal node 들의 Black-height가 같아지게 되고, 최소 경로와 최대 경로의 크기 비율이 2 미만으로 유지된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;54-red-black-tree의-삭제&quot;&gt;&lt;strong&gt;5.4. Red Black Tree의 삭제&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;BST의 특성을 유지하면서 노드를 삭제&lt;/li&gt;
+  &lt;li&gt;삭제될 노드의 개수에 따라 rotation 방법이 달라지게 된다.
+    &lt;ul&gt;
+      &lt;li&gt;지워진 노드의 색깔이 Black 이라면 Black-Height가 1 감소한 경로에 black node가 1개 추가되도록 rotation하고 노드의 색깔을 조정한다.&lt;/li&gt;
+      &lt;li&gt;지워진 노드의 색깔이 Red 라면 violation이 발생하지 않으므로 RBT가 유지된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;6-hash-table&quot;&gt;&lt;strong&gt;6. Hash Table&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;내부적으로 배열을 사용하여 데이터를 저장하기 때문에 빠른 검색 속도를 갖는다.&lt;/li&gt;
+  &lt;li&gt;average case에 대한 시간 복잡도: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(1)&lt;/code&gt;
+    &lt;ul&gt;
+      &lt;li&gt;특정한 값을 검색하는 데 데이터 고유의 인덱스로 접근하게 되기 때문&lt;/li&gt;
+      &lt;li&gt;항상 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(1)&lt;/code&gt;인 것은 아니며, average case에 대해서 인 것은 collision 때문&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;문제점
+    &lt;ul&gt;
+      &lt;li&gt;인덱스로 저장되는 key 값이 불규칙&lt;/li&gt;
+      &lt;li&gt;해결책
+        &lt;ul&gt;
+          &lt;li&gt;특별한 알고리즘을 이용하여 저장할 데이터와 연관된 고유한 숫자를 만들어 낸 뒤 이를 인덱스로 사용한다.&lt;/li&gt;
+          &lt;li&gt;특정 데이터가 저장되는 인덱스는 그 데이터만의 고유한 위치이기 때문에, 삽입 연산 시 다른 데이터의 사이에 끼어들거나, 삭제 시 다른 데이터로 채울 필요가 없으므로 연산에서 추가적인 비용이 없도록 만들어진 구조&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;61-hash-function&quot;&gt;&lt;strong&gt;6.1. Hash Function&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 특징&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;hash method&lt;/li&gt;
+  &lt;li&gt;인덱스로 사용할 저장할 데이터와 연관된 고유한 숫자를 만들어 내는 해시 함수 또는 hash method
+    &lt;ul&gt;
+      &lt;li&gt;hash code: 해시 함수를 통해 반환된 데이터의 고유 숫자 값
+        &lt;ul&gt;
+          &lt;li&gt;저장되는 값들의 key 값을 hash function을 통해서 작은 범위의 값들로 바꿔준다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;어설픈 해시 함수를 통해 key 값들을 결정하는 경우 동일한 값이 도출될 수 있다.
+    &lt;ul&gt;
+      &lt;li&gt;collision 발생
+        &lt;ul&gt;
+          &lt;li&gt;동일한 key 값에 복수 개의 데이터가 하나의 테이블에 존재하게 되는 것&lt;/li&gt;
+          &lt;li&gt;서로 다른 두 개의 키가 같은 인덱스로 hashing(hash 함수를 통해 계산됨을 의미)되면 같은 곳에 저장할 수 없게 된다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;collision이 많아 질수록 검색에 필요한 시간복잡도가 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(1)&lt;/code&gt; 에서 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;O(n)&lt;/code&gt; 에 가까워 진다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 해시 함수가 갖추어야 하는 조건&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;일반적으로 좋은 해시 함수: 키의 일부분을 참조하여 해시 값을 만들지 않고, 키 전체를 참조하여 생성
+    &lt;ul&gt;
+      &lt;li&gt;좋은 해시 함수는 키가 어떤 특성을 갖고 있느냐에 따라 달라진다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;무조건 1:1로 만드는 것보다 collision을 최소화 하는 방향으로 설계하며, 이 collision에 대비하여 어떻게 대응할 것인가가 더 중요
+    &lt;ul&gt;
+      &lt;li&gt;1:1 대응이 되도록 만드는 것이 거의 불가능하기도 하다.
+        &lt;ul&gt;
+          &lt;li&gt;이러한 해시함수를 만든다 하더라도 이는 array와 다를 바 없고, 메모리도 너무 많이 차지하게 된다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) hashing 된 인덱스에 이미 다른 값이 들어 있다면, 새 데이터를 저장할 다른 위치를 찾은 뒤에야 저장할 수 있다.&lt;/p&gt;
+
+&lt;h5 id=&quot;61-resolve-conflict&quot;&gt;&lt;strong&gt;6.1. Resolve Conflict&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) Open Conflict&lt;/p&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;해시 충돌이 발생하면(즉, 삽입하려는 해시 커밋이 이미 사용 중인 경우), 다른 해시 버킷에 해당 자료를 삽입하는 방식
+    &lt;ul&gt;
+      &lt;li&gt;버킷: 바구니와 같은 개념으로, 데이터를 저장하기 위한 공간&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;공개 주소 방식이라고도 불리며, collision이 발생하면 데이터를 저장할 장소를 찾아 헤맨다.
+    &lt;ul&gt;
+      &lt;li&gt;최악의 경우: 비어있는 버킷을 찾지 못하고 탐색을 시작한 위치까지 되돌아 오는 경우
+        &lt;ul&gt;
+          &lt;li&gt;Linear Probing: 순차적으로 탐색하며, 비어있는 버킷을 찾을 때까지 계속 진행된다.&lt;/li&gt;
+          &lt;li&gt;Quandratic probing: 2차 함수를 이용해 탐색할 위치를 찾는다.&lt;/li&gt;
+          &lt;li&gt;Double hashing probing: 하나의 해시 함수에서 충돌이 발생하면, 2차 해시 함수를 이용해 새로운 주소를 할당한다. 위 두 가지 방법에 비해 많은 연산량을 요구하게 된다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;참고: &lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&quot;&gt;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="CS" /><summary type="html">[목차]</summary></entry><entry><title type="html">[책 - 이것이 자바다] 복습</title><link href="/Java-01" rel="alternate" type="text/html" title="[책 - 이것이 자바다] 복습" /><published>2021-05-08T00:00:00+00:00</published><updated>2021-05-08T00:00:00+00:00</updated><id>/Java-01</id><content type="html" xml:base="/Java-01">&lt;h4 id=&quot;chapter-07-객체지향-프로그래밍-ii&quot;&gt;&lt;strong&gt;Chapter 07. 객체지향 프로그래밍 II&lt;/strong&gt;&lt;/h4&gt;
 &lt;h4 id=&quot;6-추상클래스abstract-class&quot;&gt;&lt;strong&gt;6. 추상클래스(abstract class)&lt;/strong&gt;&lt;/h4&gt;
 &lt;p&gt;6.3. 추상클래스의 작성&lt;/p&gt;
 &lt;ul&gt;
@@ -246,11 +681,9 @@
 8.4. 페이지 교체 알고리즘&lt;/p&gt;
   &lt;/li&gt;
   &lt;li&gt;
-    &lt;p&gt;&lt;strong&gt;캐시의 지역성&lt;/strong&gt;&lt;/p&gt;
-
-    &lt;p&gt;9.1. 캐시의 지역성 원리&lt;/p&gt;
-
-    &lt;p&gt;9.2. Caching line&lt;/p&gt;
+    &lt;p&gt;&lt;strong&gt;캐시의 지역성&lt;/strong&gt; &lt;br /&gt;
+9.1. 캐시의 지역성 원리 &lt;br /&gt;
+9.2. Caching line&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ol&gt;
 
@@ -354,15 +787,9 @@
 &lt;h5 id=&quot;21-멀티-스레딩의-장점&quot;&gt;&lt;strong&gt;2.1. 멀티 스레딩의 장점&lt;/strong&gt;&lt;/h5&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;프로세스를 이용해 동시에 처리하던 일을 스레드로 구현하면, 메모리 공간과 시스템 자원의 소모가 줄어들게 된다.&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;스레드 간 통신이 필요한 경우에도 별도의 자원을 이용하는 것이 아니라 전역 변수의 공간 또는 동적으로 할당된 공간인 Heap 영역을 이용하여 데이터를 주고 받을 수 있다(스레드 간 통신 방법은 프로세스 간 통신 방법보다 훨씬 간단하다).&lt;/p&gt;
-  &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;스레드의 Context switch는 프로세스의 Context switch와 달리 캐시 메모리를 비울 필요가 없기 때문에 더 빠르다.&lt;/p&gt;
-
+  &lt;li&gt;프로세스를 이용해 동시에 처리하던 일을 스레드로 구현하면, 메모리 공간과 시스템 자원의 소모가 줄어들게 된다.&lt;/li&gt;
+  &lt;li&gt;스레드 간 통신이 필요한 경우에도 별도의 자원을 이용하는 것이 아니라 전역 변수의 공간 또는 동적으로 할당된 공간인 Heap 영역을 이용하여 데이터를 주고 받을 수 있다(스레드 간 통신 방법은 프로세스 간 통신 방법보다 훨씬 간단하다).&lt;/li&gt;
+  &lt;li&gt;스레드의 Context switch는 프로세스의 Context switch와 달리 캐시 메모리를 비울 필요가 없기 때문에 더 빠르다.
     &lt;ul&gt;
       &lt;li&gt;시스템의 처리율(throughput)이 향상되고 자원 소모가 줄어들며, 자연스럽게 프로그램의 응답 시간이 단축된다.&lt;/li&gt;
     &lt;/ul&gt;
@@ -487,9 +914,7 @@
 &lt;p&gt;(2) 문제점&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;convoy effect 발생&lt;/p&gt;
-
+  &lt;li&gt;convoy effect 발생
     &lt;ul&gt;
       &lt;li&gt;소요 시간이 긴 프로세스가 먼저 도달하여 시간을 잡아 먹고 있는 바람에 효율성이 떨어지는 현상 발생&lt;/li&gt;
     &lt;/ul&gt;
@@ -508,9 +933,7 @@
 &lt;p&gt;(2) 문제점&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;starvation 발생&lt;/p&gt;
-
+  &lt;li&gt;starvation 발생
     &lt;ul&gt;
       &lt;li&gt;우선순위가 낮은 프로세스가 우선순위가 높은 프로세스가 있는 한은 절대 실행하지 못하고 무한정 기다리게 되는 현상&lt;/li&gt;
       &lt;li&gt;특정 프로세스가 지나치게 차별받게 된다.&lt;/li&gt;
@@ -559,9 +982,7 @@
 &lt;p&gt;(3) 해결책&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;aging&lt;/p&gt;
-
+  &lt;li&gt;aging
     &lt;ul&gt;
       &lt;li&gt;아무리 우선순위가 낮은 프로세스라도 오래 기다리면 우선 순위를 높여주는 방법&lt;/li&gt;
     &lt;/ul&gt;
@@ -598,9 +1019,7 @@
 &lt;p&gt;(3) 주의점&lt;/p&gt;
 
 &lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;적절한 time quantum 설정&lt;/p&gt;
-
+  &lt;li&gt;적절한 time quantum 설정
     &lt;ul&gt;
       &lt;li&gt;time quantum이 너무 커지는 경우: FCFS와 같아진다.&lt;/li&gt;
       &lt;li&gt;time quantum이 너무 작아지는 경우: 스케줄링 알고리즘 목적에는 이상적이지만, 작은 context switch로 overhead가 발생한다.&lt;/li&gt;
@@ -648,52 +1067,41 @@
   &lt;p&gt;&lt;em&gt;※ Synchronous, Blocking I/O의 비교&lt;/em&gt;&lt;/p&gt;
 
   &lt;ol&gt;
-    &lt;li&gt;Synchronous&lt;/li&gt;
+    &lt;li&gt;Synchronous
+      &lt;ul&gt;
+        &lt;li&gt;작업을 요청한 후 해당 작업의 결과가 나올 때까지 기다린 후 처리한다.&lt;/li&gt;
+        &lt;li&gt;I/O 작업에 대한 readiness를 기다린다.&lt;/li&gt;
+        &lt;li&gt;특정 I/O 작업을 하기 위한 준비가 되었는 지에 집중하는 것&lt;/li&gt;
+        &lt;li&gt;I/O 작업 준비에 대한 이벤트 발생을 기다렸다가 해당 이벤트가 발생하면, 그에 따른 적합한 처리를 한다.&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Blocking I/O
+      &lt;ul&gt;
+        &lt;li&gt;I/O가 끝날 때까지 대기해야 한다.
+          &lt;ul&gt;
+            &lt;li&gt;끝나기 전 까지는 함수가 반환(return)되지 않기 때문&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+        &lt;li&gt;커널이 작업을 완료하기 전까지 유저 프로세스는 작업을 중단한 채 대기해야 한다.&lt;/li&gt;
+        &lt;li&gt;I/O 작업이 CPU 자원을 거의 쓰지 않기 때문에 blocking 방법은 CPU 자원 낭비가 심하다.
+          &lt;ul&gt;
+            &lt;li&gt;동기화 하기 위해 blocking 하는 것&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Synchronous vs. Blocking I/O
+      &lt;ul&gt;
+        &lt;li&gt;둘 다 시스템의 반환을 기다린다는 측면에서는 같은 개념
+          &lt;ul&gt;
+            &lt;li&gt;Synchronous: 시스템 반환을 기다리는 동안 대기 큐에 머무는 것이 필수가 아님&lt;/li&gt;
+            &lt;li&gt;Blocking I/O: 시스템 반환을 기다리는 동안 대기 큐에 머무는 것이 필수&lt;/li&gt;
+          &lt;/ul&gt;
+        &lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;작업을 요청한 후 해당 작업의 결과가 나올 때까지 기다린 후 처리한다.
-    &lt;ul&gt;
-      &lt;li&gt;I/O 작업에 대한 readiness를 기다린다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;특정 I/O 작업을 하기 위한 준비가 되었는 지에 집중하는 것&lt;/li&gt;
-  &lt;li&gt;I/O 작업 준비에 대한 이벤트 발생을 기다렸다가 해당 이벤트가 발생하면, 그에 따른 적합한 처리를 한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Blocking I/O&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;I/O가 끝날 때까지 대기해야 한다.
-    &lt;ul&gt;
-      &lt;li&gt;끝나기 전 까지는 함수가 반환(return)되지 않기 때문&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;커널이 작업을 완료하기 전까지 유저 프로세스는 작업을 중단한 채 대기해야 한다.&lt;/li&gt;
-  &lt;li&gt;I/O 작업이 CPU 자원을 거의 쓰지 않기 때문에 blocking 방법은 CPU 자원 낭비가 심하다.
-    &lt;ul&gt;
-      &lt;li&gt;동기화 하기 위해 blocking 하는 것&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Synchronous vs. Blocking I/O&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;
-    &lt;p&gt;둘 다 시스템의 반환을 기다린다는 측면에서는 같은 개념&lt;/p&gt;
-
-    &lt;ul&gt;
-      &lt;li&gt;Synchronous: 시스템 반환을 기다리는 동안 대기 큐에 머무는 것이 필수가 아님&lt;/li&gt;
-      &lt;li&gt;Blocking I/O: 시스템 반환을 기다리는 동안 대기 큐에 머무는 것이 필수&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h5 id=&quot;53-non-blocking-io-model&quot;&gt;&lt;strong&gt;5.3. Non-Blocking I/O Model&lt;/strong&gt;&lt;/h5&gt;
 
@@ -723,21 +1131,18 @@
   &lt;p&gt;_※ Blocking vs. Non-blocking&lt;/p&gt;
 
   &lt;ol&gt;
-    &lt;li&gt;Blocking&lt;/li&gt;
+    &lt;li&gt;Blocking
+      &lt;ul&gt;
+        &lt;li&gt;애플리케이션 실행 시, 운영체제 대기 큐에 들어가면서 요청에 대한 System call이 완료된 후 응답을 보내는 것&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Non-blocking
+      &lt;ul&gt;
+        &lt;li&gt;애플리케이션 실행 시, 운영체제 대기 큐에 들어가지 않고 실행여부와 관계없이 바로 응답을 보내는 것&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;애플리케이션 실행 시, 운영체제 대기 큐에 들어가면서 요청에 대한 System call이 완료된 후 응답을 보내는 것&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Non-blocking&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;애플리케이션 실행 시, 운영체제 대기 큐에 들어가지 않고 실행여부와 관계없이 바로 응답을 보내는 것&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h5 id=&quot;54-asynchronous-io-model&quot;&gt;&lt;strong&gt;5.4. Asynchronous I/O Model&lt;/strong&gt;&lt;/h5&gt;
 
@@ -767,23 +1172,20 @@
   &lt;p&gt;&lt;em&gt;※ 정리&lt;/em&gt;&lt;/p&gt;
 
   &lt;ol&gt;
-    &lt;li&gt;Synchronous vs. Asynchronous&lt;/li&gt;
+    &lt;li&gt;Synchronous vs. Asynchronous
+      &lt;ul&gt;
+        &lt;li&gt;Synchronous: System call의 완료를 기다림&lt;/li&gt;
+        &lt;li&gt;Asynchronous: Sytem call의 완료를 기다리지 않음&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
+    &lt;li&gt;Non-blocking vs. Asynchronous
+      &lt;ul&gt;
+        &lt;li&gt;Non-blocking: System call이 반환될 때 실행된 결과(데이터)와 함께 반환&lt;/li&gt;
+        &lt;li&gt;Asynchronous: System call이 반환될 때 실행된 결과(데이터)와 함께 반환되지 않음&lt;/li&gt;
+      &lt;/ul&gt;
+    &lt;/li&gt;
   &lt;/ol&gt;
 &lt;/blockquote&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Synchronous: System call의 완료를 기다림&lt;/li&gt;
-  &lt;li&gt;Asynchronous: Sytem call의 완료를 기다리지 않음&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;ol&gt;
-  &lt;li&gt;Non-blocking vs. Asynchronous&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;ul&gt;
-  &lt;li&gt;Non-blocking: System call이 반환될 때 실행된 결과(데이터)와 함께 반환&lt;/li&gt;
-  &lt;li&gt;Asynchronous: System call이 반환될 때 실행된 결과(데이터)와 함께 반환되지 않음&lt;/li&gt;
-&lt;/ul&gt;
 
 &lt;h4 id=&quot;6-cpu-스케줄러&quot;&gt;&lt;strong&gt;6. CPU 스케줄러&lt;/strong&gt;&lt;/h4&gt;
 
@@ -795,7 +1197,6 @@
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;공유 데이터를 동시에 접근하는 코드 영역&lt;/p&gt;
-
     &lt;ul&gt;
       &lt;li&gt;공유 데이터: 여러 프로세스들이 서로 공유할 수 있는 데이터&lt;/li&gt;
     &lt;/ul&gt;
@@ -811,24 +1212,18 @@
     &lt;p&gt;프로세스들이 Critical Section을 함께 사용할 수 있는 프로토콜을 설계하는 것
 (2) 해결을 위한 기본 조건&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Mutual Exclusion(상호 배제)&lt;/p&gt;
-
+  &lt;li&gt;Mutual Exclusion(상호 배제)
     &lt;ul&gt;
       &lt;li&gt;프로세스 P1이 Critical Section에서 실행 중이라면, 다른 프로세스들은 P1이 가진 Critical Section에서 실행될 수 없다.&lt;/li&gt;
       &lt;li&gt;둘 이상의 프로세스가 동시에 공유데이터에 진입하는 것을 막는 것&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Progress(진행)&lt;/p&gt;
-
+  &lt;li&gt;Progress(진행)
     &lt;ul&gt;
       &lt;li&gt;Critical Section에서 실행 중인 프로세스가 없고 별도의 동작이 없는 프로세스들만 Critical Section 진입 후보로서 참여될 수 있다.&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;Bounded Waiting(한정된 대기)&lt;/p&gt;
-
+  &lt;li&gt;Bounded Waiting(한정된 대기)
     &lt;ul&gt;
       &lt;li&gt;프로세스 P1이 Critical Section에 진입 신청한 후 부터 받아들여 질 때 까지, 다른 프로세스들이 Critical Section에 진입하는 횟수는 제한이 있어야 한다.&lt;/li&gt;
     &lt;/ul&gt;
@@ -922,7 +1317,6 @@
   &lt;/li&gt;
   &lt;li&gt;
     &lt;p&gt;Swap이란?&lt;/p&gt;
-
     &lt;ul&gt;
       &lt;li&gt;표준 Swapping 방식으로는 round-robin과 같은 스케줄링의 다중 프로그래밍 환경에서, CPU 할당 시간이 끝난 프로세스의 메모리를 보조 기억장치(e.g. 하드 디스크)로 보내고, 다른 프로세스의 메모리를 불러들일 수 있다.
         &lt;ul&gt;
@@ -944,9 +1338,7 @@
   &lt;li&gt;
     &lt;p&gt;프로세스들이 메모리에 적재되고 제거되는 일이 반복되다 보면 프로세스들이 차지하는 메모리 틈 사이에 사용하지 못 할 만큼의 작은 자유 공간들이 늘어나게 되는 현상&lt;/p&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;외부 단편화&lt;/p&gt;
-
+  &lt;li&gt;외부 단편화
     &lt;ul&gt;
       &lt;li&gt;메모리 공간 중 사용하지 못하게 되는 일부분&lt;/li&gt;
       &lt;li&gt;물리 메모리(RAM)에서 사이사이 남는 공간들을 모두 합치면 충분한 공간이 되는 부분들이 분산되어 있을 때 발생&lt;/li&gt;
@@ -957,13 +1349,9 @@
       &lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
-  &lt;li&gt;
-    &lt;p&gt;내부 단편화&lt;/p&gt;
-
+  &lt;li&gt;내부 단편화
     &lt;ul&gt;
-      &lt;li&gt;
-        &lt;p&gt;프로세스가 사용하는 메모리 공간에 포함된 남는 부분&lt;/p&gt;
-
+      &lt;li&gt;프로세스가 사용하는 메모리 공간에 포함된 남는 부분
         &lt;ul&gt;
           &lt;li&gt;메모리 분할 자유공간이 10,000B가 있고 Process A가 9,998B 사용하게 되면, 2B라는 차이가 존재하게 됨&lt;/li&gt;
         &lt;/ul&gt;
