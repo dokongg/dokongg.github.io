@@ -76,7 +76,31 @@
   </header>
 
   <div class="post-content e-content post-content-body" itemprop="articleBody">
-    <h4 id="1-message-queue"><strong>1. Message Queue</strong></h4>
+    <ol>
+  <li>
+    <p><strong>Message Queue</strong> <br />
+1.1. Message Queue란 <br />
+1.2. Message Queue의 유형</p>
+  </li>
+  <li>
+    <p><strong>Kafka</strong>
+2.1. Kafka 아키텍쳐 <br />
+2.2. Producer와 Consumer Group <br />
+ 2.2.1. 메시지 생산/소비 <br />
+ 2.2.2. Partition과 Consumer의 개수 <br />
+2.3. Consumer Design <br />
+2.4. Replication</p>
+  </li>
+  <li>
+    <p><strong>Kafka를 사용할 때의 주의점</strong> <br />
+3.1. 메시지 중복 consume, At-least-once <br />
+3.2. Consume 메시지의 순서</p>
+  </li>
+</ol>
+
+<hr />
+
+<h4 id="1-message-queue"><strong>1. Message Queue</strong></h4>
 <h5 id="11-message-queue란"><strong>1.1. Message Queue란</strong></h5>
 <p>(1) 정의</p>
 <ul>
@@ -241,7 +265,7 @@
   </li>
 </ul>
 
-<h5 id="222-partitionr과-consumer의-개수"><strong>2.2.2. Partitionr과 Consumer의 개수</strong></h5>
+<h5 id="222-partition과-consumer의-개수"><strong>2.2.2. Partition과 Consumer의 개수</strong></h5>
 <ul>
   <li>Partition은 하나의 Consumer만 접근 가능하다.</li>
   <li>Consumer는 여러 개의 Partition을 소비할 수 있다.</li>
