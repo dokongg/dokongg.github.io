@@ -79,969 +79,528 @@
     <ol>
   <li>
     <p><strong>HTTP GET/POST</strong> <br />
-1.1. GET <br />
-1.2. POST</p>
+1.1. HTTP Request <br />
+1.2. HTTP Response <br />
+1.3. GET <br />
+1.4. POST</p>
   </li>
   <li>
     <p><strong>TCP 3-way handshake</strong> <br />
-2.1.</p>
+2.1. TCP 3-way Handshake &amp; 4-way Handshake <br />
+2.2. 2-way가 아닌 3-way Handshake를 사용하는 이유</p>
   </li>
   <li>
     <p><strong>TCP와 UDP</strong> <br />
-3.1. UDP <br />
-3.2. TCP</p>
+3.1. TCP/IP의 중요한 성질 <br />
+3.2. UDP(User Datagram Protocol, 사용자 데이터그램 프로토콜) <br />
+3.3. TCP(Transmission Control Protocol, 전송제어 프로토콜)</p>
   </li>
   <li>
     <p><strong>HTTP와 HTTPS</strong> <br />
-4.1. HTTP의 문제점<br />
+4.1. HTTP의 문제점 <br />
 4.2. HTTPS</p>
   </li>
   <li>
-    <p><strong>교착상태</strong> <br />
-5.1. 교착상태란 무엇인가 <br />
-5.2. 교착상태의 예시(Mysql) <br />
-5.3. 교착상태의 빈도를 낮추는 방법</p>
+    <p><strong>DNS Round Robin 방식</strong> <br />
+5.1. DNS Round Robin 방식의 문제점 <br />
+5.2. DNS 스케줄링 알고리즘</p>
   </li>
   <li>
-    <p><strong>Statement vs. PreparedStatement</strong> <br />
-6.1. java.sql.Statement <br />
-6.2. java.sql.PreparedStatement</p>
-  </li>
-  <li>
-    <p><strong>NoSQL</strong> <br />
-7.1. NoSQL의 정의 <br />
-7.2. CAP 이론 <br />
-7.2. 저장 방식에 따른 분류</p>
+    <p><strong>웹 통신의 큰 흐름</strong> <br />
+  6.1. in 브라우저 <br />
+  6.2. in 프로토콜 스택, LAN 어댑터 <br />
+  6.3. in 허브, 스위치, 라우터 <br />
+  6.4. in 액세스 회선, 프로바이더 <br />
+  6.5. in 방화벽, 캐시서버 <br />
+  6.6. in 웹서버</p>
   </li>
 </ol>
 
 <hr />
 
-<h4 id="1-데이터베이스"><strong>1. 데이터베이스</strong></h4>
+<h4 id="1-http의-get과-post-비교"><strong>1. HTTP의 GET과 POST 비교</strong></h4>
+<h5 id="11-http-request"><strong>1.1. HTTP Request</strong></h5>
+<pre><code class="language-HTML">Request Line
+*(( general-header | request-header | entity-header ) CRLF)
+CRLF
+[ message-body ]
+</code></pre>
 
-<h5 id="11-데이터베이스를-사용하는-이유"><strong>1.1. 데이터베이스를 사용하는 이유</strong></h5>
+<p>(1) Request Line <br />
+Method SP Request-URI SP HTTP-Version CRLF <br />
+<code class="language-plaintext highlighter-rouge">GET /index.html HTTP/1.1</code></p>
+
 <ul>
-  <li>데이터베이스가 존재하기 이전
+  <li>Method
     <ul>
-      <li>파일 시스템을 이용하여 데이터를 관리</li>
-      <li>데이터를 각각의 파일 단위로 저장하며, 이러한 일들을 처리하기 위한 독립적인 애플리케이션과 상호 연동되어야 한다.
-        <ul>
-          <li>데이터의 종속성 문제와 중복성, 데이터의 무결성 문제 발생</li>
-        </ul>
-      </li>
+      <li>OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT, PATCH</li>
+    </ul>
+  </li>
+  <li>REQUEST-URI</li>
+  <li>HTTP-Version
+    <ul>
+      <li>“HTTP” “/” 1*DIGIT “.” 1”DIGIT</li>
+      <li>HTTP/1.0, HTTP/1.1</li>
+    </ul>
+  </li>
+  <li>CRLF
+    <ul>
+      <li>CR: carriage return(13)</li>
+      <li>LF: linefeed(10)</li>
     </ul>
   </li>
 </ul>
 
-<h5 id="12-데이터베이스의-특징"><strong>1.2. 데이터베이스의 특징</strong></h5>
-<p>(1) 데이터의 독립성</p>
+<p>(2) Headers <br />
+general-header, request-header, entity-header</p>
 <ul>
-  <li>물리적 독립성: 데이터베이스 사이즈를 늘리거나 성능 향상을 위해 데이터 파일을 늘리거나 추가하더라도 관련된 응용 프로그램을 수정할 필요가 없다.</li>
-  <li>논리적 독립성: 데이터베이스는 논리적인 구조로 다양한 응용 프로그램의 논리적 요구를 만족시킬 수 있다.</li>
-</ul>
-
-<p>(2) 데이터의 무결성</p>
-<ul>
-  <li>여러 경로를 통해 잘못된 데이터가 발생하는 경우의 수를 방지</li>
-  <li>데이터 유효성 검사를 통해 구현</li>
-</ul>
-
-<p>(3) 데이터의 보안성</p>
-<ul>
-  <li>인가된 사용자들만 데이터베이스나 데이터베이스 내의 자원에 접근할 수 있도록 계정 관리 또는 접근 권한을 설정</li>
-</ul>
-
-<p>(4) 데이터의 일관성</p>
-<ul>
-  <li>연관된 정보를 논리적인 구조로 관리함으로써, 어떠 하나의 데이터만 변경했을 경우 발생할 수 있는 데이터의 불일치성을 배제할 수 있다.</li>
-  <li>작업 중 일부 데이터만 변경되기 때문에 나머지 데이터와 일치하지 않는 경우의 수를 배제할 수 있다.</li>
-</ul>
-
-<p>(5) 데이터 중복의 최소화</p>
-<ul>
-  <li>데이터를 통합하여 관리함으로써, 파일 시스템의 단점 중에 하나인 자료의 중복과 데이터의 중복성 문제를 해결할 수 있다.</li>
-</ul>
-
-<h5 id="13-데이터베이스의-성능"><strong>1.3. 데이터베이스의 성능</strong></h5>
-<ul>
-  <li>디스크 I/O를 어떻게 줄이느냐에서 시작
+  <li>요청에 따라 필요한 헤더만 사용</li>
+  <li>name: content 형식</li>
+  <li>General Header
     <ul>
-      <li>디스크 I/O: 디스크 드라이브의 플래터(원판)을 돌려서 읽어야 할 데이터를 저장된 위치로 디스크 헤더를 이동시킨 다음 데이터를 읽는 것</li>
-      <li>데이터를 읽는 데 걸리는 시간: 디스크 헤더를 움직여서 읽고 쓸 위치로 옮기는 단계에서 결정된다.
-        <ul>
-          <li>디스크의 성능은 디스크 헤더의 위치 이동없이 얼마나 많은 데이터를 한 번에 기록하느냐에 따라 결정된다.</li>
-        </ul>
-      </li>
-      <li>순차 I/O가 랜덤 I/O보다 빠를 수 밖에 없다.
-        <ul>
-          <li>쿼리 튜닝: 현실에서는 대부분의 I/O이 랜덤 I/O이기 때문에, 랜덤 I/O를 순차 I/O로 바꿔서 실행할 수 없을까라는 생각에서 시작하여, 랜덤 I/O 자체를 줄여주는 것</li>
-        </ul>
-      </li>
+      <li>Cache-Control, Connection, Date, Pragma, Trailer, Transfer-Enco, Upgrade, Via, Warning</li>
+    </ul>
+  </li>
+  <li>Request Header
+    <ul>
+      <li>Accept, Accept-Charset, Accept-Encoding, Accept-Language, Authorization, Expect, From, Host, If-Match, If-Modified-Since, If-None-Match, If-Range, If-Unmodified-Since, Max-Forwards, Proxy-Authorization, Range, Referer, TE, User-Agent 등</li>
+    </ul>
+  </li>
+  <li>Entity Header
+    <ul>
+      <li>Allow, Content-Encoding, Content-Language, Content-Length, Content-Location, Content-MD5, Content-Range, Content-Type, Expires, Last-Modified, extension-header</li>
     </ul>
   </li>
 </ul>
 
-<h4 id="2-index"><strong>2. Index</strong></h4>
-<h5 id="21-index란-무엇인가"><strong>2.1. Index란 무엇인가</strong></h5>
-<p>(1) 정의</p>
+<h5 id="12-http-response"><strong>1.2. HTTP Response</strong></h5>
+<pre><code class="language-HTML">Status-Line
+*(( general-header | response-header | entity-header ) CRLF )
+CRLF
+[ message-body ]
+</code></pre>
+
+<p>(1) Status Line <br />
+HTTP-Version SP Status-Code SP Reason-Phrase CRLF <br />
+<code class="language-plaintext highlighter-rouge">HTTP/1.1 200 OK</code></p>
+
 <ul>
-  <li>책의 맨 처음 또는 맨 마지막에 있는 색인
+  <li>Status-Code
     <ul>
-      <li>데이터: 책의 내용</li>
-      <li>데이터가 저장된 레코드의 주소: 인덱스 목록에 있는 페이지의 번호</li>
-    </ul>
-  </li>
-  <li>컬럼의 값과 해당 레코드아 저장된 주소를 키와 값의 쌍으로 만들어두는 것
-    <ul>
-      <li>DBMS도 데이터베이스 테이블의 모든 데이터를 검색해서 원하는 결과를 가져 오려면 시간이 오래 걸리기 때문</li>
+      <li>1xx: 정보성</li>
+      <li>2xx: 성공</li>
+      <li>3xx: 리다이렉트</li>
+      <li>4xx: 클라이언트 오류</li>
+      <li>5xx: 서버 오류</li>
     </ul>
   </li>
 </ul>
 
-<p>(2) 특징</p>
+<h5 id="13-get"><strong>1.3. GET</strong></h5>
 <ul>
-  <li>항상 정렬된 상태를 유지하기 때문에 원하는 값을 탐색하는 데에는 빠르지만, 새로운 값을 추가/삭제/수정하는 경우에는 쿼리문 실행 속도가 느려진다.
+  <li>요청하는 데이터가 <code class="language-plaintext highlighter-rouge">HTTP Request Message</code>의 Header 부분에 url이 담겨 전송된다.
     <ul>
-      <li>인덱스는 데이터의 저장 성능을 희생하고 그 대신 데이터의 읽기 속도를 높이는 기능</li>
+      <li>url 상에 <code class="language-plaintext highlighter-rouge">?</code> 뒤에 데이터가 붙어 request를 보내게 된다.</li>
+      <li>url이라는 공간에 데이터가 담겨가기 때문에 전송할 수 있는 데이터의 크기가 제한적이다.</li>
+      <li>데이터가 그대로 url에 노출되므로 보안이 필요한 데이터에 대해서는 적절하지 않은 방식이다.</li>
     </ul>
   </li>
-  <li><code class="language-plaintext highlighter-rouge">SELECT</code> 쿼리문의 <code class="language-plaintext highlighter-rouge">WHERE</code> 조건절에 사용되는 컬럼이라고 전부 인덱스로 생성하면, 데이터의 저장능력이 떨어지고 인덱스의 크기가 비대해져 오히려 역효과 발생</li>
+  <li>서버에서 어떠한 데이터를 가져와 보여주는 용도이므로, 서버의 값이나 상태 등을 변경하지 않는다.
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">SELECT</code>의 성격</li>
+    </ul>
+  </li>
+  <li>GET 방식의 요청은 브라우저에서 Caching 할 수 있다.</li>
 </ul>
 
-<h5 id="22-index의-자료구조"><strong>2.2. Index의 자료구조</strong></h5>
-<p>(1) B+-Tree 인덱스 알고리즘</p>
+<h5 id="14-post"><strong>1.4. POST</strong></h5>
 <ul>
-  <li>일반적으로 사용되는 인덱스 알고리즘</li>
-  <li>컬럼의 값을 변형하지 않고(실제로는 값의 앞 부분만 잘라서 관리한다 원래의 값을 이용해 인덱싱하는 방법</li>
+  <li><code class="language-plaintext highlighter-rouge">HTTP Request Message</code>의 Body 부분에 데이터가 담겨서 전송된다.
+    <ul>
+      <li>바이너리 데이터를 요청하는 경우 POST 방식으로 보낸다.</li>
+    </ul>
+  </li>
+  <li>서버의 값이나 상태를 변경 또는 추가하지 위해서 사용된다.</li>
 </ul>
 
-<p>(2) Hash 인덱스 알고리즘</p>
+<h4 id="2-tcp-3-way-handshake"><strong>2. TCP 3-way Handshake</strong></h4>
+<h5 id="21-tcp-3-way-handshake--4-way-handshake"><strong>2.1. TCP 3-way Handshake &amp; 4-way Handshake</strong></h5>
+<p>(1) 연결 성립(Connection Establishment)</p>
+
+<p><img src="https://ars.els-cdn.com/content/image/3-s2.0-B0122272404001878-gr10.gif" alt="Alt Text" /></p>
+
 <ul>
-  <li>컬럼의 값으로 해시 값을 계산해서 인덱싱하는 알고리즘</li>
-  <li>값을 변형해서 인덱싱 하므로, 특정 문자로 시작하는 값으로 검색하는 전방 일치과 같이 값의 일부만으로 검색하고자 할 때는 해시 인덱스를 사용할 수 없다.</li>
-  <li>주로 메모리 기반의 데이터베이스에서 많이 사용</li>
+  <li>클라이언트가 서버에게 접속을 요청(<code class="language-plaintext highlighter-rouge">SYN</code>)한다.
+    <ul>
+      <li>클라이언트는 서버에게 접속을 요청하는 <code class="language-plaintext highlighter-rouge">SYN(a)</code> 패킷을 보낸다.</li>
+    </ul>
+  </li>
+  <li>서버가 클라이언트의 요청(<code class="language-plaintext highlighter-rouge">SYN</code>)을 수락한 후, 확인 메시지(<code class="language-plaintext highlighter-rouge">ACK</code>/<code class="language-plaintext highlighter-rouge">SYN</code>)을 보낸다.
+    <ul>
+      <li>서버는 클라이언트의 요청인 <code class="language-plaintext highlighter-rouge">SYN(a)</code>를 받은 후, 클라이언트에게 요청을 수락한다는 <code class="language-plaintext highlighter-rouge">ACK(a+1)</code>과 <code class="language-plaintext highlighter-rouge">SYN(b)</code>가 설정된 패킷을 발송한다.</li>
+    </ul>
+  </li>
+  <li>클라이언트가 서버의 응답(<code class="language-plaintext highlighter-rouge">ACK</code>/<code class="language-plaintext highlighter-rouge">SYN</code>)을 받아 다시 서버로 확인 메시지(<code class="language-plaintext highlighter-rouge">ACK</code>)를 보낸다.
+    <ul>
+      <li>Client: 서버의 수락 메시지인 <code class="language-plaintext highlighter-rouge">ACK</code>(a+1)과 <code class="language-plaintext highlighter-rouge">SYN</code>(b) 패킷을 받고 <code class="language-plaintext highlighter-rouge">ACK</code>(b+1)을 서버로 보낸다.</li>
+    </ul>
+  </li>
+  <li>연결이 성립(establish)된다.</li>
 </ul>
 
-<p>(3) index 생성 시 B+-Tree 인덱스 알고리즘을 사용하는 이유</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">SELECT</code> 쿼리문의 조건에는 부등호(&lt;&gt;) 연산도 포함이 된다. Hash 인덱스 알고리즘의 경우, hash table을 사용하게 된다면, 등호(=) 연산이 아닌 부등호 연산의 경우에 문제가 발생한다.
-    <ul>
-      <li>동등 연산(=)에 특화된 <code class="language-plaintext highlighter-rouge">hashtable</code>은 데이터베이스의 자료구조로 적합하지 않다.</li>
-    </ul>
-  </li>
-</ul>
+<p>(2) 연결 해제(Connection Termination)</p>
 
-<h4 id="23-index의-종류"><strong>2.3. Index의 종류</strong></h4>
+<p><img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=http%3A%2F%2Fcfile9.uf.tistory.com%2Fimage%2F21201133536D8D992FC07A" alt="Alt Text" /></p>
 <ul>
-  <li>simple level index</li>
-  <li>composite index</li>
-  <li>multi level index</li>
-</ul>
-
-<p>(1) Simple level Index <br />
-<img src="https://joosjuliet.github.io/images/2019-01-07-index/sparse_index.png" alt="Alt Text" /></p>
-<ul>
-  <li>정렬되어 있기 떄문에 이진 탐색에 좋다.</li>
-  <li><code class="language-plaintext highlighter-rouge">where key = 1003 인덱스가 걸린 컬럼의 where문 = (equality)(equality search)</code>이 빠르다.</li>
-  <li>메모리에 index table의 데이터 크기가 본 table의 것보다 작기 때문에 테이블을 탐색할 수 있는 양도 더 늘어나게 된다. 따라서 더 많은 양을 한 번에 탐색할 수 있기 때문에 탐색 시간이 단축된다.</li>
-  <li>Primary Index(기본 인덱스): 인덱스를 primary key에 생성</li>
-  <li>Secondary Index(보조 인덱스): 다른 컬럼에 인덱스를 생성</li>
-</ul>
-
-<p>(2) Composite Index <br />
-<img src="https://joosjuliet.github.io/images/2019-01-07-index/composite_index.png" alt="Alt Text" /></p>
-<ul>
-  <li>여러 개의 column에 indexing</li>
-  <li>single index가 한 column에 indexing을 하는 것과 다르게 여러 개의 column에 indexing을 한다.</li>
-  <li>빈도 수가 적은 인덱스를 먼저 거는 게 좋다.</li>
-  <li>인덱스로 생성하는 필드의 속성이 중요하다.
+  <li>클라이언트가 연결을 종료하겠다는 <code class="language-plaintext highlighter-rouge">FIN 플래그</code>를 전송한다.</li>
+  <li>서버는 클라이언트의 요청(<code class="language-plaintext highlighter-rouge">FIN</code>)을 받고 알겠다는 확인 응답(<code class="language-plaintext highlighter-rouge">ACK</code>)를 보낸다.
     <ul>
-      <li>title, author 이 순서로 인덱스를 설정한다면,
-        <ul>
-          <li>title을 search 하는 경우, index를 생성한 효과를 볼 수 있지만</li>
-          <li>author만으로 search 하는 경우, index를 생성한 것이 소용이 없어진다.</li>
-          <li><code class="language-plaintext highlighter-rouge">SELECT</code> 질의를 어떻게 할 것인가가 인덱스를 어떻게 생성할 것인가에 많은 영향을 미친다.</li>
-        </ul>
-      </li>
+      <li>데이터를 모두 보내기 전 까지 잠시 <code class="language-plaintext highlighter-rouge">TIME_OUT</code>이 된다.</li>
     </ul>
   </li>
-</ul>
-
-<p>(3) Multi Level Index <br />
-<img src="https://joosjuliet.github.io/images/2019-01-07-index/multilevel_index.png" alt="Alt Text" /></p>
-<ul>
-  <li>인덱스 레벨이 많은 경우</li>
-  <li>인덱스를 위한 인덱스를 위한 … 인덱스</li>
-  <li>데이터가 커지면 index 크기 역시 커진다.
-    <ul>
-      <li>그러므로 single level index를 사용할 수 없어 multi level index를 사용한다.</li>
-    </ul>
-  </li>
-  <li>inner index(원래 인덱스)를 작은 색인으로 분할하여 outer index를 작게 만든다.
-    <ul>
-      <li>이로 인해 I/O가 자주 일어나는 문제가 발생한다.</li>
-    </ul>
-  </li>
-  <li>실제 데이터베이스 파일과 함께 디스크에 저장된다.</li>
-</ul>
-
-<h5 id="24-clustered-index"><strong>2.4. Clustered index</strong></h5>
-<ul>
-  <li>클러스터(Cluster): 여러 개를 하나로 묶는다는 의미로 주로 사용된다.</li>
-  <li>인덱스에서 클러스터드는 비슷한 것들을 묶어서 저장하는 형태로 구현된다.
-    <ul>
-      <li>주로 비슷한 값들을 동시에 조회하는 경우가 많다는 점에서 착안</li>
-      <li>비슷한 값들은 물리적으로 인접한 장소에 저장되어 있는 데이터들을 말한다.</li>
-    </ul>
-  </li>
-  <li>테이블의 프라이머리 키에 대해서만 적용되는 내용
-    <ul>
-      <li>즉, 프라이머리 키 값이 비슷한 레코드끼리 묶어서 저장하는 것</li>
-      <li>클러스터드 인덱스에서는 프라이머리 키 값에 의해 레코드의 저장 위치가 결정되며, 프라이머리 키 값이 변경되면 그 레코드의 물리적인 저장 위치까지 변경되어야 한다.
-        <ul>
-          <li>그렇기 때문에 프라이머리 키를 신중하게 결정하고 클러스터드 인덱스를 사용해야 한다.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>테이블 당 한 개만 생성할 수 있다.
-    <ul>
-      <li>프라이머리 키에 대해서만 적용되기 때문</li>
-    </ul>
-  </li>
-  <li>행 데이터를 인덱스로 지정한 열에 맞춰 자동 정렬한다.</li>
-  <li>테이블 생성 시 하나의 열에 Primary key를 쩡하면, 자동으로 클러스터형 인덱스가 생성된다.</li>
-</ul>
-
-<h5 id="25-index의-성능과-고려해야-할-사항"><strong>2.5. Index의 성능과 고려해야 할 사항</strong></h5>
-<p><code class="language-plaintext highlighter-rouge">SELECT</code> 쿼리의 <code class="language-plaintext highlighter-rouge">INDEX</code>가 항상 좋은 것은 아니다.</p>
-<ul>
-  <li><code class="language-plaintext highlighter-rouge">INDEX</code>를 생성하게 되면, <code class="language-plaintext highlighter-rouge">INSERT</code>, <code class="language-plaintext highlighter-rouge">DELETE</code>, <code class="language-plaintext highlighter-rouge">UPDATE</code> 쿼리문을 실행할 때 별도의 과정이 추가적으로 발생한다.
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">INSERT</code>: <code class="language-plaintext highlighter-rouge">INDEX</code>에 대한 데이터도 추가해야 하므로 그만큼 성능에 손실이 따른다.</li>
-      <li><code class="language-plaintext highlighter-rouge">DELETE</code>: <code class="language-plaintext highlighter-rouge">INDEX</code>에 존재하는 값은 삭제하지 않고 사용하지 않는다는 표시로 남게 된다.
-        <ul>
-          <li>즉, row의 수는 그대로이다.</li>
-          <li>실제 데이터는 10만건인데, 데이터는 100만건이 있는 결과를 낳을 수도 있는 것이다. 이렇게 되면 인덱스는 더 이상 제 역할을 못하게 된다.</li>
-        </ul>
-      </li>
-      <li><code class="language-plaintext highlighter-rouge">UPDATE</code>: <code class="language-plaintext highlighter-rouge">INSERT</code>와 <code class="language-plaintext highlighter-rouge">DELETE</code>의 문제점을 수반하게 되어, 변경 전 데이터 삭제되지 않고 <code class="language-plaintext highlighter-rouge">INSERT</code>로 인한 split도 발생하게 된다.</li>
-    </ul>
-  </li>
-  <li>컬럼을 이루고 있는 데이터의 형식에 따라 성능에 악영향을 미칠 수 있다.
-데이터의 형식에 따라 인덱스를 만들면 효율적인 것이 있고, 그렇지 않은 것이 있다.
-    <ul>
-      <li><code class="language-plaintext highlighter-rouge">이름</code>, <code class="language-plaintext highlighter-rouge">나이</code>, <code class="language-plaintext highlighter-rouge">성별</code> 세 가지의 필드를 갖고 있는 테이블이 있다.</li>
-      <li>이름: 온갖 경우의 수가 존재</li>
-      <li>나이: INT 타입</li>
-      <li>성별: 남/녀</li>
-      <li>이름에 대해서만 인덱스를 생성하면 효율적이다.
-        <ul>
-          <li>성별이나 나이에 대해 인덱스를 생성하면, 10000 레코드에 해당하는 테이블에 대해서 2000 단위로 성별을 인덱스를 생성했다고 가정했을 떄 값의 range가 적은 성별은 인덱스를 읽고 다시 한 번 디스크 I/O가 발생하기 때문이다.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="3-정규화"><strong>3. 정규화</strong></h4>
-<h5 id="31-정규화의-탄생-배경"><strong>3.1. 정규화의 탄생 배경</strong></h5>
-<ul>
-  <li>한 리레이션에 여러 Entity의 attribute를 혼합하게 되면 정보가 중복하여 저장되며, 저장 공간을 낭비하게 된다.
-    <ul>
-      <li>중복된 정보는 갱신 이상을 일으킨다.
-        <ul>
-          <li>동일한 정보를 한 릴레이션에는 변경하고, 나머지 릴레이션에서는 변경하지 않은 경우 어느 것이 정확한 지 알 수 없게 된다.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
+  <li>데이터를 모두 보내고 통신이 끝난 후, 클라이언트에게 연결이 종료되었다는 <code class="language-plaintext highlighter-rouge">FIN 플래그</code>를 전송한다.</li>
+  <li>클라이언트는 <code class="language-plaintext highlighter-rouge">FIN</code> 메시지를 확인 했다는 메시지(<code class="language-plaintext highlighter-rouge">ACK</code>)를 보낸다.</li>
+  <li>클라이언트의 <code class="language-plaintext highlighter-rouge">ACK</code> 메시지를 받은 서버는 소켓 연결을 close 한다.</li>
+  <li>클라이언트는 아직 서버로부터 받지 못한 데이터가 있을 것을 대비해 일정 시간 동안 세션을 남겨놓고 잉여 패킷을 기다리는 과정을 거친다(<code class="language-plaintext highlighter-rouge">TIME_WAIT</code>).</li>
 </ul>
 
 <blockquote>
-  <p><strong>이상 현상(Anomaly)의 종류</strong></p>
+  <p><strong>SYN Packet과 ACK Packet</strong></p>
+
+  <p>SYN(Synchronize Sequence Number)
+ACK(Acknowledgement)</p>
+
+  <p>(1) TCP Header의 Code Bit(Flag bit)</p>
   <ul>
-    <li>갱신 이상(Modification Anomaly)
+    <li>6Bit로 구성되어 있으며, 각각의 bit들은 Urg-Ack-Psh-Rst-Syn-Fin 순서로 되어 있다.</li>
+    <li>해당 위치의 비트가 1이면, 해당 패킷이 어떠한 내용을 담고 있는 패킷인지를 나타낸다.
       <ul>
-        <li>반복된 데이터 중에 일부를 갱신할 시, 데이터의 불일치가 발생하는 현상</li>
+        <li>SYN: 000010</li>
+        <li>ACK: 010000</li>
       </ul>
     </li>
-    <li>삽입 이상(Insertion Anomaly)
+  </ul>
+
+  <p>(2) 두 종류의 Packet을 사용하는 이유</p>
+  <ul>
+    <li>요청과 응답에 대한 패킷을 주고 받아야 하기 때문이다.</li>
+  </ul>
+
+  <p>(3) 임의의 sequence number를 사용하는 이유</p>
+  <ul>
+    <li>처음 클라이언트에서 SYN 패킷을 보낼 때, Sequence Number에는 랜덤한 숫자가 담겨진다. 초기 sequence number를 ISN이라고 한다. ISN이 0부터 시작하지 않고 난수를 생성해서 number를 설정하게 된다.</li>
+    <li>Connection을 맺을 때 사용하는 포트(port)는 유한 범위 내에서 사용하고 시간이 지나면 재사용된다. 따라서 두 통신 호스트가 과거에 사용된 포트 번호 쌍을 사용할 가능성이 있다.
       <ul>
-        <li>불필요한 정보를 함께 저장하지 않고서는 어떤 정보를 저장하는 것이 불가능한 경우</li>
-      </ul>
-    </li>
-    <li>삭제 이상(Deletion Anomaly)
-      <ul>
-        <li>필요한 정보를 삭제하지 않고서는 어떤 정보를 삭제하는 것이 불가능한 경우</li>
+        <li>서버 특에서는 패킷의 SYN을 보고 패킷을 구분하게 되는데, 난수가 아닌 순차적인 number가 전송된다면 이전의 connection으로 부터 오는 패킷으로 인식할 수 있는 문제점이 있다.</li>
       </ul>
     </li>
   </ul>
 </blockquote>
 
-<h5 id="32-정규화란-무엇인가"><strong>3.2. 정규화란 무엇인가</strong></h5>
+<h5 id="22-2-way가-아닌-3-way-handshake를-사용하는-이유"><strong>2.2. 2-way가 아닌 3-way Handshake를 사용하는 이유</strong></h5>
 <ul>
-  <li>관계형 데이터베이스에서 중복을 최소화하기 위해 데이터를 구조화하는 작업</li>
-  <li>불만족스러운 나쁜 릴레이션의 attribute를 나누어서 좋은 작은 릴레이션으로 분해하는 작업</li>
-  <li>정규화 과정을 거치면 정규형을 만족하게 된다.
+  <li>TCP connection은 양방향성(bidirectional) 연결이기 때문에, 클라이언트가 서버에게 존재를 알리고 패킷을 보낼 수 있다는 것을 알리듯 서버 또한 클라이언트에게 존재를 알리고 패킷을 보낼 수 있다는 신호를 보내야 한다.</li>
+</ul>
+
+<h4 id="3-tcp와-udp"><strong>3. TCP와 UDP</strong></h4>
+<h5 id="31-tcpip의-중요한-성질"><strong>3.1. TCP/IP의 중요한 성질</strong></h5>
+<p>(1) Connection oriented</p>
+<ul>
+  <li>두 개의 엔드포인트(로컬, 리모트) 사이에 연결을 먼저 맺고 데이터를 주고 받는다.</li>
+  <li>TCP 연결 식별자
     <ul>
-      <li>정규형: 특정 조건을 만족하는 릴레이션의 스키마 형태(제 1 정규형, 제 2 정규형 등이 존재)</li>
+      <li>두 엔드 포인트의 주소를 합친 것</li>
+      <li>&lt;로컬 IP 주소, 로컬 포트번호, 리모트 IP 주소, 리모트 포트번호&gt;</li>
     </ul>
   </li>
 </ul>
 
-<p>(1) 나쁜 릴레이션을 파악하는 방법</p>
+<p>(2) Bidirectional byte stream</p>
 <ul>
-  <li>entity를 구성하고 있는 attribute 간에 함수적 종속성(Functional Dependency)을 판단
+  <li>양방향 데이터 통신을 하고, 바이트 스트림을 사용한다.</li>
+</ul>
+
+<p>(3) In-order delivery</p>
+<ul>
+  <li>송신자(sender)가 보낸 순서대로 수신자(receiver)가 데이터를 받는다. 이를 위해서는 데이터의 순서가 필요하다. 순서를 표시하기 위해 32-bit 정수 자료형을 사용한다.</li>
+</ul>
+
+<p>(4) Reliability through ACK</p>
+<ul>
+  <li>데이터를 송신하고 수신자로부터 ACK(데이터 받았음)를 받지 않으면, 송신자 TCP가 데이터를 재전송 한다.
     <ul>
-      <li>판단된 함수적 종속성은 좋은 릴레이션 설계의 정형적 기준으로 사용된다.</li>
-      <li>각각의 정규형마다 어떠한 함수적 종속성을 만족하는 지에 따라 정규형이 정의되고, 그 정규형을 만족하지 못하는 정규형을 나쁜 릴레이션으로 파악한다.</li>
+      <li>따라서 송신자 TCP는 수신자로부터 ACK를 받지 않은 데이터를 보관한다(buffer unacknowledged data).</li>
     </ul>
   </li>
 </ul>
 
-<p>(2) 함수적 종속성(Functional Dependency)</p>
+<p>(5) Flow control</p>
 <ul>
-  <li>attribute 데이터들의 의미와 attribute 간의 상호 관계로부터 유도되는 제약조건의 일종</li>
-  <li>정의: X와 Y를 임의의 attribute 집합이라고 할 때, X의 값이 Y의 값을 유일(unique)하게 결정한다면, <code class="language-plaintext highlighter-rouge">X는 Y를 함수적으로 결정한다</code>라고 한다.</li>
-  <li>실세계에서 존재하는 attribute 사이의 제약조건으로부터 유도된다.</li>
-  <li>각족 추론 규칙에 따라 attribute 간의 함수적 종속성을 판단할 수 있다.</li>
-</ul>
-
-<p>(3) 정규형이 만족해야하는 조건</p>
-<ul>
-  <li>분해의 대상인 분해 집합 D는 무손실 조인을 보장해야 한다.</li>
-  <li>분해 집합 D는 함수적 종속성을 보존해야 한다.</li>
-</ul>
-
-<blockquote>
-  <p><strong>무손실 분해(Lossy decomposition)</strong></p>
-  <ul>
-    <li>하나의 릴레이션을 분해하고 다시 조인연산을 했을 떄 데이터 손실이 없는 것</li>
-  </ul>
-</blockquote>
-
-<h5 id="33-정규화의-종류"><strong>3.3. 정규화의 종류</strong></h5>
-<p>(1) 제 1 정규형(1NF)</p>
-<ul>
-  <li>attribute의 도메인이 오직 <code class="language-plaintext highlighter-rouge">원자값</code>만을 포함하고, tuple의 모든 attribute가 도메인에 속하는 하나의 값을 가져야 한다.
+  <li>송신자는 수신자가 받을 수 있는 만큼 데이터를 전송한다.
     <ul>
-      <li><code class="language-plaintext highlighter-rouge">원자값</code>: 각 로우마다 컬럼의 값이 1개씩만 있는 것</li>
-      <li>복합 attribute, 다중값 attribute, 중첩 릴레이션 등 비 원자적인 attribute를 허용하지 않는 릴레이션 형태</li>
+      <li>송신자는 수신자 receive window가 허용하는 바이트 수만큼 데이터를 전송한다.</li>
     </ul>
   </li>
-  <li>관계형 데이터베이스의 테이블이 1NF이면, 최소한 테이블은 관계이며 중복되는 항목이 없어야 한다.</li>
-  <li>표준
+  <li>수신자가 자신이 받을 수 있는 바이트 수 (사용하지 않은 버퍼 크기, receive window)를 송신자에게 전달한다.</li>
+</ul>
+
+<p>(6) Congestion control</p>
+<ul>
+  <li>네트워크에 유입되는 데이터 양을 제한하려는 목적으로(네트워크 정체를 방지하기 위해) receive window와 별도로 congestion window를 사용한다.</li>
+  <li>receive window와 마찬가지로 congestion window가 허용하는 바이트 수 만큼의 데이터를 전송한다.
     <ul>
-      <li>각 테이블에서 중복을 제거한다.</li>
-      <li>각각 관계된 데이터 모임을 위하여 분리된 테이블을 만든다.</li>
-      <li>각각 관계된 데이터 모임을 기본키로 식별한다.</li>
+      <li>여기에는 TCP Vegas, Westwood, BIC, CUBIC 등의 다양한 알고리즘이 있다.</li>
     </ul>
   </li>
+  <li>Flow control과 달리 송신자가 단독으로 구현한다.</li>
 </ul>
 
-<p>(2) 제 2 정규형(2NF)</p>
+<h5 id="32-udpuser-datagram-protocol-사용자-데이터그램-프로토콜"><strong>3.2. UDP(User Datagram Protocol, 사용자 데이터그램 프로토콜)</strong></h5>
 <ul>
-  <li>모든 비주요 attribute가 주요 attribute에 대해서 완전 함수적 종속인 경우.</li>
-  <li>후보 키 K와 K에 속하지 않는 속성 A가 있을 때, A를 결정하기 위해 K의 일부가 아닌 K 전체를 참조해야만 하는 경우, 1NF 테이블은 2NF 이다.
+  <li>비연결형 프로토콜</li>
+  <li>IP 데이터그램을 캡슐화하여 보내는 방법과 연결 설정을 하지 않고 보내는 방법을 제공</li>
+  <li>흐름제어, 오류제어 또는 손상된 세그먼트의 수신에 대한 재전송을 하지 않는다.
     <ul>
-      <li>1NF 테이블은 복합 후보 키(한 개 이상의 속성들로 구성된 후보 키)가 없으면 자동으로 2NF이다.</li>
+      <li>사용자 프로세스의 몫이다.</li>
     </ul>
   </li>
-  <li>테이블이 제 2 정규형을 만족하고, 테이블 내의 모든 속성이 기본 키에만 의존하며 다른 후보 키에 의존하지 않는다.</li>
-</ul>
-
-<blockquote>
-  <p><strong>완전 함수적 종속</strong></p>
-  <ul>
-    <li>X -&gt; Y 라고 가정했을 때, X의 어떠한 애트리뷰트라도 제거하면 더 이상 함수적 종속이 성립하지 않는 경우</li>
-    <li>키가 아닌 열들이 각각 후보키에 대해 결정되는 릴레이션</li>
-  </ul>
-</blockquote>
-
-<p>(3) 제 3 정규형(3NF)</p>
-<ul>
-  <li>어떠한 비주요 애트리뷰트도 기본키에 대해서 이행적으로 종속되지 않는 경우</li>
-  <li>기본 키 이외의 다른 컬럼이 그 외 다른 컬럼을 결정할 수 없다.</li>
-</ul>
-
-<blockquote>
-  <p><strong>이행 함수적 종속</strong></p>
-  <ul>
-    <li>X -&gt; Y, Y -&gt; Z인 경우에 의해서 추론될 수 있는 X-&gt; Z의 종속관계</li>
-    <li>비주요 애트리뷰트가 비주요 애트리뷰트에 의해 종속되는 경우가 없는 릴레이션</li>
-  </ul>
-</blockquote>
-
-<p>(4) BCNF(Boyce-Codd) 정규형</p>
-<ul>
-  <li>여러 후보 키가 존재하는 릴레이션에 해당하는 정규화</li>
-  <li>모든 결정자가 후보키 집합게 속한 정규형</li>
-  <li>복잡한 식별자 관계에 의해 발생하는 문제를 해결하기 위해 제 3 정규형을 보완하는 데 의미가 있다.</li>
-  <li>비주요 애트리뷰트가 후보 키의 일부를 결정하는 분해하는 과정을 말한다.
+  <li>포트들을 사용하여 IP 프로토콜에 인터페이스를 제공한다.</li>
+  <li>클라이언트 - 서버 상황에서 특별히 유용하다.
     <ul>
-      <li>일반 컬럼이 후보키를 결정하지 않는 경우</li>
+      <li>클라이언트는 서버로 짧은 요청을 보내고, 짧은 응답을 기대한다.</li>
     </ul>
   </li>
-  <li>조건
-    <ul>
-      <li>모든 제 2 정규형 릴레이션은 제 1 정규형을 갖는다.</li>
-      <li>모든 제 3 정규형 릴레이션은 제 2 정규형을 갖는다.</li>
-      <li>모든 BCNF 정규형 릴레이션은 제 3 정규형을 갖는다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="34-정규화의-장단점"><strong>3.4. 정규화의 장단점</strong></h5>
-<p>(1) 정규화의 장점</p>
-<ul>
-  <li>데이터베이스 변경 시 이상 현상(Anomaly)을 제거할 수 있다.</li>
-  <li>데이터베이스 구조 확장 시 재 디자인을 최소화 할 수 있다.
-    <ul>
-      <li>정규화된 데이터베이스 구조에서는 새로운 데이터 형의 추가로 인한 확장 시, 그 구조를 변경하지 않아도 되거나 일부만 변경해도 된다.
-        <ul>
-          <li>데이터베이스와 연동된 응용 프로그램에 최소한의 영향만을 미치게 되며, 응용프로그램의 생명을 연장시킨다.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>사용자에게 데이터 모델을 더욱 의미있게 제공한다.
-    <ul>
-      <li>정규화된 테이블들 간의 관계들을 현실 세계에서의 개념들과 그 관계들을 반영한다.</li>
-    </ul>
-  </li>
-</ul>
-
-<p>(2) 정규화의 단점</p>
-<ul>
-  <li>릴레이션 분해로 인한 <code class="language-plaintext highlighter-rouge">JOIN</code> 연산이 많아진다.
-    <ul>
-      <li>이로 인해, 질의에 대한 응답 시간이 느려질 수 있다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="35-반정규화de-normalization"><strong>3.5. 반정규화(De-normalization)</strong></h5>
-<ul>
-  <li>조회를 하는 SQL 문장에서 조인이 많이 발생하여 이로 인한 성능저하가 나타나는 경우에 반정규화를 적용하는 전략이 필요하다.</li>
-</ul>
-
-<p>(1) 반정규화(De-normalization, 비정규화)란</p>
-<ul>
-  <li>정규화된 엔티티, 속성, 관계를 시스템의 성능 향상 및 개발과 운영의 단순화를 위해 중복 통합, 분리 등을 수행하는 데이터 모델링 기법 중 하나이다.</li>
-  <li>반정규화가 필요한 경우
-    <ul>
-      <li>디스크 I/O 량이 많아서 조회 시 성능이 저하된다.</li>
-      <li>테이블끼리의 경로가 너무 멀어 조인으로 인한 성능저하가 예상된다.</li>
-      <li>컬럼을 계산하여 조회할 때 성능이 저하될 것이 예상된다.</li>
-    </ul>
-  </li>
-  <li>조회에 대한 처리 성능이 중요하다고 판단될 때 부분적으로 반정규화를 고려하게 된다.</li>
-</ul>
-
-<p>(2) 반정규화의 대상</p>
-<ul>
-  <li>자주 사용되는 테이블에 액세스하는 프로세스의 수가 가장 많고 항상 일정한 범위만을 조회하는 경우</li>
-  <li>테이블에 대량 데이터가 있고 대량의 범위를 자주 처리하여 성능상 이슈가 있는 경우</li>
-  <li>테이블에 지나치게 조인을 많이 사용하게 되어 데이터를 조회하는 것이 기술적으로 어려운 경우</li>
-</ul>
-
-<p>(3) 반정규화 시 주의할 점</p>
-<ul>
-  <li>과도하게 적용하면 데이터의 무결성이 깨질 수 있다.</li>
-  <li>입력, 수정 삭제의 질문에 대한 응답 시간이 늦어질 수 있다.</li>
-</ul>
-
-<h4 id="4-transaction"><strong>4. Transaction</strong></h4>
-
-<h5 id="41-트랜잭션transaction이란-무엇인가"><strong>4.1. 트랜잭션(Transaction)이란 무엇인가</strong></h5>
-<ul>
-  <li>작업의 완전성을 보장해주는 것
-    <ul>
-      <li>논리적인 작업 셋을 모두 완벽하게 처리하거나 또는 처리하지 못할 경우에는 원 상태로 복구하여 작업의 일부만 적용되는 현상이 발생하지 않도록 함</li>
-    </ul>
-  </li>
-  <li>사용자의 입장에서는 논리적 단위로, 시스템의 입장에서는 데이터들을 접근 또는 변경하는 프로그램의 단위</li>
-</ul>
-
-<h5 id="42-트랜잭션과-lock"><strong>4.2. 트랜잭션과 Lock</strong></h5>
-<p>(1) 트랜잭션</p>
-<ul>
-  <li>데이터의 정합성을 보장하기 위한 기능</li>
-  <li>반드시 여러 개의 변경 작업을 수행하는 쿼리가 조합되었을 때만 의미있는 개념은 아님
-    <ul>
-      <li>하나의 논리적인 작업 셋 중 쿼리의 개수와는 상관없이 논리적인 작업 셋 자체가 100% 적용되거나 아무 것도 적용되지 않아야 함을 보장하는 것</li>
-    </ul>
-  </li>
-</ul>
-
-<p>(2) Lock</p>
-<ul>
-  <li>동시성을 제어하기 위한 기능</li>
-  <li>여러 커넥션에서 동시에 동일한 자원을 요청할 경우, 순서대로 한 시점에는 하나의 커넥션만 변경할 수 있게 하는 역할
-    <ul>
-      <li>자원: 레코드나 테이블</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="43-트랜잭션의-특성-acid"><strong>4.3. 트랜잭션의 특성: ACID</strong></h5>
-
-<p>(1) Atomicity: 원자성</p>
-<ul>
-  <li>트랜잭션 중간에 어떠한 문제가 발생한다면, 트랜잭션에 해당하는 어떠한 작업 내용도 수행되어서는 안된다.
-    <ul>
-      <li>아무런 문제가 발생하지 않았을 경우에만 수행되어야 한다.</li>
-    </ul>
-  </li>
-</ul>
-
-<p>(2) Consistency: 일관성</p>
-<ul>
-  <li>트랜잭션이 완료된 다음의 상태에서도 일어나기 전의 상황과 동일하게 데이터의 일관성을 보장해야 한다.</li>
-</ul>
-
-<p>(3) Isolation: 고립성</p>
-<ul>
-  <li>각각의 트랜잭션은 서로 간섭없이 독립적으로 수행되어야 한다.</li>
-</ul>
-
-<p>(4) Durability: 지속성</p>
-<ul>
-  <li>트랜잭션이 정상적으로 종료된 다음에는 영구적으로 데이터베이스에 작업의 결과가 저장되어야 한다.</li>
-</ul>
-
-<h5 id="44-트랜잭션의-상태"><strong>4.4. 트랜잭션의 상태</strong></h5>
-<p><img src="https://github.com/JaeYeopHan/Interview_Question_for_Beginner/blob/master/Database/images/transaction-status.png?raw=true" alt="Alt Text" /></p>
-
-<p>(1) Active: 트랜잭션 활동 상태</p>
-<ul>
-  <li>트랜잭션이 실행 중이며, 동작 중인 상태</li>
-</ul>
-
-<p>(2) Failed: 트랜잭션 실패 상태</p>
-<ul>
-  <li>트랜잭션을 더 이상 정상적으로 진행할 수 없는 상태</li>
-</ul>
-
-<p>(3) Partially Committed: 트랜잭션의 <code class="language-plaintext highlighter-rouge">Commit</code> 명령이 도착한 상태</p>
-<ul>
-  <li>트랜잭션의 <code class="language-plaintext highlighter-rouge">Commit</code> 이전의 <code class="language-plaintext highlighter-rouge">sql</code>문이 수행되고, <code class="language-plaintext highlighter-rouge">Commit</code>만 남은 상태</li>
-</ul>
-
-<p>(4) Commited: 트랜잭션 완료 상태</p>
-<ul>
-  <li>트랜잭션이 정상적으로 완료된 상태</li>
-</ul>
-
-<p>(5) Aborted: 트랜잭션 취소 상태</p>
-<ul>
-  <li>트랜잭션이 취소되고 트랜잭션 실행 이전의 데이터로 돌아간 상태</li>
-</ul>
-
-<blockquote>
-  <p><em><strong>※ Partially Commited와 Commited의 차이점</strong></em></p>
-  <ol>
-    <li><code class="language-plaintext highlighter-rouge">Partially Committed</code>
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">Commit</code> 요청이 들어왔을 때</li>
-        <li>이 후, <code class="language-plaintext highlighter-rouge">Commit</code>을 문제없이 수행할 수 있으면 <code class="language-plaintext highlighter-rouge">Commited</code> 상태, 만약 오류가 발생하면 <code class="language-plaintext highlighter-rouge">Failed</code> 상태가 된다.</li>
-      </ul>
-    </li>
-    <li><code class="language-plaintext highlighter-rouge">Commited</code>
-      <ul>
-        <li><code class="language-plaintext highlighter-rouge">Commit</code>을 정상적으로 완료한 상태</li>
-      </ul>
-    </li>
-  </ol>
-</blockquote>
-
-<h5 id="45-트랜잭션을-사용할-때-주의할-점"><strong>4.5. 트랜잭션을 사용할 때 주의할 점</strong></h5>
-<ul>
-  <li>트랜잭션의 범위를 최소화하여 적용한다.
-    <ul>
-      <li>반드시 필요한 최소의 코드에만 적용하는 것이 좋다.
-        <ul>
-          <li>일반적으로 데이터베이스 커넥션 개수는 제한적인데, 각 단위 프로그램이 커넥션을 소유하는 시간이 길어진다면 그 사용 가능한 여유 개수는 줄어들게 된다.</li>
-          <li>어느 순간 각 단위 프로그램에서 커넥션을 가져가기 위해 기다려야 하는 상황이 발생할 수 도 있다.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="5-교착상태"><strong>5. 교착상태</strong></h4>
-<h5 id="51-교착상태란-무엇인가"><strong>5.1. 교착상태란 무엇인가</strong></h5>
-<ul>
-  <li>교착상태
-    <ul>
-      <li>두 개 이상의 트랜잭션이 특정 자원(테이블 또는 행)의 잠금(Lock)을 획득한 상태에서 다른 트랜잭션이 소유하고 있는 잠금을 요구했을 때, 이를 아무리 기다려도 상황이 바뀌지 않는 상태</li>
-      <li>복수의 트랜잭션 사용 시 발생</li>
-    </ul>
-  </li>
-</ul>
-
-<h5 id="52-교착상태의-예시mysql"><strong>5.2. 교착상태의 예시(Mysql)</strong></h5>
-<ul>
-  <li>MySQL의 MVCC에 따른 특성 때문에 트랜잭션에서 갱신 연산(Insert, Update, Delete)를 실행하면 잠금을 획득하게 된다.</li>
-</ul>
-
-<blockquote>
-  <p><strong>MVCC(Multi-Version Concurrency Control, 다중 버전 동시성 제어)</strong></p>
-  <ul>
-    <li>DBMS가 일반적으로 사용하는 동시성 제어 방식</li>
-    <li>데이터베이스로의 동시 접근을 제공하고 프로그래밍 언어에서 transactional memory를 구현한다.</li>
-    <li>동시성 제어가 없다면, 누군가가 데이터베이스를 읽는 동시에 다른 누군가가 기록을 하려고 하면 반쯤 기록되거나 일관성이 없는 데이터를 보게 될 가능성이 있다.</li>
-  </ul>
-
-  <p><strong>1. 동시성 제어(Concurrency Control)</strong></p>
-
-  <p>(1) 동시성 제어란?</p>
-  <ul>
-    <li>DBMS가 다수의 사용자 사이에서 동시에 작용하는 다중 트랜잭션의 상호간섭 작용에서 Database를 보호하는 것</li>
-    <li>동시성을 허용하면 일관성이 낮아지게 된다. <br />
-<img src="https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&amp;fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FYYwAw%2FbtqAhqpozl2%2FIMdpfbgguBj897K4VkEwy1%2Fimg.png" alt="Alt Text" /></li>
-    <li>다수 사용자의 동시 접속을 위해 DBMS는 동시성을 제어할 수 있도록 Lock 기능과 <code class="language-plaintext highlighter-rouge">SET TRANSACTION ON</code> 명령어를 이용해 트랜잭션의 격리수준(isolation)을 조정할 수 있는 기능 제공</li>
-  </ul>
-
-  <p>(2) 동시성 제어의 목표</p>
-  <ul>
-    <li>동시에 실행되는 트랜잭션 수를 최대화하면서 입력, 수정, 삭제, 검색 시 데이터의 무결성을 유지하는 데 있다.
-      <ul>
-        <li>Locking 메커니즘: 읽기 작업에 공유 Lock을 사용</li>
-      </ul>
-    </li>
-  </ul>
-
-  <p>(3) 동시성 제어 방법</p>
-  <ul>
-    <li>비관적 동시성 제어(Pessimistic Concurrency Control)
-      <ul>
-        <li>사용자들이 같은 데이터를 동시에 수정할 것이라고 가정</li>
-        <li>데이터를 읽는 시점에 Lock을 걸고, 트랜잭션이 완료될 떄까지 이를 유지</li>
-        <li><code class="language-plaintext highlighter-rouge">SELECT</code> 시점에 <code class="language-plaintext highlighter-rouge">Lock</code>을 걸기 때문에, 시스템의 동시성을 심각하게 떨어뜨릴 수 있다.
-          <ul>
-            <li><code class="language-plaintext highlighter-rouge">wait</code> 또는 <code class="language-plaintext highlighter-rouge">nowait</code> 옵션과 함께 사용해야 한다.</li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-    <li>낙관적 동시성 제어(Optimistic Concurrency Control)
-      <ul>
-        <li>사용자들이 같은 데이터를 동시에 수정하지 않을 것이라고 가정</li>
-        <li>데이터를 읽는 시점에 Lock을 걸지 않는 대신, 수정 시점에 값이 변경되었는 지를 반드시 검사한다.</li>
-      </ul>
-    </li>
-  </ul>
-
-  <p>(3) Locking 메커니즘의 문제점</p>
-  <ul>
-    <li>읽기 작업과 쓰기 작업이 서로 방해를 일으키기 떄문에 동시성 문제가 발생</li>
-    <li>데이터 일관성에 문제가 생기는 경우도 있어서 Lock을 더 오래 유지하거나 테이블 레벨의 Lock을 사용해야 하고, 동시성 저하 발생</li>
-    <li>이러한 문제를 해결하기 위해 MVCC 메커니즘이 탄생되었다.</li>
-  </ul>
-
-  <p><strong>2. MVCC(Multi-Version Concurrency Control, 다중 버전 동시성 제어)</strong></p>
-
-  <p>(1) MVCC란</p>
-  <ul>
-    <li>동시 접근을 허용하는 데이터베이스에서 동시성을 제어하기 위해 사용하는 방법 중 하나</li>
-    <li>데이터에 접근하는 사용자는 접근한 시점에서 데이터베이스의 Snapshot을 읽는다.
-      <ul>
-        <li>이 snapshot 데이터에 대한 변경이 완료될 떄(트랜잭션이 <code class="language-plaintext highlighter-rouge">commit</code> 될 때)까지 만들어진 변경사항은 다른 데이터베이스 사용자가 볼 수 없다.</li>
-        <li>이제 사용자가 데이터를 업데이트하면 이전의 데이터를 덮어 씌우는 게 아니라, 새로운 버전의 데이터를 <code class="language-plaintext highlighter-rouge">UNDO</code> 영역에 생성한다.
-          <ul>
-            <li>대신, 이전 버전의 데이터와 비교해서 변경되 내록을 기록한다.</li>
-            <li>이렇게 해서 하나의 데이터에 대해 여러 버전의 데이터가 존재하게 되고, 사용자는 마지막 버전의 데이터를 읽게 된다.</li>
-          </ul>
-        </li>
-      </ul>
-    </li>
-  </ul>
-
-  <p>(2) MVCC의 특징</p>
-  <ul>
-    <li>일반적인 RDBMS 보다 매우 빠르게 작동</li>
-    <li>데이터 버전이 충돌하면 애플리케이션 영역에서 이러한 문제를 해결해야 한다.</li>
-    <li>데이터를 읽기 시작할 때, 다른 사람이 그 데이터를 삭제하거나 수정하더라도 영향을 받지 않고 데이터를 사용할 수 있다.
-      <ul>
-        <li>대신, 사용하지 않는 데이터가 계속 쌓이게 되므로, 데이터를 정리하는 시스템 필요</li>
-      </ul>
-    </li>
-    <li>UNDO 블록 I/O, CR Copy 생성, CR 블록 캐싱과 같은 부가적인 작업의 오버헤드가 발생한다.</li>
-    <li>이러한 구조의 MVCC는 문장수준과 트랜잭션 수준의 읽기 일관성이 존재한다.</li>
-  </ul>
-</blockquote>
-
-<p>트랜잭션 1이 테이블 B의 첫 번째 행의 잠금을 얻고, 트랜잭션 2도 테이블 A의 첫 번째 행의 잠금을 얻었다고 하자.</p>
-
-<p><img src="https://github.com/JaeYeopHan/Interview_Question_for_Beginner/raw/master/Database/images/deadlock.png" alt="Alt Text" /></p>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-4
-5
-</pre></td><td class="rouge-code"><pre><span class="n">Transaction</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">table</span> <span class="n">B</span> <span class="p">(</span><span class="n">i1</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span> <span class="k">primary</span> <span class="k">key</span><span class="p">)</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">innodb</span><span class="p">;</span>
-<span class="n">Transaction2</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="k">create</span> <span class="k">table</span> <span class="n">A</span> <span class="p">(</span><span class="n">i1</span> <span class="nb">int</span> <span class="k">not</span> <span class="k">null</span> <span class="k">primary</span> <span class="k">key</span><span class="p">)</span> <span class="n">engine</span> <span class="o">=</span> <span class="n">innodb</span><span class="p">;</span>
-
-<span class="n">Transaction</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="k">start</span> <span class="n">transaction</span><span class="p">;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">B</span> <span class="k">values</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">Transaction</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="k">start</span> <span class="n">transaction</span><span class="p">;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">A</span> <span class="k">values</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<p>트랜잭션을 commit 하지 않은 채 서로의 첫 번째 행에 대한 잠금을 요청하면, 아래와 같이 Deadlock이 발생한다.</p>
-
-<div class="language-sql highlighter-rouge"><div class="highlight"><pre class="highlight"><code><table class="rouge-table"><tbody><tr><td class="rouge-gutter gl"><pre class="lineno">1
-2
-3
-</pre></td><td class="rouge-code"><pre><span class="n">Transaction</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">A</span> <span class="k">values</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
-<span class="n">Transaction</span> <span class="mi">2</span><span class="o">&gt;</span> <span class="k">insert</span> <span class="k">into</span> <span class="n">B</span> <span class="k">values</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-<span class="n">ERROR</span> <span class="mi">1213</span> <span class="p">(</span><span class="mi">40001</span><span class="p">):</span> <span class="n">Deadlock</span> <span class="k">found</span> <span class="k">when</span> <span class="n">trying</span> <span class="k">to</span> <span class="k">get</span> <span class="k">lock</span><span class="p">;</span> <span class="n">try</span> <span class="n">restarting</span> <span class="n">transaction</span>
-</pre></td></tr></tbody></table></code></pre></div></div>
-
-<h5 id="53-교착상태의-빈도를-낮추는-방법"><strong>5.3. 교착상태의 빈도를 낮추는 방법</strong></h5>
-<ul>
-  <li>트랜잭션을 자주 커밋한다.</li>
-  <li>정해진 순서로 테이블에 접근한다.
-    <ul>
-      <li>위에서 트랜잭션 1이 테이블 B -&gt; A 의 순으로 접근했고, 트랜잭션 2는 테이블 A -&gt; B 의 순으로 접근했다. 트랜잭션들이 동일한 테이블 순으로 접근하게 한다.</li>
-    </ul>
-  </li>
-  <li>읽기 잠금 획득(<code class="language-plaintext highlighter-rouge">SELECT</code> ~ <code class="language-plaintext highlighter-rouge">FOR UPDATE</code>)의 사용을 피한다.</li>
-  <li>한 테이블의 복수 행을 복수의 연결에서 순서 없이 갱신하면 교착상태가 발생하기 쉽다.
-    <ul>
-      <li>이 경우에는 테이블 단위의 잠금을 획득해 갱신을 직렬화하면, 동시성은 떨어지지만 교착상태를 회피할 수 있다.</li>
-    </ul>
-  </li>
-</ul>
-
-<h4 id="6-statement-vs-preparedstatement"><strong>6. Statement vs. PreparedStatement</strong></h4>
-<h5 id="61-javasqlstatement"><strong>6.1. java.sql.Statement</strong></h5>
-<ul>
-  <li>정적 SQL 문을 실행하여, 작성된 결과를 돌려주기 위해 사용한다.</li>
-  <li><code class="language-plaintext highlighter-rouge">Statement</code> 객체마다 1개의 <code class="language-plaintext highlighter-rouge">ResultSet</code> 객체 만이 동시에 오픈 가능하다.
-    <ul>
-      <li>따라서, 1개의 <code class="language-plaintext highlighter-rouge">ResultSet</code> 객체의 <code class="language-plaintext highlighter-rouge">read</code>에 다른 <code class="language-plaintext highlighter-rouge">read</code>가 끼어들면, 각각은 다른 <code class="language-plaintext highlighter-rouge">Statement</code> 객체에 의해 생성된 것이다.</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Statement</code> 인터페이스의 모든 <code class="language-plaintext highlighter-rouge">execution</code> 메소드는 query의 현재 <code class="language-plaintext highlighter-rouge">ResultSet</code> 객체로 오픈된 것이 존재한다면 이를 암묵적으로 닫는다.</li>
-</ul>
-
-<h5 id="62-javasqlpreparedstatement"><strong>6.2. java.sql.PreparedStatement</strong></h5>
-<ul>
-  <li>pre-compile 된 SQL 문을 나타내는 객체이다.
-    <ul>
-      <li>SQL 문은 pre-compile 되어 <code class="language-plaintext highlighter-rouge">PreparedStatement</code> 객체에 포함된다.</li>
-      <li>이 객체는 query를 여러 차페 효율적으로 실행하는 목적으로 사용할 수 있다.</li>
-    </ul>
-  </li>
-  <li><code class="language-plaintext highlighter-rouge">Statement</code> 보다 속도 면에서 더 빠르다.
-    <ul>
-      <li>쿼리를 실행하기 전에 이미 쿼리가 컴파일되어 있으며, 반복 수행의 경우 프리 컴파일된 쿼리를 통해 수행이 이루어지기 때문</li>
-    </ul>
-  </li>
-  <li>쿼리 자체에 조건이 들어가는 <code class="language-plaintext highlighter-rouge">dynamic sql</code>이 사용된다.
-    <ul>
-      <li>파싱 타임을 줄여주는 것은 분명하지만, 이로 인해 performance 저하를 고려해야 한다.</li>
-      <li>하지만, 성능을 고려할 때 시간 부분에서 가장 큰 비중을 차지하는 것은 테이블에서 레코드(row)를 가져오는 과정이며, SQL 문을 파싱하는 시간은 이 시간의 1/10에 불과하다.</li>
-    </ul>
-  </li>
-  <li>SQL Injection 등의 문제를 보완해준다.</li>
-</ul>
-
-<h4 id="7-nosql"><strong>7. NoSQL</strong></h4>
-<h5 id="71-nosql의-정의"><strong>7.1. NoSQL의 정의</strong></h5>
-<p>(1) NoSQL이란</p>
-<ul>
-  <li>관계형 데이터 모델을 지양하며, 대량의 분산된 데이터를 저장하고 조회하는 데 특화되었으며, 스키마 없이 사용 가능하거나 느슨한 스키마를 제공하는 저장소</li>
-</ul>
-
-<p>(2) NoSQL의 특징</p>
-<ul>
-  <li>종류마자 쓰기/읽기 성능 특화, 2차 인덱스 지원, 오토 샤딩 지원과 같은 고유한 특징을 지닌다.</li>
-  <li>대량의 데이터를 빠르게 처리하기 위해 메모리에 임시 저장하고 응답하는 등의 방법을 사용한다.</li>
-  <li>동적인 스케일 아웃을 지원하기도 하며, 가용성을 위해 데이터 복제 등의 방법으로 관계형 세이터베이스가 제공하지 못하는 성능과 특징을 제공한다.</li>
-</ul>
-
-<h5 id="72-cap-이론"><strong>7.2. CAP 이론</strong></h5>
-<ul>
-  <li>Consistency: 일관성</li>
-  <li>Availability: 가용성</li>
-  <li>Partition tolerance: 네트워크 분할 허용성</li>
-</ul>
-
-<p>(1) Consistency: 일관성</p>
-<ul>
-  <li>다중 클라이언트에서 같은 시간에 조회하는 데이터는 항상 동일한 데이터임을 보증하는 것
-    <ul>
-      <li>일관성을 지원하지 않는 NoSQL을 사용한다면, 데이터의 일관성이 느슨하게 처리되어 동일한 데이터가 나타나지 않을 수 있다.
-        <ul>
-          <li>느슨하게 처리된다는 것은 데이터의 변경을 시간의 흐름에 따라 여러 노드에 전파하는 것을 의미한다.</li>
-          <li>최족적으로 일관성이 유지된다고 하여, 최종적 일관성 또는 궁극적 일관성을 지원한다고 한다.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-  <li>데이터 동기화를 위해 사용하는 두 가지 방법
-    <ul>
-      <li>동기식 방법: 데이터의 저장 결과를 클라이언트로 응답하기 전에 모든 노드에 데이터를 저장
-        <ul>
-          <li>느린 응답 시간</li>
-          <li>데이터의 정합성을 보장한다.</li>
-        </ul>
-      </li>
-      <li>비동기식 방법: 메모리나 임시 파일에 기록하고 클라이언트에 먼저 응답한 다음, 특정 이벤트 또는 프로세스를 사용하여 노드로 데이터를 동기화
-        <ul>
-          <li>빠른 응답시간</li>
-          <li>쓰기 노드에 장애가 발생했을 경우 데이터를 손실할 가능성이 있다.</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p>(2) Availability: 가용성</p>
-<ul>
-  <li>모든 클라이언트의 읽기와 쓰기 요청에 대하여 항상 응답이 가능해야 함을 보증하는 것(내고장성)</li>
-  <li>내고장성을 가진 NoSQL은 클러스터 내에서 몇 개의 노드가 망가지더라도 정상적인 서비스가 가능한다.</li>
-  <li>몇몇 NoSQL은 가용성을 보장하기 위해 데이터 복제(Replication)를 사용한다.
-    <ul>
-      <li>동일한 데이터를 다중 노드에 중복 저장하여, 그 중 몇 대의 노드가 고장나도 데이터가 유실되지 않도록 하는 방법</li>
-      <li>데이터 중복 저장 방법
-        <ul>
-          <li>Master-Slave 복제 방법: 동일한 데이터를 가징 저장소를 하나 더 생성하는 방법</li>
-          <li>Peer-to-Peer 복제 방법: 데이터 단위로 중복 저장하는 방법</li>
-        </ul>
-      </li>
-    </ul>
-  </li>
-</ul>
-
-<p>(3) Partition tolerance: 네트워크 분할 허용성</p>
-<ul>
-  <li>지역적으로 분할된 네트워크 환경에서 동작하는 시스템에서 두 지역 간의 내트워크가 단절되거나 네트워크 데이터 유실이 일어나더라도 각 지역 내에 시스템은 정상적으로 동작해야 하는 것</li>
-</ul>
-
-<h5 id="72-저장-방식에-따른-분류"><strong>7.2. 저장 방식에 따른 분류</strong></h5>
-<ul>
-  <li>Key-Value Model</li>
-  <li>Documnet Model</li>
-  <li>Column Model</li>
-  <li>Graph MOdel</li>
-</ul>
-
-<p>(1) Key-Value Model</p>
-<ul>
-  <li>특징
-    <ul>
-      <li>가장 기본적인 형태의 NoSQL</li>
-      <li>키 하나로 데이터 하나를 저장하고 조회할 수 있는 단일 키-값 구조를 갖는다.</li>
-      <li>단순한 저장구조로 인하여 복잡한 조회 연산은 지원하지 않는다.</li>
-      <li>고속 읽기와 쓰기에 최적화된 경우가 많다.</li>
-    </ul>
-  </li>
-  <li>활용
-    <ul>
-      <li>사용자의 프로필 정보, 웹 서버 클러스터를 위한 세션 정보, 장바구니 정보, URI 단축 정보 저장 등</li>
-    </ul>
-  </li>
-  <li>단점
-    <ul>
-      <li>하나의 서비스 요청에 다수의 데이터 조회 및 수정 연산이 발생하면 트랜잭션 처리가 불가능하여 데이터 정합성을 보장할 수 없다.</li>
-    </ul>
-  </li>
+  <li>코드가 간단할 뿐만 아니라, TCP처럼 초기설정(initial setup)이 요구되는 프로토콜보다 적은 메시지가 요구된다.
+만약 요청 또는 응답이 손실된다면, 클라이언트는 time out 되고, 다시 시도할 수 있으면 된다.</li>
   <li>예시
     <ul>
-      <li>Redis</li>
+      <li>DNS
+        <ul>
+          <li>어떤 호스트 네임의 IP 주소를 찾아야 하는 프로그램은 DNS 서버로 호스트 네임을 포함한 UDP 패킷을 보낸다. 이 서버는 호스트의 IP 주소를 포함한 UDP 패킷을 응답한다.</li>
+          <li>사전에 설정이 필요하지 않으며, 그 후에 해제가 필요하지 않다.</li>
+        </ul>
+      </li>
     </ul>
   </li>
 </ul>
 
-<p>(2) Document Model</p>
+<h5 id="33-tcptransmission-control-protocol-전송제어-프로토콜"><strong>3.3. TCP(Transmission Control Protocol, 전송제어 프로토콜)</strong></h5>
 <ul>
-  <li>특징
+  <li>대부분의 인터넷 응용 분야들이 신뢰성과 순차적인 전달을 요구하는 필요성으로 인해 탄생</li>
+  <li>신뢰성이 없는 인터넷을 통해 종단간에 신뢰성 있는 바이트 스트림을 전송하도록 특별히 설계되었다.</li>
+  <li>송신자와 수신자 모두가 소켓이라고 부르는 종단점을 생성함으로써 이루어진다.</li>
+  <li>TCP에서 연결 설정(connection establishment)는 <code class="language-plaintext highlighter-rouge">3-way handshake</code>를 통해 이루어진다.</li>
+  <li>모든 TCP 연결은 전이중(full-duplex), 점대점(point-to-point) 방식이다.
     <ul>
-      <li>키-값 모델을 개념적으로 확장한 구조</li>
-      <li>하나의 키에 하나의 구조화된 문서를 저장하고 조회한다.</li>
-      <li>논리적인 데이터 저장과 조회 방법이 관계형 데이터베이스와 유사하다.</li>
-      <li>키는 문서에 대한 ID로 표현된다.</li>
-      <li>저장된 문서를 컬렉션으로 관리하며, 문서 저장과 동시에 문서 ID에 대한 인덱스를 생성한다.
+      <li>전이중(full-duplex): 전송이 양방향으로 동시에 일어날 수 있음</li>
+      <li>점대점(point-to-point): 각 연결이 정확히 2 개의 종단점을 가지고 있음</li>
+    </ul>
+  </li>
+  <li>멀티캐스팅이나 브로드캐스팅을 지원하지 않는다.</li>
+</ul>
+
+<h4 id="4-http와-https"><strong>4. HTTP와 HTTPS</strong></h4>
+<h5 id="41-http의-문제점"><strong>4.1. HTTP의 문제점</strong></h5>
+<ul>
+  <li>HTTP는 평문 통신이기 때문에 도청이 가능하다.</li>
+  <li>통신 상대를 확인하지 않기 때문에 위장이 가능하다.</li>
+  <li>완전성을 증명할 수 없기 때문에 변조가 가능하다.</li>
+</ul>
+
+<p>(1) TCP/IP는 도청 가능한 네트워크이다.</p>
+<ul>
+  <li>TCP/IP 구조의 통신은 전부 통신 경로 상에서 엿볼 수 있다.
+    <ul>
+      <li>패킷을 수집하는 것만으로도 도청할 수 있다.</li>
+      <li>평문으로 통신을 할 경우, 메시지의 의미를 파악할 수 있기 때문에 암호화하여 통신해야 한다.</li>
+    </ul>
+  </li>
+  <li>보완 방법
+    <ul>
+      <li>통신 자체를 암호화
         <ul>
-          <li>문서 ID에 대한 인덱스를 사용하여 O(1) 시간 안에 문서를 조회할 수 있다.</li>
+          <li>SSL(Secure Socket Layer) or TLS(Transport Layer Security)라는 다른 프로토콜을 조합함으로써 HTTP 통신 내용을 암호화할 수 있다(HTTPS, Http over SSL).</li>
         </ul>
       </li>
-      <li>B-tree 인덱스를 사용하여 2차 인덱스 생성</li>
-    </ul>
-  </li>
-  <li>활용
-    <ul>
-      <li>중앙 집중식 로그 저장, 타임 라인 저장, 통계 정보 저장 등</li>
-    </ul>
-  </li>
-  <li>단점
-    <ul>
-      <li>2차 인덱스 생성시 사용하는 B-tree 인덱스는 크기가 커질수록 새로운 데이터를 입력하거나 삭제할 때 성능이 저하된다.
+      <li>콘텐츠를 암호화
         <ul>
-          <li>읽기와 쓰기 비율이 7:3 정도일 때 가장 좋은 성능을 보인다.</li>
+          <li>HTTP를 사용해서 운반하는 내용인, HTTP 메시지에 포함되는 콘텐츠만 암호화하는 것이다.</li>
+          <li>암호화해서 전송하면 받은 측에서는 그 암호를 해독하여 출력하는 처리가 필요하다.</li>
         </ul>
       </li>
-    </ul>
-  </li>
-  <li>예시
-    <ul>
-      <li>MongoDB</li>
     </ul>
   </li>
 </ul>
 
-<p>(3) Column Model</p>
+<p>(2) 통신 상대를 확인하지 않기 때문에 위장이 가능하다.</p>
 <ul>
-  <li>특징
+  <li>HTTP에 의한 통신에서는 상대가 누구인지 확인하는 처리가 없기 때문에 누구든지 request를 보낼 수 있다.</li>
+  <li>IP 주소나 포트 등에서 그 웹 서버에 액세스 제한이 없는 경우, request가 오면 상대가 누구든지 무언가의 response를 반환한다.</li>
+  <li>문제점
     <ul>
-      <li>하나의 키에 여러 개의 컬럼 이름과 컬럼 값의 쌍으로 이루어진 데이터를 저장하고 조회한다.</li>
-      <li>모든 컬럼은 항상 타임 스탬프 값과 함꼐 저장된다.</li>
-      <li>Row key, Column key, Column Family와 같은 빅테이블 개념이 공통적으로 사용된다.</li>
-      <li>저장의 기본 단위는 컬럼으로, 컬럼은 컬럼 이름과 값, 타임스탬프로 구성된다.
+      <li>리퀘스트를 보낸 곳의 웹 서버가 원래 의도한 response를 보내야 하는 웹 서버인지를 확인할 수 없다.</li>
+      <li>response를 반환한 곳의 클라이언트가 원래 의도한 request를 보낸 클라이언트인지 확인할 수 없다.</li>
+      <li>통신하고 있는 상대가 접근이 허가된 상대인지를 확인할 수 없다.</li>
+      <li>어디에서 누가 request 했는 지 확인할 수 없다.</li>
+      <li>의미없는 request도 수신한다(Dos 공격을 방지할 수 없다).</li>
+    </ul>
+  </li>
+  <li>보완 방법
+    <ul>
+      <li>SSL 사용</li>
+    </ul>
+  </li>
+</ul>
+
+<blockquote>
+  <p><strong>SSL</strong> <br />
+상대를 확인하는 수단으로 증명서를 제공한다.</p>
+  <ul>
+    <li>증명서는 신뢰할 수 있는 제 3자 기관에 의해 발행되는 것이기 때문에, 서버나 클라이언트가 실재한다는 사실을 증명한다.</li>
+    <li>이 증명서를 이용함으로써 통신 상대가 내가 통신하고자 하는 서버임을 나타내고 이용자는 개인 정보 누설 등의 위험성이 줄어들게 된다.</li>
+    <li>이 증명서로 본인 확인을 하고 웹 사이트 인증에서도 이용할 수 있다.</li>
+  </ul>
+</blockquote>
+
+<p>(3) 완전성을 증명할 수 없기 때문에 변조가 가능하다.</p>
+<ul>
+  <li>완전성: 정보의 정확성</li>
+  <li>서버 또는 클라이언트에서 수신한 내용이 송신측에서 보낸 내용과 일치한다는 것을 보장할 수 없다.</li>
+  <li>request나 response가 발신되고 나서 상대가 수신하는 사이에 누군가에 의해 변조되어도 이를 알 수 없다.
+    <ul>
+      <li>중간자 공격(Main-in-the-Middle): 공격자가 도중에 request나 response를 빼앗아 변조하는 공격</li>
+    </ul>
+  </li>
+  <li>보완 방법
+    <ul>
+      <li>HTTPS 사용</li>
+    </ul>
+  </li>
+</ul>
+
+<h5 id="42-https"><strong>4.2. HTTPS</strong></h5>
+<p>HTTP에 암호화와 인증, 그리고 완전성 보호를 더한 HTTPS</p>
+<ul>
+  <li>SSL의 껍질을 덮어쓴 HTTPS
+    <ul>
+      <li>새로운 애플리케이션 계층의 프로토콜이 아니다.</li>
+      <li>HTTP 통신하는 소켓 부분을 SSL(Secure Socket Layer) or TLS(Transport Layer Security)라는 프로토콜으로 대체하는 것 뿐이다.</li>
+    </ul>
+  </li>
+  <li>TCP와 직접 통신하는 HTTP와 다르게, HTTPS에서 HTTP는 SSL과 통신하게 되고 이 SSL이 TCP와 통신하게 된다.</li>
+  <li>SSL을 사용한 HTTPS는 암호화와 증명서, 안전성 보호를 이용할 수 있게 된다.</li>
+  <li>HTTPS의 SSL에서는 공통키 암호화 방식과 공개키 암호화 방식을 혼합한 하이브리드 암호 시스템을 이용한다.
+    <ul>
+      <li>공통키를 공개키 암호화 방식으로 교환한 다음에 그 이후의 통신은 공통키 암호를 사용하는 방식</li>
+    </ul>
+  </li>
+</ul>
+
+<h4 id="5-dns-round-robin-방식"><strong>5. DNS Round Robin 방식</strong></h4>
+<h5 id="51-dns-round-robin-방식의-문제점"><strong>5.1. DNS Round Robin 방식의 문제점</strong></h5>
+<ul>
+  <li>서버의 수 만큼 공인 IP 주소가 필요하다.
+    <ul>
+      <li>부하 분산을 위해 서버의 대수를 늘리려면 그 만큼의 공인 IP가 필요하다.</li>
+    </ul>
+  </li>
+  <li>균등하게 분산되지 않는다.
+    <ul>
+      <li>스마트폰의 접속은 캐리어 게이트웨이라고 하는 프록시 서버를 공유한다. 프록시 서버에는 이름변환 결과가 일정 시간 동안 캐싱되므로, 같은 프록시 서버를 경유하는 접속은 항상 같은 서버로 접속된다.</li>
+      <li>PC용 웹 브라우저도 DNS 질의 결과를 캐싱하기 때문에 균등하게 부하분산 되지 않는다.
         <ul>
-          <li>로우(Row): 이러한 컬럼들의 집합</li>
-          <li>로우키(Row key): 각 로우를 유일하게 식별하는 값</li>
-          <li>키 스페이스(Key Space): 이러한 로우들의 집합</li>
+          <li>DNS 레코드의 TTL 값을 짧게 설정함으로써 어느 정도 해소가 되지만, TTL에 따라 캐시를 해제하는 것은 아니므로 반드시 주의가 필요하다.</li>
         </ul>
       </li>
-      <li>쓰기와 읽기 중 쓰기에 더 특화되어 있다.</li>
-      <li>데이터를 먼저 커밋 로그와 메모리에 저장한 후 응답하기 때문에 빠른 응답 속도를 제공한다.
+    </ul>
+  </li>
+  <li>서버가 다운되도 확인 불가하다.
+    <ul>
+      <li>DNS 서버는 웹 서버의 부하나 접속 수 등의 상황에 따라 질의 결과를 제어할 수 없다.</li>
+      <li>웹 서버의 부하가 높아서 응답이 느려지거나 접속 수가 꽉 차서 접속을 처리할 수 없는 상황인지를 전혀 감지할 수 없기 때문에 어떠한 원인으로 다운되더라도 이를 검출하지 못하고 유저들에게 제공한다.
         <ul>
-          <li>읽기 연산 대비 쓰기 연산이 많은 서비스나 빠른 시간 안에 대량의 데이터를 입력하고 조회하는 서비스를 구현할 때 가장 좋은 성능을 보인다.</li>
+          <li>이 때문에 유저들은 간혹 다운된 서버로 연결이 되기도 한다.</li>
         </ul>
       </li>
     </ul>
   </li>
-  <li>활용
-    <ul>
-      <li>채팅 내용 저장, 실시간 분석을 위한 데이터 저장소 등의 서비스 구현</li>
-    </ul>
-  </li>
-  <li>예시
-    <ul>
-      <li>구글의 빅테이블</li>
-    </ul>
-  </li>
+</ul>
+
+<h5 id="52-dns-스케줄링-알고리즘"><strong>5.2. DNS 스케줄링 알고리즘</strong></h5>
+<p>(1) Weighted Round Robin(WRR)</p>
+<ul>
+  <li>각각의 웹 서버에 가중치를 가미해서 분산 비율을 변경한다.</li>
+  <li>가중치가 큰 서버일수록 빈번하게 선택되므로, 처리 능력이 높은 서버는 높게 설정하는 것이 좋다.</li>
+</ul>
+
+<p>(2) Least connection</p>
+<ul>
+  <li>접속 클라이언트의 수가 가장 적은 서버를 선택한다.</li>
+  <li>로드밸런서에서 실시간으로 connection 수를 관리하거나 각 서버에서 주기적으로 알려주는 것이 필요하다.</li>
+</ul>
+
+<h4 id="6-웹-통신의-큰-흐름"><strong>6. 웹 통신의 큰 흐름</strong></h4>
+<p>Chrome을 실행시켜 주소창에 특정 URL 값을 입력했을 때 일어나는 일</p>
+
+<h5 id="61-in-브라우저"><strong>6.1. in 브라우저</strong></h5>
+<ul>
+  <li>url에 입력된 값을 브라우저 내부에서 결정된 규칙에 따라 그 의미를 조사한다.</li>
+  <li>조사된 의미에 따라 HTTP Request 메시지를 만든다.</li>
+  <li>만들어진 메시지를 웹 서버로 전송한다.</li>
+</ul>
+
+<p>이 때 만들어진 메시지 전송은 브라우저가 직접하는 것이 아니다. 브라우저는 메시지를 네트워크에 송출하는 기능이 없으므로, OS에 의뢰하여 메시지를 전달한다. <br />
+단, OS에 송신을 의뢰할 때는 도메인 명이 아니라 ip 주소로 메시지를 받을 상대를 지정해야 하는데, 이 과정에서 DNS 서버를 조회해야 한다.</p>
+
+<h5 id="62-in-프로토콜-스택-lan-어댑터"><strong>6.2. in 프로토콜 스택, LAN 어댑터</strong></h5>
+<ul>
+  <li>프로토콜 스택(운영체제에 내장된 네트워크 제어용 소프트웨어)이 브라우저로부터 메시지를 받는다.</li>
+  <li>브라우저로부터 받은 메시지를 패킷 속에 저장한다.</li>
+  <li>수신처 주소 등의 제어정보를 덧붙인다.</li>
+  <li>패킷을 LAN 어댑터에 넘긴다.</li>
+  <li>LAN 어댑터는 다음 Hop의 MAC 주소를 붙인 프레임을 전기신호로 변환시킨다.</li>
+  <li>신호를 LAN 케이블에 송출시킨다.</li>
+</ul>
+
+<p>프로토콜 스택은 통신 중 오류가 발생했을 때, 이 제어 정보를 사용하여 고쳐 보내거나 각종 상황을 조절하는 등 다양한 역할을 하게 된다. <br />
+네트워크 세계에는 비서가 있어서 우리가 비서에게 물건만 건네주면, 받는 사람의 주소와 각종 유의사항을 써준다(프로토콜 스택 = 비서).</p>
+
+<h5 id="63-in-허브-스위치-라우터"><strong>6.3. in 허브, 스위치, 라우터</strong></h5>
+<ul>
+  <li>LAN 어댑터가 송신한 프레임은 스위칭 허브를 경유하여 인터넷 접속용 라우터에 도착한다.</li>
+  <li>라우터는 패킷을 프로바이더(통신사)에게 전달한다.</li>
+  <li>인터넷으로 들어가게 된다.</li>
+</ul>
+
+<h5 id="64-in-액세스-회선-프로바이더"><strong>6.4. in 액세스 회선, 프로바이더</strong></h5>
+<ul>
+  <li>패킷은 인터넷의 입구에 있는 액세스 회선(통신 회선)에 의해 POP(Point Of Presence, 통신사용 라우터)까지 운반된다.</li>
+  <li>POP를 거쳐 인터넷의 핵심부로 들어가게 된다.</li>
+  <li>수 많은 고속 라우터들 사이로 패킷이 목적지를 향해 흘러가게 된다.</li>
+</ul>
+
+<h5 id="65-in-방화벽-캐시서버"><strong>6.5. in 방화벽, 캐시서버</strong></h5>
+<ul>
+  <li>패킷은 인터넷 핵심부를 통과하여 웹 서버측의 LAN에 도착한다.</li>
+  <li>기다리고 있던 방화벽이 도착한 패킷을 검사한다.</li>
+  <li>패킷이 웹 서버까지 가야하는지, 아니면 말아야 하는 지를 판단하는 캐시서버가 존재한다.</li>
+</ul>
+
+<p>굳이 서버까지 가지 않아도 되는 경우를 골라낸다. 액세스 한 페이지의 데이터가 캐시서버에 있으면 웹 서버에 의뢰하지 않고도 바로 그 값을 읽을 수 있다. 페이지의 데이터 중에 다시 이용할 수 있는 것이 있으면 캐시 서버에 저장한다.</p>
+
+<h5 id="66-in-웹서버"><strong>6.6. in 웹서버</strong></h5>
+<ul>
+  <li>패킷이 물리적인 웹 서버에 도착하면, 웹 서버의 프로토콜 스택은 패킷을 추출하여 메시지를 복원하고 웹 서버 애플리케이션에게 넘긴다.</li>
+  <li>메시지를 받은 웹 서버 애플리케이션은 요청 메시지에 따른 데이터를 응답 메시지에 넣어 클라이언트로 회송한다.</li>
+  <li>왔던 방식대로 응답 메시지가 클라이언트에게 전달된다.</li>
 </ul>
 
 <p>참고</p>
 <ul>
   <li><a href="https://github.com/JaeYeopHan/Interview_Question_for_Beginner">https://github.com/JaeYeopHan/Interview_Question_for_Beginner</a></li>
-  <li><a href="https://mangkyu.tistory.com/53">https://mangkyu.tistory.com/53</a></li>
-  <li><a href="https://ko.wikipedia.org/wiki/다중_버전_동시성_제어">https://ko.wikipedia.org/wiki/다중_버전_동시성_제어</a></li>
-  <li><a href="https://celdee.tistory.com/312">https://celdee.tistory.com/312</a></li>
-  <li><a href="https://joosjuliet.github.io/index/">https://joosjuliet.github.io/index/</a></li>
-  <li><a href="https://mongyang.tistory.com/75">https://mongyang.tistory.com/75</a></li>
-  <li><a href="https://wkdtjsgur100.github.io/anomaly/">https://wkdtjsgur100.github.io/anomaly/</a></li>
-  <li><a href="https://chokyuhwan.tistory.com/22">https://chokyuhwan.tistory.com/22</a></li>
-  <li><a href="https://ko.wikipedia.org/wiki/제1정규형">https://ko.wikipedia.org/wiki/제1정규형</a></li>
-  <li><a href="https://ko.wikipedia.org/wiki/제2정규형">https://ko.wikipedia.org/wiki/제2정규형</a></li>
-  <li><a href="https://ko.wikipedia.org/wiki/제3정규형">https://ko.wikipedia.org/wiki/제3정규형</a></li>
-  <li><a href="https://3months.tistory.com/193">https://3months.tistory.com/193</a></li>
+  <li><a href="https://blog.outsider.ne.kr/888">https://blog.outsider.ne.kr/888</a></li>
+  <li><a href="https://asfirstalways.tistory.com/356">https://asfirstalways.tistory.com/356</a></li>
+  <li><a href="https://d2.naver.com/helloworld/47667">https://d2.naver.com/helloworld/47667</a></li>
 </ul>
 
   </div>

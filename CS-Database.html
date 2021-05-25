@@ -252,7 +252,7 @@
 <p>(1) Simple level Index <br />
 <img src="https://joosjuliet.github.io/images/2019-01-07-index/sparse_index.png" alt="Alt Text" /></p>
 <ul>
-  <li>정렬되어 있기 떄문에 이진 탐색에 좋다.</li>
+  <li>정렬되어 있기 때문에 이진 탐색에 좋다.</li>
   <li><code class="language-plaintext highlighter-rouge">where key = 1003 인덱스가 걸린 컬럼의 where문 = (equality)(equality search)</code>이 빠르다.</li>
   <li>메모리에 index table의 데이터 크기가 본 table의 것보다 작기 때문에 테이블을 탐색할 수 있는 양도 더 늘어나게 된다. 따라서 더 많은 양을 한 번에 탐색할 수 있기 때문에 탐색 시간이 단축된다.</li>
   <li>Primary Index(기본 인덱스): 인덱스를 primary key에 생성</li>
@@ -348,7 +348,7 @@
       <li>성별: 남/녀</li>
       <li>이름에 대해서만 인덱스를 생성하면 효율적이다.
         <ul>
-          <li>성별이나 나이에 대해 인덱스를 생성하면, 10000 레코드에 해당하는 테이블에 대해서 2000 단위로 성별을 인덱스를 생성했다고 가정했을 떄 값의 range가 적은 성별은 인덱스를 읽고 다시 한 번 디스크 I/O가 발생하기 때문이다.</li>
+          <li>성별이나 나이에 대해 인덱스를 생성하면, 10000 레코드에 해당하는 테이블에 대해서 2000 단위로 성별을 인덱스를 생성했다고 가정했을 때 값의 range가 적은 성별은 인덱스를 읽고 다시 한 번 디스크 I/O가 발생하기 때문이다.</li>
         </ul>
       </li>
     </ul>
@@ -428,7 +428,7 @@
 <blockquote>
   <p><strong>무손실 분해(Lossy decomposition)</strong></p>
   <ul>
-    <li>하나의 릴레이션을 분해하고 다시 조인연산을 했을 떄 데이터 손실이 없는 것</li>
+    <li>하나의 릴레이션을 분해하고 다시 조인연산을 했을 때 데이터 손실이 없는 것</li>
   </ul>
 </blockquote>
 
@@ -729,7 +729,7 @@
     <li>비관적 동시성 제어(Pessimistic Concurrency Control)
       <ul>
         <li>사용자들이 같은 데이터를 동시에 수정할 것이라고 가정</li>
-        <li>데이터를 읽는 시점에 Lock을 걸고, 트랜잭션이 완료될 떄까지 이를 유지</li>
+        <li>데이터를 읽는 시점에 Lock을 걸고, 트랜잭션이 완료될 때까지 이를 유지</li>
         <li><code class="language-plaintext highlighter-rouge">SELECT</code> 시점에 <code class="language-plaintext highlighter-rouge">Lock</code>을 걸기 때문에, 시스템의 동시성을 심각하게 떨어뜨릴 수 있다.
           <ul>
             <li><code class="language-plaintext highlighter-rouge">wait</code> 또는 <code class="language-plaintext highlighter-rouge">nowait</code> 옵션과 함께 사용해야 한다.</li>
@@ -747,7 +747,7 @@
 
   <p>(3) Locking 메커니즘의 문제점</p>
   <ul>
-    <li>읽기 작업과 쓰기 작업이 서로 방해를 일으키기 떄문에 동시성 문제가 발생</li>
+    <li>읽기 작업과 쓰기 작업이 서로 방해를 일으키기 때문에 동시성 문제가 발생</li>
     <li>데이터 일관성에 문제가 생기는 경우도 있어서 Lock을 더 오래 유지하거나 테이블 레벨의 Lock을 사용해야 하고, 동시성 저하 발생</li>
     <li>이러한 문제를 해결하기 위해 MVCC 메커니즘이 탄생되었다.</li>
   </ul>
@@ -759,7 +759,7 @@
     <li>동시 접근을 허용하는 데이터베이스에서 동시성을 제어하기 위해 사용하는 방법 중 하나</li>
     <li>데이터에 접근하는 사용자는 접근한 시점에서 데이터베이스의 Snapshot을 읽는다.
       <ul>
-        <li>이 snapshot 데이터에 대한 변경이 완료될 떄(트랜잭션이 <code class="language-plaintext highlighter-rouge">commit</code> 될 때)까지 만들어진 변경사항은 다른 데이터베이스 사용자가 볼 수 없다.</li>
+        <li>이 snapshot 데이터에 대한 변경이 완료될 때(트랜잭션이 <code class="language-plaintext highlighter-rouge">commit</code> 될 때)까지 만들어진 변경사항은 다른 데이터베이스 사용자가 볼 수 없다.</li>
         <li>이제 사용자가 데이터를 업데이트하면 이전의 데이터를 덮어 씌우는 게 아니라, 새로운 버전의 데이터를 <code class="language-plaintext highlighter-rouge">UNDO</code> 영역에 생성한다.
           <ul>
             <li>대신, 이전 버전의 데이터와 비교해서 변경되 내록을 기록한다.</li>
