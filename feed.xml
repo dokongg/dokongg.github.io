@@ -1,4 +1,292 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-25T17:08:23+00:00</updated><id>/feed.xml</id><title type="html">Dokongg Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Part 1-3. 네트워크</title><link href="/CS-Network" rel="alternate" type="text/html" title="Part 1-3. 네트워크" /><published>2021-05-24T00:00:00+00:00</published><updated>2021-05-24T00:00:00+00:00</updated><id>/CS-Network</id><content type="html" xml:base="/CS-Network">&lt;ol&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="3.9.1">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-26T08:47:53+00:00</updated><id>/feed.xml</id><title type="html">Dokongg Blog</title><subtitle>Write an awesome description for your new site here. You can edit this line in _config.yml. It will appear in your document head meta (for Google search results) and in your feed.xml site description.</subtitle><entry><title type="html">Part 1-7. 알고리즘</title><link href="/CS-Algorithms" rel="alternate" type="text/html" title="Part 1-7. 알고리즘" /><published>2021-05-26T00:00:00+00:00</published><updated>2021-05-26T00:00:00+00:00</updated><id>/CS-Algorithms</id><content type="html" xml:base="/CS-Algorithms">&lt;ol&gt;
+  &lt;li&gt;&lt;strong&gt;Sorting Algoritms&lt;/strong&gt; &lt;br /&gt;
+1.1. 버블 정렬  &lt;br /&gt;
+1.2. 선택 정렬 &lt;br /&gt;
+1.3. 삽입 정렬 &lt;br /&gt;
+1.4. 병합 정렬 &lt;br /&gt;
+1.5. 힙 정렬 &lt;br /&gt;
+1.6. 퀵 정렬&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;1-sorting-algorithms&quot;&gt;&lt;strong&gt;1. Sorting Algorithms&lt;/strong&gt;&lt;/h4&gt;
+
+&lt;table&gt;
+  &lt;thead&gt;
+    &lt;tr&gt;
+      &lt;th&gt;종류&lt;/th&gt;
+      &lt;th&gt;Best&lt;/th&gt;
+      &lt;th&gt;Average&lt;/th&gt;
+      &lt;th&gt;Worst&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;
+    &lt;tr&gt;
+      &lt;td&gt;버블 정렬&lt;/td&gt;
+      &lt;td&gt;O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/td&gt;
+      &lt;td&gt;O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/td&gt;
+      &lt;td&gt;O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;선택 정렬&lt;/td&gt;
+      &lt;td&gt;O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/td&gt;
+      &lt;td&gt;O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/td&gt;
+      &lt;td&gt;O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;삽입 정렬&lt;/td&gt;
+      &lt;td&gt;O(n)&lt;/td&gt;
+      &lt;td&gt;O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/td&gt;
+      &lt;td&gt;O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;병합 정렬&lt;/td&gt;
+      &lt;td&gt;O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/td&gt;
+      &lt;td&gt;O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/td&gt;
+      &lt;td&gt;O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;힙 정렬&lt;/td&gt;
+      &lt;td&gt;O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/td&gt;
+      &lt;td&gt;O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/td&gt;
+      &lt;td&gt;O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr&gt;
+      &lt;td&gt;퀵 정렬&lt;/td&gt;
+      &lt;td&gt;O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/td&gt;
+      &lt;td&gt;O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/td&gt;
+      &lt;td&gt;O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;h5 id=&quot;11-버블-정렬&quot;&gt;&lt;strong&gt;1.1. 버블 정렬&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 개념&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;n개의 원소를 가진 배열을 정렬할 때, In-place sort로 인접한 두 개의 데이터를 비교해가면서 정렬을 진행하는 방식&lt;/li&gt;
+  &lt;li&gt;가장 큰 값을 배열의 맨 끝에다 이동시키면서 정렬하고자 하는 원소의 개수만큼을 두 번 반복하게 된다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 특징&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장점
+    &lt;ul&gt;
+      &lt;li&gt;구현이 매우 간단하다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;단점
+    &lt;ul&gt;
+      &lt;li&gt;순서에 맞지 않는 요소를 인접한 요소와 교환한다.&lt;/li&gt;
+      &lt;li&gt;하나의 요소가 가장 왼쪽에서 가장 오른쪽으로 이동하기 위해서는 배열에서 모든 다른 요소들과 교환되어야 한다.
+        &lt;ul&gt;
+          &lt;li&gt;특히, 특정 요소가 최종 정렬 위치에 이미 있는 경우라도 교환되는 일이 일어난다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;일반적으로 자료의 교환 작업(SWAP)이 자료의 이동 작업(MOVE)보다 더 복잡하기 때문에 버블 정렬은 단순한 알고리즘에도 불구하고 거의 쓰이지 않는다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) 시간복잡도&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Best: O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/li&gt;
+  &lt;li&gt;Average: O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/li&gt;
+  &lt;li&gt;Worst: O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;12-선택-정렬&quot;&gt;&lt;strong&gt;1.2. 선택 정렬&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 개념&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;n개의 원소를 가진 배열을 정렬할 때, 계속해서 바꾸는 것이 아니라 비교하고 있는 값의 index를 저장해둔다. 그리고 최종적으로 한 번만 바꿔 준다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 특징&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장점
+    &lt;ul&gt;
+      &lt;li&gt;자료의 이동 횟수가 미리 결정된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;단점
+    &lt;ul&gt;
+      &lt;li&gt;안정성을 만족하지 않는다.
+        &lt;ul&gt;
+          &lt;li&gt;값이 같은 레코드가 있다면 상대적인 위치가 변경될 수 있다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) 시간복잡도&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Best: O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/li&gt;
+  &lt;li&gt;Average: O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/li&gt;
+  &lt;li&gt;Worst: O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;13-삽입-정렬&quot;&gt;&lt;strong&gt;1.3. 삽입 정렬&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 개념&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;n개의 원소를 가진 배열을 정렬할 때 i번째를 정렬할 순서라고 가정하면, 0부터 i-1까지의 원소들은 정렬되어있다고 가정한다. 두 번째 자료부터 시작하여 그 앞(왼쪽)의 자료들과 비교하여 삽입할 위치를 지정한 후 자료를 뒤로 옮기고 지정한 자리에 자료를 삽입하여 정렬한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 특징&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장점
+    &lt;ul&gt;
+      &lt;li&gt;안전한 정렬 방법&lt;/li&gt;
+      &lt;li&gt;레코드의 수가 적을 경우 알고리즘 자체가 매우 간단하므로 다른 복잡한 정렬 방법보다 유리할 수 있다.&lt;/li&gt;
+      &lt;li&gt;대부분의 레코드가 이미 정렬되어 있는 경우에 매우 효율적일 수 있다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;단점
+    &lt;ul&gt;
+      &lt;li&gt;비교적 많은 레코드들의 이동을 포함한다.&lt;/li&gt;
+      &lt;li&gt;레코드 수가 많고 레코드 크기가 클 경우에 적합하지 않다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) 시간복잡도&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Best: O(n)&lt;/li&gt;
+  &lt;li&gt;Average: O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/li&gt;
+  &lt;li&gt;Worst: O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;14-병합-정렬&quot;&gt;&lt;strong&gt;1.4. 병합 정렬&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 개념&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;정렬하고자 하는 배열의 크기를 작은 단위로 나누어, 정렬하고자 하는 배열의 크기를 줄이는 원리를 사용한다. Divide and conquer(분할정복)이라는 개념을 사용한다.&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;&lt;strong&gt;Divide and conquer(분할정복)&lt;/strong&gt;&lt;/p&gt;
+  &lt;ul&gt;
+    &lt;li&gt;문제를 작은 2개의 문제로 분리하고 각각을 해결한 다음, 결과를 모아서 원래의 문제를 해결하는 전략&lt;/li&gt;
+    &lt;li&gt;대게 순환 호출을 이용하여 구현한다.&lt;/li&gt;
+  &lt;/ul&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;(2) 특징&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장점
+    &lt;ul&gt;
+      &lt;li&gt;안정적인 정렬 방법
+        &lt;ul&gt;
+          &lt;li&gt;데이터의 분포에 영향을 덜 받는다. 즉, 입력 데이터가 무엇이든 간에 정렬되는 시간은 O(nlog&lt;sub&gt;2&lt;/sub&gt;n)으로 동일하다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;단점
+    &lt;ul&gt;
+      &lt;li&gt;레코드를 배열(Array)로 구성하면, 임시 배열이 필요하다.
+        &lt;ul&gt;
+          &lt;li&gt;제자리 정렬(in-place sorting)이 아니다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;레코드들의 크기가 큰 경우에는 이동 횟수가 많으므로 매우 큰 시간적 낭비를 초래한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) 시간복잡도&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Best: O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/li&gt;
+  &lt;li&gt;Average: O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/li&gt;
+  &lt;li&gt;Worst: O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;15-힙-정렬&quot;&gt;&lt;strong&gt;1.5. 힙 정렬&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 개념&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;최대 힘 트리나 최소 힘 트리를 구성해 정렬하는 방법&lt;/li&gt;
+  &lt;li&gt;내림차순 정렬을 위해서는 최대 힙을 구성하고, 오름차순 정렬을 위해서는 최소 힙을 구성하면 된다.&lt;/li&gt;
+  &lt;li&gt;과정
+    &lt;ul&gt;
+      &lt;li&gt;정렬해야 할 n개의 요소들로 최대 힙(완전 이진 트리 형재)을 만든다.
+        &lt;ul&gt;
+          &lt;li&gt;내림차순을 기준으로 정렬&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+      &lt;li&gt;그 다음으로 한 번에 하나씩 요소를 힙에서 꺼내서 배열의 뒤부터 저장하면 된다.&lt;/li&gt;
+      &lt;li&gt;삭제되는 요소들(최댓값부터 삭제)은 값이 감소되는 순서대로 정렬되게 된다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 특징&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장점
+    &lt;ul&gt;
+      &lt;li&gt;시간 복잡도가 좋은 편이다.&lt;/li&gt;
+      &lt;li&gt;가장 유용한 경우는 전체 자료를 정렬하는 것이 아니라 가장 큰 몇 개의 값만 필요한 경우이다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) 시간복잡도&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Best: O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/li&gt;
+  &lt;li&gt;Average: O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/li&gt;
+  &lt;li&gt;Worst: O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h5 id=&quot;16-퀵정렬&quot;&gt;&lt;strong&gt;1.6. 퀵정렬&lt;/strong&gt;&lt;/h5&gt;
+
+&lt;p&gt;(1) 개념&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;분할 정복 알고리즘의 하나로, 평균적으로 매우 빠른 수행 속도를 자랑하는 방법
+    &lt;ul&gt;
+      &lt;li&gt;병합 정렬과 다르게 퀵 정렬은 리스트를 매우 비균등하게 분할한다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(2) 특징&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;장점
+    &lt;ul&gt;
+      &lt;li&gt;속도가 빠르다.&lt;/li&gt;
+      &lt;li&gt;추가 메모리 공간을 필요로 하지 않는다.&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;단점
+    &lt;ul&gt;
+      &lt;li&gt;정렬된 리스트에 대해서는 퀵 정렬의 불균형 분할에 의해 오히려 수행시간이 더 많이 걸린다.
+        &lt;ul&gt;
+          &lt;li&gt;퀵 정렬의 불균형 분할을 방지하기 위해 피벗을 선택할 때, 더욱 리스트를 균등하게 분할할 수 있는 데이터를 선택한다.&lt;/li&gt;
+          &lt;li&gt;리스트 내의 몇 개의 데이터 중에서 크기 순으로 중간 값(medium)을 피벗으로 선택한다.&lt;/li&gt;
+        &lt;/ul&gt;
+      &lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;(3) 시간복잡도&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;Best: O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/li&gt;
+  &lt;li&gt;Average: O(nlog&lt;sub&gt;2&lt;/sub&gt;n)&lt;/li&gt;
+  &lt;li&gt;Worst: O(n&lt;sup&gt;2&lt;/sup&gt;)&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;참고&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&quot;&gt;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gmlwjd9405.github.io/2018/05/06/algorithm-bubble-sort.html&quot;&gt;https://gmlwjd9405.github.io/2018/05/06/algorithm-bubble-sort.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gmlwjd9405.github.io/2018/05/06/algorithm-selection-sort.html&quot;&gt;https://gmlwjd9405.github.io/2018/05/06/algorithm-selection-sort.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gmlwjd9405.github.io/2018/05/08/algorithm-merge-sort.html&quot;&gt;https://gmlwjd9405.github.io/2018/05/08/algorithm-merge-sort.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gmlwjd9405.github.io/2018/05/10/algorithm-heap-sort.html&quot;&gt;https://gmlwjd9405.github.io/2018/05/10/algorithm-heap-sort.html&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://gmlwjd9405.github.io/2018/05/10/algorithm-quick-sort.html&quot;&gt;https://gmlwjd9405.github.io/2018/05/10/algorithm-quick-sort.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><category term="CS" /><summary type="html">Sorting Algoritms 1.1. 버블 정렬 1.2. 선택 정렬 1.3. 삽입 정렬 1.4. 병합 정렬 1.5. 힙 정렬 1.6. 퀵 정렬</summary></entry><entry><title type="html">Part 1-3. 네트워크</title><link href="/CS-Network" rel="alternate" type="text/html" title="Part 1-3. 네트워크" /><published>2021-05-24T00:00:00+00:00</published><updated>2021-05-24T00:00:00+00:00</updated><id>/CS-Network</id><content type="html" xml:base="/CS-Network">&lt;ol&gt;
   &lt;li&gt;
     &lt;p&gt;&lt;strong&gt;HTTP GET/POST&lt;/strong&gt; &lt;br /&gt;
 1.1. HTTP Request &lt;br /&gt;
@@ -4166,85 +4454,4 @@ ACK(Acknowledgement)&lt;/p&gt;
   &lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;p&gt;참고: &lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&quot;&gt;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="CS" /><summary type="html">Array vs. Linked List 1.1. Array 1.2. Linked List</summary></entry><entry><title type="html">[책 - 이것이 자바다] 복습</title><link href="/Java-01" rel="alternate" type="text/html" title="[책 - 이것이 자바다] 복습" /><published>2021-05-08T00:00:00+00:00</published><updated>2021-05-08T00:00:00+00:00</updated><id>/Java-01</id><content type="html" xml:base="/Java-01">&lt;h4 id=&quot;chapter-07-객체지향-프로그래밍-ii&quot;&gt;&lt;strong&gt;Chapter 07. 객체지향 프로그래밍 II&lt;/strong&gt;&lt;/h4&gt;
-&lt;h4 id=&quot;6-추상클래스abstract-class&quot;&gt;&lt;strong&gt;6. 추상클래스(abstract class)&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;6.3. 추상클래스의 작성&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;기존의 클래스의 공통적인 부분을 뽑아서 추상클래스로 만들어 상속하도록 하는 경우가 있다.&lt;/li&gt;
-  &lt;li&gt;상속계층도를 따라 내려 갈수록 세분화되며, 올라갈수록 공통요소만 남게 된다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&quot;7-인터페이스interface&quot;&gt;&lt;strong&gt;7. 인터페이스(interface)&lt;/strong&gt;&lt;/h4&gt;
-&lt;p&gt;7.2. 인터페이스의 작성&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;인터페이스의 멤버들의 제약사항
-    &lt;ul&gt;
-      &lt;li&gt;모든 멤버 변수는 public static final 이어야 하며, 이를 생략할 수 있다.&lt;/li&gt;
-      &lt;li&gt;모든 메서드는 public abstract 이어야 하며, 이를 생략할 수 있다. &lt;br /&gt;
-단, static 메서드와 디폴트 메서드는 예외(JDK 1.8부터)&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt;&lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;인터페이스이름&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;static&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;final&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;타입&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;상수이름&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;값&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;;&lt;/span&gt;
-  &lt;span class=&quot;kd&quot;&gt;public&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;abstract&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;메서드이름&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;매개변수목록&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;);&lt;/span&gt;
-&lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-
-&lt;p&gt;7.6. 인터페이스를 이용한 다형성&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;리턴 타입이 인터페이스라는 것은 메서드가 해당 인터페이스를 구현한 클래스의 인스턴스를 반환한다는 것을 의미한다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;7.7. 인터페이스의 장점&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;개발시간을 단축시킬 수 있다.&lt;/li&gt;
-  &lt;li&gt;표준화가 가능하다.&lt;/li&gt;
-  &lt;li&gt;서로 관계없는 클래스들에게 관계를 맺어 줄 수 있다.&lt;/li&gt;
-  &lt;li&gt;독립적인 프로그래밍이 가능하다.&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;7.8. 인터페이스의 이해&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;클래스를 사용하는 쪽(User)과 클래스를 제공하는 쪽(Provider)이 있다. &lt;br /&gt;
-메서드를 사용(호출)하는 쪽(User)에서는 사용하려는 메서드(Provider)의 선언부만 알면 된다(내용은 몰라도 된다).&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;7.9. 디폴트 메서드와 static 메서드&lt;/p&gt;
-
-&lt;p&gt;(1) 디폴트 메서드&lt;/p&gt;
-&lt;ul&gt;
-  &lt;li&gt;디폴트 메서드는 추상 메서드의 기본적인 구현을 제공하는 메서드
-    &lt;ul&gt;
-      &lt;li&gt;추상 메서드가 아니기 때문에 디폴트 메서드가 새로 추가되어도 해당 인터페이스를 구현한 클래스를 변경하지 않아도 된다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;public 생략 가능&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;div class=&quot;language-java highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;table class=&quot;rouge-table&quot;&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td class=&quot;rouge-gutter gl&quot;&gt;&lt;pre class=&quot;lineno&quot;&gt;1
-2
-3
-4
-&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;rouge-code&quot;&gt;&lt;pre&gt; &lt;span class=&quot;kd&quot;&gt;interface&lt;/span&gt; &lt;span class=&quot;nc&quot;&gt;MyInterface&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;{&lt;/span&gt;
-   &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;method&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
-   &lt;span class=&quot;k&quot;&gt;default&lt;/span&gt; &lt;span class=&quot;kt&quot;&gt;void&lt;/span&gt; &lt;span class=&quot;nf&quot;&gt;newMethod&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;();&lt;/span&gt;
- &lt;span class=&quot;o&quot;&gt;}&lt;/span&gt;
-&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
-&lt;ul&gt;
-  &lt;li&gt;새로 추가된 디폴트 메서드가 기존의 메서드와 이름이 중복되어 충돌하는 경우
-    &lt;ul&gt;
-      &lt;li&gt;여러 인터페이스의 디폴트 메서드 간의 충돌: 인터페이스를 구현한 클래스에서 디폴트 메서드를 오버라이딩해야 한다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-  &lt;li&gt;디폴트 메서드와 조상 클래스의 메서드 간의 충돌
-    &lt;ul&gt;
-      &lt;li&gt;조상 클래스의 메서드가 상속되고, 디폴트 메서드는 무시된다.&lt;/li&gt;
-    &lt;/ul&gt;
-  &lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><category term="Java" /><summary type="html">Chapter 07. 객체지향 프로그래밍 II 6. 추상클래스(abstract class) 6.3. 추상클래스의 작성 기존의 클래스의 공통적인 부분을 뽑아서 추상클래스로 만들어 상속하도록 하는 경우가 있다. 상속계층도를 따라 내려 갈수록 세분화되며, 올라갈수록 공통요소만 남게 된다.</summary></entry></feed>
+&lt;p&gt;참고: &lt;a href=&quot;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&quot;&gt;https://github.com/JaeYeopHan/Interview_Question_for_Beginner&lt;/a&gt;&lt;/p&gt;</content><author><name></name></author><category term="CS" /><summary type="html">Array vs. Linked List 1.1. Array 1.2. Linked List</summary></entry></feed>
