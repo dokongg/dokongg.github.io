@@ -55,11 +55,15 @@
           
             <a class="page-link" href="/Spring/index">Spring</a>
           
+            <a class="page-link" href="/REST/index">REST</a>
+          
             <a class="page-link" href="/JPA/index">JPA</a>
           
             <a class="page-link" href="/ES/index">ES</a>
           
             <a class="page-link" href="/MSA/index">MSA</a>
+          
+            <a class="page-link" href="/Interview/index">Interview</a>
           
         </div>
       </nav></div>
@@ -86,7 +90,7 @@
 <div class="pagination">
 </div>
 <input type="hidden" id="searchTerm" value="" />
-<input type="hidden" id="totalCount" value="16" />
+<input type="hidden" id="totalCount" value="18" />
 <input type="hidden" id="currentPage" value="1" />
 <input type="hidden" id="startPage" value="1" />
 <input type="hidden" id="endPage" value="5" />
@@ -104,6 +108,24 @@
     })
 
     window.store = {
+    
+    "rest-01": {
+        "title": "[NHN Cloud Meetup!] 지속 가능한 소프트웨어를 위한 코딩 방법 - 마지막 맺음말.",
+        "category": "",
+        "content": "https://meetup.toast.com/posts/218",
+        "url": "/REST-01",
+        "date": "2021-05-29 00:00:00 +0000"
+    }
+    ,
+    
+    "interview-01": {
+        "title": "2021 상반기 면접후기",
+        "category": "",
+        "content": "1. Java와 Spring은 면접관보다 잘 알아야 한다. 2. CS는 기본이다. 이걸 대답 잘 한다고 합격하지 않는다.[5/28] 11번가 면접 후기  가장 중요한 Java에 대해서 너무 공부를 안했다.  최소 6번씩 산 책에 대해서 공부하고 읽어보자.  https://blog.naver.com/gngh0101/221295353117",
+        "url": "/Interview-01",
+        "date": "2021-05-29 00:00:00 +0000"
+    }
+    ,
     
     "cs-algorithms": {
         "title": "Part 1-7. 알고리즘",
@@ -195,11 +217,11 @@
     }
     ,
     
-    "java-01": {
+    "java-02": {
         "title": "[책 - 이것이 자바다] 복습",
         "category": "",
         "content": "Chapter 07. 객체지향 프로그래밍 II6. 추상클래스(abstract class)6.3. 추상클래스의 작성  기존의 클래스의 공통적인 부분을 뽑아서 추상클래스로 만들어 상속하도록 하는 경우가 있다.  상속계층도를 따라 내려 갈수록 세분화되며, 올라갈수록 공통요소만 남게 된다.7. 인터페이스(interface)7.2. 인터페이스의 작성  인터페이스의 멤버들의 제약사항          모든 멤버 변수는 public static final 이어야 하며, 이를 생략할 수 있다.      모든 메서드는 public abstract 이어야 하며, 이를 생략할 수 있다. 단, static 메서드와 디폴트 메서드는 예외(JDK 1.8부터)      1234interface 인터페이스이름 {  public static final 타입 상수이름 = 값;  public abstract 메서드이름(매개변수목록);}7.6. 인터페이스를 이용한 다형성  리턴 타입이 인터페이스라는 것은 메서드가 해당 인터페이스를 구현한 클래스의 인스턴스를 반환한다는 것을 의미한다.7.7. 인터페이스의 장점  개발시간을 단축시킬 수 있다.  표준화가 가능하다.  서로 관계없는 클래스들에게 관계를 맺어 줄 수 있다.  독립적인 프로그래밍이 가능하다.7.8. 인터페이스의 이해  클래스를 사용하는 쪽(User)과 클래스를 제공하는 쪽(Provider)이 있다. 메서드를 사용(호출)하는 쪽(User)에서는 사용하려는 메서드(Provider)의 선언부만 알면 된다(내용은 몰라도 된다).7.9. 디폴트 메서드와 static 메서드(1) 디폴트 메서드  디폴트 메서드는 추상 메서드의 기본적인 구현을 제공하는 메서드          추상 메서드가 아니기 때문에 디폴트 메서드가 새로 추가되어도 해당 인터페이스를 구현한 클래스를 변경하지 않아도 된다.        public 생략 가능1234 interface MyInterface {   void method();   default void newMethod(); }  새로 추가된 디폴트 메서드가 기존의 메서드와 이름이 중복되어 충돌하는 경우          여러 인터페이스의 디폴트 메서드 간의 충돌: 인터페이스를 구현한 클래스에서 디폴트 메서드를 오버라이딩해야 한다.        디폴트 메서드와 조상 클래스의 메서드 간의 충돌          조상 클래스의 메서드가 상속되고, 디폴트 메서드는 무시된다.      ",
-        "url": "/Java-01",
+        "url": "/Java-02",
         "date": "2021-05-08 00:00:00 +0000"
     }
     ,
